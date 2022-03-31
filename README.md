@@ -1,4 +1,4 @@
-# Flact Frontend
+# F3M Marketplace Frontend
 
 ### Installation
 
