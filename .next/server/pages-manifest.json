@@ -1,0 +1,8 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/marketplace/all/[id]": "pages/marketplace/all/[id].js",
+  "/product/[id]/[rarity]/[isAuction]": "pages/product/[id]/[rarity]/[isAuction].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+}

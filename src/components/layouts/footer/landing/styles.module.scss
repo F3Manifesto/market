@@ -1,0 +1,284 @@
+.footer {
+  background: #4E4AFF;
+  position: relative;
+}
+
+.footer a {
+  color: #ffffff;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footerWrapper {
+  color: white;
+  background: #4E4AFF;
+  margin: auto;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.footerWrapper .centerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-left: 34px;
+  padding-right: 34px;
+}
+
+.footerWrapper .description {
+  font-size: 16px;
+  line-height: 22px;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: 'lemon_milkregular';
+  font-weight: normal;
+  font-style: normal;
+  color: white;
+}
+
+.footerWrapper .imageLogo {
+  height: 80px;
+  margin: auto;
+}
+
+.footerWrapper .logo_big {
+  height: 200px;
+  margin-left: 5px;
+}
+
+.footerWrapper .dFlex {
+  display: flex;
+  margin-top: 10px;
+}
+
+.footerWrapper .iconsLine {
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footerWrapper .iconsLine img {
+  margin-right: 12px;
+}
+
+.footerWrapper .mediumIcon {
+  margin-left: 10px;
+}
+.footerWrapper .tiktokIcon {
+  margin-right: 20px;
+}
+.footerWrapper .twitchIcon {
+  margin-right: 20px;
+}
+.footerWrapper .discordIcon {
+  margin-right: 20px;
+}
+
+.footerWrapper .mirrorIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.footerWrapper .youtubeIcon {
+  width: 30px;
+  height: 25px;
+}
+
+.footerWrapper .gitbookIcon {
+  width: 33px;
+  height: 33px;
+}
+
+.whiteLogo {
+  width: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+  
+.footerWrapper .linkedinIcon {
+  width: 35px;
+}
+
+a.footer-text-white {
+  color: white;
+}
+  
+@media (max-width: 1440px) {
+  .footerWrapper {
+    max-width: 90%;
+  }
+}
+@media (max-width: 780px) {
+  .footerWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footerWrapper .description {
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+  }
+  
+  .footerWrapper .iconsLine img {
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .footerWrapper .mediumIcon {
+    height: 25px;
+    margin-left: 5px;
+  }
+
+  .footerWrapper .youtubeIcon{
+    width: 30px;
+    height: 25px;
+  }
+
+  .footerWrapper .mirrorIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerWrapper .gitbookIcon {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+@media (max-width: 420px) {
+  .footerWrapper .centerWrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footerWrapper .description {
+    font-size: 22px;
+    line-height: 25px;
+    text-align: center;
+  }
+
+
+
+   
+  .footerWrapper .iconsLine {
+    justify-content: center;
+  }
+
+  .footerWrapper .iconsLine img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .footerWrapper .mediumIcon {
+    height: 20px;
+  }
+  .footerWrapper .tiktokIcon {
+    margin-right: 5px;
+  }
+
+  .footerWrapper .twitchIcon {
+    margin-right: 5px;
+  }
+
+  .footerWrapper .discordIcon {
+    margin-right: 10px;
+  } 
+
+  .footerWrapper .mirrorIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerWrapper .youtubeIcon {
+    width: 30px;
+    height: 25px;
+  }
+
+  .footerWrapper .gitbookIcon {
+    width: 33px;
+    height: 33px;
+  }
+}
+ 
+  
+    @media (max-width: 420px) {
+  
+      
+    }
+
+@media (max-width: 780px) {
+  .footerWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footerWrapper .textLogo {
+    text-align: center;
+  }
+
+  .footerWrapper .imageLogo {
+    height: 30px;
+    margin: auto;
+  }
+
+  .footerWrapper .logo_big {
+    height: 15px;
+    margin-left: 5px;
+  }
+
+  .footerWrapper .description {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .footerWrapper .iconsLine {
+    justify-content: center;
+  }
+
+  .footerWrapper .iconsLine img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .footerWrapper .mediumIcon {
+    height: 10px;
+  }
+  .footerWrapper .tiktokIcon {
+    margin-right: 5px;
+  }
+
+  .footerWrapper .twitchIcon {
+    margin-right: 5px;
+  }
+
+  .footerWrapper .discordIcon {
+    margin-right: 10px;
+  } 
+
+  .footerWrapper .mirrorIcon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .footerWrapper .youtubeIcon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .footerWrapper .gitbookIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+}

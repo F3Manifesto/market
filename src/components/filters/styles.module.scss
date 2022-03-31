@@ -1,0 +1,241 @@
+$borderColor: #4E4AFF;
+$borderWidth: 2px;
+
+$backColor: #FFEF62;
+
+$labelColor: #4E4AFF;
+$labelFontFamily: NewYork;
+
+$inputColor: #4E4AFF;
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  @media (min-width: 576px) {
+    & > div {
+      margin-left: 1rem;
+    }
+  }
+
+  .filterWrapper {
+    margin-left: 0;
+    @media (max-width: 576px) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .filterLabel {
+      font-family: $labelFontFamily;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+
+      display: flex;
+      align-items: center;
+
+      color: $labelColor;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .filterInput {
+      display: flex;
+      align-items: center;
+      padding: 5px 16px 6px 10px;
+      background: $backColor;
+      border: $borderWidth solid $borderColor;
+      box-sizing: border-box;
+      border-radius: 8px;
+      overflow: visible;
+
+      @media (max-width: 576px) {
+        width: 100%;
+      }
+
+      input {
+        background: $backColor;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: $inputColor;
+        width: 250px;
+
+        @media (max-width: 576px) {
+          flex-grow: 1;
+        }
+      }
+
+      img {
+        margin-right: 5px;
+        padding: 0;
+      }
+    }
+  }
+
+  .sortWrapper {
+    height: 67px;
+    min-width: 300px;
+    position: relative;
+
+    @media (max-width: 576px) {
+      width: 100%;
+      min-width: 100% !important;
+      margin-left: 0;
+      .sortInput {
+        width: 100%;
+      }
+    }
+    .sortLabel {
+      font-family: $labelFontFamily;
+      font-size: 20px;
+      line-height: 120%;
+
+      display: flex;
+      align-items: center;
+
+      color: $labelColor;
+      margin-bottom: 0.4rem;
+    }
+
+    .sortInput {
+      position: absolute;
+      z-index: 101;
+      padding: 3px 0px;
+      background: $backColor;
+      border: $borderWidth solid $borderColor;
+      box-sizing: border-box;
+      border-radius: 8px;
+      min-height: 37px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+
+      .currentItem {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: $inputColor;
+        text-transform: uppercase;
+
+        span {
+          font-size: 18px;
+          line-height: 24px;
+          min-height: 24px;
+          padding: 0px 20px 0px 0px;
+          text-align: left;
+        }
+      }
+
+      .arrowBottomImg {
+        margin-left: 5px;
+        padding: 5px 2px;
+      }
+
+      .show {
+        display: block;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      ul {
+        width: 100%;
+        padding: 10px 0px;
+
+        li {
+          font-size: 18px;
+          line-height: 24px;
+          min-height: 24px;
+          padding: 3px 20px;
+          color: $inputColor;
+          text-align: right;
+          text-transform: uppercase;
+          &:hover {
+            background: $inputColor;
+            color: white;
+          }
+        }
+      }
+
+      select {
+        background: $backColor;
+        color: $inputColor;
+        outline: none;
+        border: none;
+        font-size: 16px;
+        text-transform: uppercase;
+
+        @media (max-width: 576px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .helper {
+    cursor: pointer;
+    display: flex;
+    height: 52px;
+    margin-top: -30px;
+    align-items: center;
+
+    .questionMark {
+      border: 1px solid $borderColor;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
+
+      display: flex;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 600;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+    }
+
+    .description {
+      display: none;
+      position: absolute;
+      background: white;
+      border: 3px solid $borderColor;
+      padding: 7px 12px;
+      width: 190px;
+
+      justify-content: center;
+      align-items: center;
+      font-family: Gilroy;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 20px;
+
+      left: 100px;
+      height: 58px;
+      color: $labelColor;
+
+      a {
+        text-decoration: underline;
+        color: black;
+      }
+    }
+
+    &:hover {
+      .description {
+        display: block;
+      }
+    }
+  }
+}

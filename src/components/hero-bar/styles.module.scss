@@ -1,0 +1,50 @@
+$backColor: #FFEF62;
+$borderColor: #4E4AFF;
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  background-color: $backColor;
+  background-size: cover;
+  padding: 1.5rem 5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .border {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid $borderColor;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem;
+
+    .leftPane {
+      text-align: center;
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+
+    .leftPane {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .back {
+    width: 100%;
+    height: 100%;
+  }
+
+  .filter {
+    // position: absolute;
+    // right: 100px;
+    // top: 50%;
+    // transform: translateY(-50%);
+  }
+}

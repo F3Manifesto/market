@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    "esformatter-jsx"
+  ],
+  "jsx": {
+    "spaceInJSXExpressionContainers": "",
+    "htmlOptions": {
+      "indent_inner_html": true
+    }
+  },
+  "whiteSpace": {
+    "before": {
+      "ArrayExpressionOpening": 1,
+      "ObjectExpressionClosingBrace": 1,
+      "ObjectExpressionOpeningBrace": 0,
+      "ObjectPatternClosingBrace": 1,
+      "ObjectPatternComma": 0,
+      "ObjectPatternOpeningBrace": 1
+    },
+    "after": {
+      "ObjectExpressionClosingBrace": 0,
+      "ObjectExpressionOpeningBrace": 1,
+      "ObjectPatternClosingBrace": 0,
+      "ObjectPatternComma": 1,
+      "ObjectPatternOpeningBrace": 1
+    }
+  }
+}

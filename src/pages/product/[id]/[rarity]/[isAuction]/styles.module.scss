@@ -1,0 +1,860 @@
+@import "../../../../../assets/scss/helpers/grid.scss";
+@import "../../../../../assets/scss/helpers/helpers.scss";
+
+$bgColor: #FFEF62;
+$fontFamily: 'NewYork';
+$nameColor: #4E4AFF;
+
+.wrapper {
+  background: $bgColor;
+  section {
+    position: relative;
+    overflow: hidden;
+    .video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+      z-index: 0;
+      margin-bottom: -5px;
+    }
+
+    .body {
+      padding: 7.5rem 0rem;
+
+      @include xs-width {
+        padding: 7.5rem 1rem;
+      }
+
+      @include md-width {
+        padding: 7.5rem 0rem;
+      }
+
+      @include xl-width {
+        padding: 7.5rem 0rem;
+      }
+
+      @include xxl-width {
+        padding: 7.5rem 0rem;
+      }
+
+      .mainBodySameWidth {
+        @include lg-width {
+          grid-template-columns: 300px 300px !important;
+        }
+
+        @include lg-width {
+          grid-template-columns: 350px 350px !important;
+          column-gap: 4rem;
+        }
+
+        @include xl-width {
+          grid-template-columns: 400px 400px !important;
+          column-gap: 6rem;
+        }
+
+        @include xxl-width {
+          grid-template-columns: 500px 500px !important;
+          column-gap: 8rem;
+        }
+      }
+
+      .mainBody {
+        // display: grid;
+        // grid-template-columns: 1fr;
+        // column-gap: 8rem;
+        // row-gap: 0rem;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .productName {
+          width: 100%;
+          left: 50%;
+          padding: 2rem 0;
+          text-align: center;
+          text-transform: uppercase;
+          color: $nameColor;
+          font-size: 30px;
+          line-height: 125%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          font-family: $fontFamily;
+          font-style: normal;
+          font-weight: 900;
+          margin: auto;
+
+          @include sm-width {
+            width: 400px;
+          }
+
+          @include md-width {
+            font-size: 30px;
+            width: 500px;
+          }
+
+          @include lg-width {
+            font-size: 40px;
+            width: 350px;
+            margin: 0;
+          }
+
+          @include xl-width {
+            font-size: 50px;
+            width: 400px;
+          }
+
+          @include xxl-width {
+            font-size: 60px;
+            width: 500px;
+          }
+        }
+
+        .imageCardWrapper {
+          .actionsWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 2rem;
+          }
+
+          .actions {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            z-index: 10;
+
+            .buttonWrapper {
+              display: flex;
+              flex-direction: column;
+              width: 200px;
+              margin: auto;
+
+              .buttonLabel {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 9px;
+                text-transform: uppercase;
+                line-height: 11px;
+                letter-spacing: 0.56em;
+                text-align: center;
+                color: #ffffff;
+              }
+            }
+          }
+
+          .viewBidHistory {
+            position: relative;
+            background: rgba(92, 89, 91, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 0.75rem 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: "Bebas Neue";
+            border: none;
+            margin-top: 1rem;
+            width: 80%;
+            align-self: center;
+
+            @include transition();
+
+            &:hover {
+              @include scale();
+              @include transition();
+            }
+          }
+
+          .lookTitle {
+            font-family: Gilroy;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 60px;
+            line-height: 74px;
+            /* identical to box height */
+            text-align: center;
+            margin-bottom: 1rem;
+
+            color: #ffffff;
+
+            text-shadow: 0px 4px 20px #ff12f6;
+          }
+
+          .bespokeBtn {
+            background: rgba(92, 89, 91, 0.5);
+            position: relative;
+            color: white;
+            font-size: 24px;
+            padding: 0.75rem 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: "Bebas Neue";
+            margin-top: 1rem;
+            border: none;
+            width: 80%;
+            align-self: center;
+
+            @include transition();
+
+            &:hover {
+              @include scale();
+              @include transition();
+            }
+          }
+
+          a {
+            text-align: center;
+            width: 100%;
+          }
+
+          .stakeBtn {
+            background: rgba(92, 89, 91, 0.5);
+            position: relative;
+            color: white;
+            font-size: 24px;
+            padding: 0.75rem 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: Bebas Neue;
+            margin-top: 1rem;
+            border: none;
+            width: 80%;
+            white-space: nowrap;
+            align-self: center;
+
+            @include transition();
+
+            &:hover {
+              @include scale();
+              @include transition();
+            }
+          }
+
+          .timeWrapper {
+            width: 250px;
+            margin: auto;
+            margin-top: 3rem;
+          }
+        }
+
+        .infoWrapper {
+          display: flex;
+          margin-top: 10px;
+          width: 100%;
+
+          @media (max-width: 768px) {
+            margin-top: 3rem;
+          }
+
+          .childrenDescription {
+            font-family: Bebas Neue;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 23px;
+            line-height: 31px;
+
+            color: #e6bf00;
+
+            a {
+              color: #e6bf00;
+              text-decoration: underline;
+            }
+          }
+
+          .childrenWrapper {
+            display: flex;
+            margin-top: 1rem;
+            width: 100%;
+            flex-wrap: wrap;
+
+            img,
+            video {
+              width: 81px;
+              height: 81px;
+              margin-right: 0.5rem;
+              border: 2px solid #ffffff;
+              box-sizing: border-box;
+              box-shadow: 0px 4px 20px 1px #ffffff;
+            }
+          }
+
+          .leftSection {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-grow: 1;
+
+            .amount {
+              color: black;
+              font-family: Bebas Neue;
+              font-size: 40px;
+              font-weight: bold;
+              margin-bottom: 1rem;
+              display: flex;
+              width: 200%;
+
+              .helper {
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                height: 52px;
+                margin-top: -30px;
+                align-items: center;
+                text-shadow: none;
+                color: #e6bf00;
+
+                .questionMark {
+                  border: 1px solid #e6bf00;
+                  border-radius: 50%;
+                  width: 27px;
+                  height: 27px;
+                  font-size: 23px;
+
+                  display: flex;
+                  font-family: Inter;
+                  font-style: normal;
+                  font-weight: 600;
+                  justify-content: center;
+                  align-items: center;
+                  margin-left: 10px;
+                }
+
+                .description {
+                  position: absolute;
+                  top: 0;
+                  left: 2rem;
+                  display: none;
+                  background: white;
+                  border: 2px solid #e6bf00;
+                  padding: 7px 12px;
+                  justify-content: center;
+                  align-items: center;
+                  font-family: Gilroy;
+                  font-weight: 800;
+                  font-size: 14px;
+                  margin-left: 10px;
+
+                  a {
+                    text-decoration: underline;
+                    color: #e6bf00;
+                  }
+                }
+
+                &:hover {
+                  .description {
+                    display: block;
+                    width: 200px;
+                    @include md-width {
+                      width: 300px;
+                    }
+                  }
+                }
+              }
+            }
+
+            .additionalImages {
+              margin-top: 5rem;
+              margin-bottom: 3rem;
+              display: flex;
+
+              img,
+              video {
+                width: 53px;
+                height: 65px;
+                margin-right: 1rem;
+                object-fit: cover;
+                box-shadow: 0px 4px 30px 9px #000000;
+              }
+            }
+
+            .lovesWrapper {
+              display: flex;
+              align-items: center;
+              margin-bottom: 1rem;
+
+              button {
+                background: transparent;
+                border: none;
+
+                transition: 0.3s all;
+                &:hover {
+                  transform: scale(1.1);
+                  transition: 0.3s all;
+                }
+              }
+
+              img {
+                filter: invert(1);
+              }
+
+              .likeCount {
+                color: #e6bf00;
+                font-family: Bebas Neue;
+
+                font-weight: bold;
+                font-size: 33px;
+                margin-left: 10px;
+
+                span {
+                  font-family: Bebas Neue;
+                  margin-left: 5px;
+                  margin-right: 15px;
+                  font-size: 20px;
+                  color: black;
+                }
+              }
+
+              .viewCount {
+                color: #e6bf00;
+                font-family: Bebas Neue;
+                font-weight: bold;
+                font-size: 33px;
+                margin-left: 10px;
+
+                span {
+                  margin-left: 5px;
+                  margin-right: 15px;
+                  font-size: 20px;
+                  font-family: Bebas Neue;
+                  color: black;
+                }
+              }
+            }
+          }
+
+          .rightSection {
+            display: none;
+
+            @include md-width {
+              padding-top: 126px;
+              margin-left: 1rem;
+              display: flex;
+            }
+          }
+
+          .mobileRightSection {
+            display: flex;
+            margin-top: 2rem;
+
+            @include md-width {
+              display: none;
+            }
+          }
+
+          .rightSection,
+          .mobileRightSection {
+            flex-direction: column;
+
+            .item {
+              position: relative;
+              display: flex;
+              align-items: cneter;
+              margin-bottom: 1rem;
+
+              &:hover {
+                .tooltip {
+                  display: block;
+                }
+              }
+
+              .label {
+                white-space: nowrap;
+                color: #e6bf00;
+                font-family: Bebas Neue;
+                align-self: center;
+                margin-left: 55px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+              }
+
+              .tooltip {
+                display: none;
+                position: absolute;
+                padding: 0.5rem;
+                top: calc(100% + 0.5rem);
+                left: 0;
+                z-index: 50;
+                background: white;
+                border: 2px solid #e6bf00;
+                width: 175px;
+                color: #e6bf00;
+                font-family: Bebas Neue;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 14px;
+                line-height: 20px;
+                /* or 143% */
+
+                align-items: center;
+
+                color: #e6bf00;
+              }
+            }
+
+            .checkContainer {
+              display: block;
+              position: relative;
+              cursor: pointer;
+              font-size: 22px;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+
+              .check {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+              }
+
+              .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 40px;
+                width: 40px;
+                background: white;
+                border: 3px solid #e6bf00;
+                border-radius: 13px;
+                box-shadow: 0px 4px 10px 1px #e6bf00;
+
+                &:after {
+                  content: "";
+                  position: absolute;
+                  display: none;
+                }
+              }
+            }
+
+            .checkContainer .checkmark:after {
+              left: 9px;
+              top: 0px;
+              width: 15px;
+              height: 25px;
+              border-width: 0 3px 3px 0;
+              -webkit-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+              border: solid #e6bf00;
+              border-top: 0;
+              border-left: 0;
+            }
+
+            /* Show the checkmark when checked */
+            .checkContainer input:checked ~ .checkmark:after {
+              display: block;
+            }
+
+            .check {
+              background: white;
+            }
+          }
+
+          .lookInspo {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+
+            .title {
+              font-family: Gilroy;
+              font-style: normal;
+              font-weight: 800;
+              font-size: 40px;
+              line-height: 49px;
+
+              color: #ffffff;
+
+              text-shadow: 0px 4px 20px #ff12f6;
+            }
+
+            .inspoItem {
+              font-family: Gilroy;
+              font-style: normal;
+              font-weight: 800;
+              font-size: 22px;
+              line-height: 27px;
+
+              color: #ffffff;
+            }
+          }
+        }
+
+        .infoCard {
+          color: white;
+          font-family: Gilroy;
+          font-size: 22px;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 27px;
+
+          img {
+            position: relative;
+            width: 50px;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+          }
+
+          .info {
+            display: flex;
+            align-items: center;
+          }
+
+          .skinName {
+            margin-bottom: 0.5rem;
+
+            .text {
+              font-family: Orbitron;
+              font-style: normal;
+              font-weight: bold;
+              color: #e6bf00;
+            }
+          }
+
+          .description {
+            font-family: Bebas Neue;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 18px;
+            line-height: 23px;
+            text-transform: none;
+            color: #e6bf00;
+          }
+        }
+      }
+    }
+
+    .designerBody,
+    .developerBody {
+      position: relative;
+
+      @include xs-width {
+        padding: 2rem;
+      }
+
+      @include md-width {
+        padding: 7.5rem 7.5rem;
+      }
+
+      @include xl-width {
+        padding: 7.5rem 5rem;
+      }
+
+      @include xxl-width {
+        padding: 7.5rem 5rem;
+      }
+
+      .title {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 84px;
+        line-height: 101px;
+        /* identical to box height */
+
+        text-align: left;
+
+        color: #e6bf00;
+      }
+
+      .data {
+        padding: 3rem 0rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+
+        @include lg-width {
+          grid-template-columns: auto 40%;
+        }
+
+        @include lg-width {
+          padding: 3rem 0rem;
+          gap: 5rem;
+        }
+
+        @include xl-width {
+          padding: 3rem 0rem;
+          gap: 7.5rem;
+        }
+
+        @include xxl-width {
+          padding: 3rem 0rem;
+          gap: 10rem;
+        }
+
+        .infoWrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .wearersLabel {
+            text-transform: uppercase;
+            font-family: Bebas Neue;
+            font-weight: 800;
+            font-size: 10px;
+            line-height: 18px;
+            letter-spacing: 0.12em;
+            color: #e6bf00;
+            margin-left: 10px;
+            margin-bottom: 2px;
+          }
+
+          .userList {
+            margin-bottom: 40px;
+            margin-left: 10px;
+          }
+
+          a {
+            margin-top: 20px;
+
+            .getDressedButton {
+              background: #e6bf00;
+              border: none;
+              border-left: 10px solid black;
+              font-family: Bebas Neue;
+              font-style: normal;
+              font-weight: 800;
+              font-size: 16px;
+              color: black;
+
+              padding: 12px 10px;
+
+              @include transition();
+
+              &:hover {
+                @include scale();
+                @include transition();
+              }
+            }
+          }
+        }
+
+        a:hover {
+          opacity: 0.9;
+        }
+
+        .name {
+          text-transform: uppercase;
+          color: black;
+          font-size: 22px;
+          line-height: 27px;
+          font-weight: 800;
+          font-family: Bebas Neue;
+        }
+
+        .description {
+          font-family: Bebas Neue;
+          font-weight: 300;
+          font-size: 1rem;
+          line-height: 18px;
+          color: black;
+        }
+
+        .profileButton {
+          background: #000000;
+          border-radius: 29px;
+          color: white;
+
+          font-family: Bebas Neue;
+          font-weight: 800;
+          font-size: 15px;
+          line-height: 18px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          border: none;
+          padding: 7px 12px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .globalDesignerNetwork {
+    padding: 2rem;
+    background-image: url("../../../../../../public/images/metaverse/modal_texture.png");
+    background-color: black;
+    background-size: contain;
+
+    .title {
+      width: 50%;
+    }
+
+    .text {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+
+      @include md-width {
+        font-size: 20px;
+      }
+
+      @include lg-width {
+        font-size: 25px;
+      }
+
+      @include xl-width {
+        font-size: 30px;
+      }
+
+      color: #ffffff;
+    }
+
+    .link {
+      color: white;
+      margin-right: 0;
+
+      .linkWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .body {
+          background-color: black;
+          padding: 0;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 15px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .leftBar {
+    position: absolute;
+    height: 761px;
+    width: 50px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e6bf00;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  .margin50 {
+    margin-top: 50px;
+  }
+}

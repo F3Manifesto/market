@@ -1,0 +1,26 @@
+[
+  {
+    "id": 94,
+    "rarity": 2,
+    "isAuction": 0,
+    "model": [
+      "https://digitalax.mypinata.cloud/ipfs/QmdoSACuJXtXaXNv3x9md41ZJNkbzDnceVycYrWX4mr6mg"
+    ]
+  },
+    {
+    "id": 100,
+    "rarity": 2,
+    "isAuction": 0,
+    "model": [
+      "https://digitalax.mypinata.cloud/ipfs/QmX296pAsTxQejqs6EJ2WNiwq7QVu9f8X5HDLFrcPwjKWE"
+    ]
+  },
+    {
+    "id": 101,
+    "rarity": 2,
+    "isAuction": 0,
+    "model": [
+      "https://digitalax.mypinata.cloud/ipfs/QmbzoDqMjmypqRkf4udPkWKjfP3khv3Pgpt6aKoTqNBwpX"
+    ]
+  }
+]
