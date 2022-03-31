@@ -24,6 +24,8 @@ const ImageCard = ({
   showCollectionName = false,
   showRarity = false,
   showButton = true,
+  showMute = false,
+  showZoom = false,
   keepRatio = false,
   imgUrl = null,
   offerCount = null,
@@ -137,72 +139,86 @@ const ImageCard = ({
           borderType === "none" ? styles.none : "",
         ].join(" ")}
       >
-        {showRarity ? (
-          <div className={styles.rarity}>
-            {" "}
-            {data?.rarity || data?.garment?.rarity}{" "}
-          </div>
-        ) : null}
-        {data ? (
-          <div
-            className={[zoomMedia ? styles.zoomWrapper : styles.mediaWrapper, keepRatio ? styles.keepRatio : ''].join(' ')}
-            onClick={() => onClickZoomIn()}
-          >
-            {(mainImageType || defaultMainImageType) === 1 ? (
-              <LazyLoad>
-                {/* <video key={data.id} autoPlay muted={!asPath.includes('product')} loop className={styles.video} */}
-                <video
-                  key={data.id}
-                  autoPlay
-                  muted={videoMuted}
-                  loop
-                  className={styles.video}
-                  ref={videoTagRef}
-                  preload={"auto"}
-                  onLoadedData={() => {
-                    if (!asPath.includes("product")) return;
-                    // console.log('videoTagRef: ', videoTagRef.current)
-                    var video = videoTagRef.current;
-                    // console.log('video: ', video)
-                    if (getAudio(video)) {
-                      // console.log('video has audio')
-                      setHasAudio(true);
-                    } else {
-                      setHasAudio(false);
-                      // console.log(`video doesn't have audio`)
-                    }
+        {
+          // Rarity
+          showRarity ? (
+            <div className={styles.rarity}>
+              {" "}
+              {data?.rarity || data?.garment?.rarity}{" "}
+            </div>
+          ) 
+          : null
+        }
+        {
+          data
+          ? (
+            <div
+              className={[zoomMedia ? styles.zoomWrapper : styles.mediaWrapper, keepRatio ? styles.keepRatio : ''].join(' ')}
+              onClick={() => onClickZoomIn()}
+            >
+              {
+                // Video
+                (mainImageType || defaultMainImageType) === 1
+                ? (
+                    <LazyLoad>
+                      <video
+                        key={data.id}
+                        autoPlay
+                        muted={videoMuted}
+                        loop
+                        className={styles.video}
+                        ref={videoTagRef}
+                        preload={"auto"}
+                        onLoadedData={() => {
+                          if (!asPath.includes("product")) return;
+                          // console.log('videoTagRef: ', videoTagRef.current)
+                          var video = videoTagRef.current;
+                          // console.log('video: ', video)
+                          if (getAudio(video)) {
+                            // console.log('video has audio')
+                            setHasAudio(true);
+                          } else {
+                            setHasAudio(false);
+                            // console.log(`video doesn't have audio`)
+                          }
+                        }}
+                      >
+                        <source
+                          src={reviseUrl(mainImage || defaultMainImage)}
+                          type="video/mp4"
+                        />
+                      </video>
+                    </LazyLoad>
+                  )
+                  // Image
+                : mainImageType === 2 || defaultMainImageType === 2
+                  ? (
+                    <img
+                      src={reviseUrl(mainImage || defaultMainImage)}
+                      className={styles.image}
+                    />
+                  ) 
+                  : null
+              }
+              {hasAudio && zoomMedia && showMute && (
+                <Button
+                  className={styles.muteButton}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClickMute();
                   }}
                 >
-                  <source
-                    src={reviseUrl(mainImage || defaultMainImage)}
-                    type="video/mp4"
-                  />
-                </video>
-              </LazyLoad>
-            ) : mainImageType === 2 || defaultMainImageType === 2 ? (
-              <img
-                src={reviseUrl(mainImage || defaultMainImage)}
-                className={styles.image}
-              />
-            ) : null}
-            {hasAudio && zoomMedia && asPath.includes("product/") && (
-              <Button
-                className={styles.muteButton}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onClickMute();
-                }}
-              >
-                {videoMuted ? (
-                  <img src="/images/audio-off.png" />
-                ) : (
-                  <img src="/images/audio-on.png" />
-                )}
-              </Button>
-            )}
-          </div>
-        ) : null}
-        {asPath.includes("product/") && (
+                  {videoMuted ? (
+                    <img src="/images/audio-off.png" />
+                  ) : (
+                    <img src="/images/audio-on.png" />
+                  )}
+                </Button>
+              )}
+            </div>
+            )
+          : null}
+        {showZoom && (
           <Button
             className={styles.zoomButton}
             onClick={() => onClickZoomOut()}
@@ -210,7 +226,7 @@ const ImageCard = ({
             <img src="/images/zoom_btn.png" />
           </Button>
         )}
-        {hasAudio && (mainImageType === 1 || defaultMainImageType === 1) && (
+        {hasAudio && (mainImageType === 1 || defaultMainImageType === 1) && showMute && (
           <Button className={styles.muteButton} onClick={() => onClickMute()}>
             {videoMuted ? (
               <img src="/images/audio-off.png" />

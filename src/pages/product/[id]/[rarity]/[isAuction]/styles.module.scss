@@ -2,7 +2,13 @@
 @import "../../../../../assets/scss/helpers/helpers.scss";
 
 $bgColor: #FFEF62;
-$fontFamily: 'NewYork';
+$productNameFontFamily: 'NewYork';
+$infoTitleFontFamily: 'LEMON MILK';
+$infoTitleColor: white;
+$infoTitleBorderColor: #4E4AFF;
+$infoTextFontFamily: 'LEMON MILK';
+$infoTextColor: #4E4AFF;
+
 $nameColor: #4E4AFF;
 
 .wrapper {
@@ -61,10 +67,6 @@ $nameColor: #4E4AFF;
       }
 
       .mainBody {
-        // display: grid;
-        // grid-template-columns: 1fr;
-        // column-gap: 8rem;
-        // row-gap: 0rem;
         position: relative;
         z-index: 10;
         display: flex;
@@ -77,7 +79,6 @@ $nameColor: #4E4AFF;
           left: 50%;
           padding: 2rem 0;
           text-align: center;
-          text-transform: uppercase;
           color: $nameColor;
           font-size: 30px;
           line-height: 125%;
@@ -85,7 +86,7 @@ $nameColor: #4E4AFF;
           text-overflow: ellipsis;
           overflow: hidden;
 
-          font-family: $fontFamily;
+          font-family: $productNameFontFamily;
           font-style: normal;
           font-weight: 900;
           margin: auto;
@@ -246,393 +247,394 @@ $nameColor: #4E4AFF;
             margin-top: 3rem;
           }
         }
+      }
+    }
 
-        .infoWrapper {
+    .infoWrapper {
+      display: flex;
+      margin-top: 10px;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        margin-top: 3rem;
+      }
+
+      .childrenDescription {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 23px;
+        line-height: 31px;
+
+        color: #e6bf00;
+
+        a {
+          color: #e6bf00;
+          text-decoration: underline;
+        }
+      }
+
+      .childrenWrapper {
+        display: flex;
+        margin-top: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+
+        img,
+        video {
+          width: 81px;
+          height: 81px;
+          margin-right: 0.5rem;
+          border: 2px solid #ffffff;
+          box-sizing: border-box;
+          box-shadow: 0px 4px 20px 1px #ffffff;
+        }
+      }
+
+      .leftSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-grow: 1;
+
+        .amount {
+          color: $infoTitleColor;
+          -webkit-text-stroke: 2px $infoTitleBorderColor;
+          font-family: $infoTitleFontFamily;
+          font-size: 40px;
+          font-weight: bold;
+          margin-bottom: 1rem;
           display: flex;
-          margin-top: 10px;
-          width: 100%;
+          width: 200%;
 
-          @media (max-width: 768px) {
-            margin-top: 3rem;
-          }
-
-          .childrenDescription {
-            font-family: Bebas Neue;
-            font-style: normal;
-            font-weight: 800;
-            font-size: 23px;
-            line-height: 31px;
-
+          .helper {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            height: 52px;
+            margin-top: -30px;
+            align-items: center;
+            text-shadow: none;
             color: #e6bf00;
 
-            a {
-              color: #e6bf00;
-              text-decoration: underline;
-            }
-          }
+            .questionMark {
+              border: 1px solid #e6bf00;
+              border-radius: 50%;
+              width: 27px;
+              height: 27px;
+              font-size: 23px;
 
-          .childrenWrapper {
-            display: flex;
-            margin-top: 1rem;
-            width: 100%;
-            flex-wrap: wrap;
-
-            img,
-            video {
-              width: 81px;
-              height: 81px;
-              margin-right: 0.5rem;
-              border: 2px solid #ffffff;
-              box-sizing: border-box;
-              box-shadow: 0px 4px 20px 1px #ffffff;
-            }
-          }
-
-          .leftSection {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            flex-grow: 1;
-
-            .amount {
-              color: black;
-              font-family: Bebas Neue;
-              font-size: 40px;
-              font-weight: bold;
-              margin-bottom: 1rem;
               display: flex;
-              width: 200%;
-
-              .helper {
-                position: relative;
-                cursor: pointer;
-                display: flex;
-                height: 52px;
-                margin-top: -30px;
-                align-items: center;
-                text-shadow: none;
-                color: #e6bf00;
-
-                .questionMark {
-                  border: 1px solid #e6bf00;
-                  border-radius: 50%;
-                  width: 27px;
-                  height: 27px;
-                  font-size: 23px;
-
-                  display: flex;
-                  font-family: Inter;
-                  font-style: normal;
-                  font-weight: 600;
-                  justify-content: center;
-                  align-items: center;
-                  margin-left: 10px;
-                }
-
-                .description {
-                  position: absolute;
-                  top: 0;
-                  left: 2rem;
-                  display: none;
-                  background: white;
-                  border: 2px solid #e6bf00;
-                  padding: 7px 12px;
-                  justify-content: center;
-                  align-items: center;
-                  font-family: Gilroy;
-                  font-weight: 800;
-                  font-size: 14px;
-                  margin-left: 10px;
-
-                  a {
-                    text-decoration: underline;
-                    color: #e6bf00;
-                  }
-                }
-
-                &:hover {
-                  .description {
-                    display: block;
-                    width: 200px;
-                    @include md-width {
-                      width: 300px;
-                    }
-                  }
-                }
-              }
-            }
-
-            .additionalImages {
-              margin-top: 5rem;
-              margin-bottom: 3rem;
-              display: flex;
-
-              img,
-              video {
-                width: 53px;
-                height: 65px;
-                margin-right: 1rem;
-                object-fit: cover;
-                box-shadow: 0px 4px 30px 9px #000000;
-              }
-            }
-
-            .lovesWrapper {
-              display: flex;
+              font-family: Inter;
+              font-style: normal;
+              font-weight: 600;
+              justify-content: center;
               align-items: center;
-              margin-bottom: 1rem;
-
-              button {
-                background: transparent;
-                border: none;
-
-                transition: 0.3s all;
-                &:hover {
-                  transform: scale(1.1);
-                  transition: 0.3s all;
-                }
-              }
-
-              img {
-                filter: invert(1);
-              }
-
-              .likeCount {
-                color: #e6bf00;
-                font-family: Bebas Neue;
-
-                font-weight: bold;
-                font-size: 33px;
-                margin-left: 10px;
-
-                span {
-                  font-family: Bebas Neue;
-                  margin-left: 5px;
-                  margin-right: 15px;
-                  font-size: 20px;
-                  color: black;
-                }
-              }
-
-              .viewCount {
-                color: #e6bf00;
-                font-family: Bebas Neue;
-                font-weight: bold;
-                font-size: 33px;
-                margin-left: 10px;
-
-                span {
-                  margin-left: 5px;
-                  margin-right: 15px;
-                  font-size: 20px;
-                  font-family: Bebas Neue;
-                  color: black;
-                }
-              }
+              margin-left: 10px;
             }
-          }
 
-          .rightSection {
-            display: none;
-
-            @include md-width {
-              padding-top: 126px;
-              margin-left: 1rem;
-              display: flex;
-            }
-          }
-
-          .mobileRightSection {
-            display: flex;
-            margin-top: 2rem;
-
-            @include md-width {
+            .description {
+              position: absolute;
+              top: 0;
+              left: 2rem;
               display: none;
-            }
-          }
-
-          .rightSection,
-          .mobileRightSection {
-            flex-direction: column;
-
-            .item {
-              position: relative;
-              display: flex;
-              align-items: cneter;
-              margin-bottom: 1rem;
-
-              &:hover {
-                .tooltip {
-                  display: block;
-                }
-              }
-
-              .label {
-                white-space: nowrap;
-                color: #e6bf00;
-                font-family: Bebas Neue;
-                align-self: center;
-                margin-left: 55px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-              }
-
-              .tooltip {
-                display: none;
-                position: absolute;
-                padding: 0.5rem;
-                top: calc(100% + 0.5rem);
-                left: 0;
-                z-index: 50;
-                background: white;
-                border: 2px solid #e6bf00;
-                width: 175px;
-                color: #e6bf00;
-                font-family: Bebas Neue;
-                font-style: normal;
-                font-weight: 800;
-                font-size: 14px;
-                line-height: 20px;
-                /* or 143% */
-
-                align-items: center;
-
-                color: #e6bf00;
-              }
-            }
-
-            .checkContainer {
-              display: block;
-              position: relative;
-              cursor: pointer;
-              font-size: 22px;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              -ms-user-select: none;
-              user-select: none;
-
-              .check {
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-                height: 0;
-                width: 0;
-              }
-
-              .checkmark {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 40px;
-                width: 40px;
-                background: white;
-                border: 3px solid #e6bf00;
-                border-radius: 13px;
-                box-shadow: 0px 4px 10px 1px #e6bf00;
-
-                &:after {
-                  content: "";
-                  position: absolute;
-                  display: none;
-                }
-              }
-            }
-
-            .checkContainer .checkmark:after {
-              left: 9px;
-              top: 0px;
-              width: 15px;
-              height: 25px;
-              border-width: 0 3px 3px 0;
-              -webkit-transform: rotate(45deg);
-              -ms-transform: rotate(45deg);
-              transform: rotate(45deg);
-              border: solid #e6bf00;
-              border-top: 0;
-              border-left: 0;
-            }
-
-            /* Show the checkmark when checked */
-            .checkContainer input:checked ~ .checkmark:after {
-              display: block;
-            }
-
-            .check {
               background: white;
-            }
-          }
-
-          .lookInspo {
-            margin-top: 3rem;
-            display: flex;
-            flex-direction: column;
-
-            .title {
+              border: 2px solid #e6bf00;
+              padding: 7px 12px;
+              justify-content: center;
+              align-items: center;
               font-family: Gilroy;
-              font-style: normal;
               font-weight: 800;
-              font-size: 40px;
-              line-height: 49px;
+              font-size: 14px;
+              margin-left: 10px;
 
-              color: #ffffff;
-
-              text-shadow: 0px 4px 20px #ff12f6;
+              a {
+                text-decoration: underline;
+                color: #e6bf00;
+              }
             }
 
-            .inspoItem {
-              font-family: Gilroy;
-              font-style: normal;
-              font-weight: 800;
-              font-size: 22px;
-              line-height: 27px;
-
-              color: #ffffff;
+            &:hover {
+              .description {
+                display: block;
+                width: 200px;
+                @include md-width {
+                  width: 300px;
+                }
+              }
             }
           }
         }
 
-        .infoCard {
-          color: white;
-          font-family: Gilroy;
-          font-size: 22px;
-          font-weight: 800;
-          text-transform: uppercase;
-          line-height: 27px;
+        .additionalImages {
+          margin-top: 5rem;
+          margin-bottom: 3rem;
+          display: flex;
 
-          img {
-            position: relative;
-            width: 50px;
-            border-radius: 0.5rem;
+          img,
+          video {
+            width: 53px;
+            height: 65px;
             margin-right: 1rem;
+            object-fit: cover;
+            box-shadow: 0px 4px 30px 9px #000000;
+          }
+        }
+
+        .lovesWrapper {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          button {
+            background: transparent;
+            border: none;
+
+            transition: 0.3s all;
+            &:hover {
+              transform: scale(1.1);
+              transition: 0.3s all;
+            }
           }
 
-          .info {
+          img {
+            filter: invert(1);
+          }
+
+          .likeCount {
+            color: #e6bf00;
+            font-family: Bebas Neue;
+
+            font-weight: bold;
+            font-size: 33px;
+            margin-left: 10px;
+
+            span {
+              font-family: Bebas Neue;
+              margin-left: 5px;
+              margin-right: 15px;
+              font-size: 20px;
+              color: black;
+            }
+          }
+
+          .viewCount {
+            color: #e6bf00;
+            font-family: Bebas Neue;
+            font-weight: bold;
+            font-size: 33px;
+            margin-left: 10px;
+
+            span {
+              margin-left: 5px;
+              margin-right: 15px;
+              font-size: 20px;
+              font-family: Bebas Neue;
+              color: black;
+            }
+          }
+        }
+      }
+
+      .rightSection {
+        display: none;
+
+        @include md-width {
+          padding-top: 126px;
+          margin-left: 1rem;
+          display: flex;
+        }
+      }
+
+      .mobileRightSection {
+        display: flex;
+        margin-top: 2rem;
+
+        @include md-width {
+          display: none;
+        }
+      }
+
+      .rightSection,
+      .mobileRightSection {
+        flex-direction: column;
+
+        .item {
+          position: relative;
+          display: flex;
+          align-items: cneter;
+          margin-bottom: 1rem;
+
+          &:hover {
+            .tooltip {
+              display: block;
+            }
+          }
+
+          .label {
+            white-space: nowrap;
+            color: #e6bf00;
+            font-family: Bebas Neue;
+            align-self: center;
+            margin-left: 55px;
+            height: 40px;
             display: flex;
             align-items: center;
           }
 
-          .skinName {
-            margin-bottom: 0.5rem;
-
-            .text {
-              font-family: Orbitron;
-              font-style: normal;
-              font-weight: bold;
-              color: #e6bf00;
-            }
-          }
-
-          .description {
+          .tooltip {
+            display: none;
+            position: absolute;
+            padding: 0.5rem;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            z-index: 50;
+            background: white;
+            border: 2px solid #e6bf00;
+            width: 175px;
+            color: #e6bf00;
             font-family: Bebas Neue;
             font-style: normal;
             font-weight: 800;
-            font-size: 18px;
-            line-height: 23px;
-            text-transform: none;
+            font-size: 14px;
+            line-height: 20px;
+            /* or 143% */
+
+            align-items: center;
+
             color: #e6bf00;
           }
         }
+
+        .checkContainer {
+          display: block;
+          position: relative;
+          cursor: pointer;
+          font-size: 22px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+
+          .check {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+          }
+
+          .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 40px;
+            width: 40px;
+            background: white;
+            border: 3px solid #e6bf00;
+            border-radius: 13px;
+            box-shadow: 0px 4px 10px 1px #e6bf00;
+
+            &:after {
+              content: "";
+              position: absolute;
+              display: none;
+            }
+          }
+        }
+
+        .checkContainer .checkmark:after {
+          left: 9px;
+          top: 0px;
+          width: 15px;
+          height: 25px;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+          border: solid #e6bf00;
+          border-top: 0;
+          border-left: 0;
+        }
+
+        /* Show the checkmark when checked */
+        .checkContainer input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .check {
+          background: white;
+        }
+      }
+
+      .lookInspo {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-family: Gilroy;
+          font-style: normal;
+          font-weight: 800;
+          font-size: 40px;
+          line-height: 49px;
+
+          color: #ffffff;
+
+          text-shadow: 0px 4px 20px #ff12f6;
+        }
+
+        .inspoItem {
+          font-family: Gilroy;
+          font-style: normal;
+          font-weight: 800;
+          font-size: 22px;
+          line-height: 27px;
+
+          color: #ffffff;
+        }
+      }
+    }
+
+    .infoCard {
+      color: white;
+      font-family: $infoTextFontFamily;
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 27px;
+
+      img {
+        position: relative;
+        width: 50px;
+        border-radius: 0.5rem;
+        margin-right: 1rem;
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+      }
+
+      .skinName {
+        margin-bottom: 0.5rem;
+
+        .text {
+          font-family: $infoTextFontFamily;
+          font-style: normal;
+          font-weight: bold;
+          color: $infoTextColor;
+        }
+      }
+
+      .description {
+        font-family: $infoTextFontFamily;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 23px;
+        text-transform: none;
+        color: $infoTextColor;
       }
     }
 
@@ -837,20 +839,6 @@ $nameColor: #4E4AFF;
           text-transform: uppercase;
         }
       }
-    }
-  }
-
-  .leftBar {
-    position: absolute;
-    height: 761px;
-    width: 50px;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #e6bf00;
-
-    @media (max-width: 576px) {
-      display: none;
     }
   }
 
