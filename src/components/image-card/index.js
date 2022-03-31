@@ -209,9 +209,9 @@ const ImageCard = ({
                   }}
                 >
                   {videoMuted ? (
-                    <img src="/images/audio-off.png" />
+                    <img src="/images/icons/audio-off.png" />
                   ) : (
-                    <img src="/images/audio-on.png" />
+                    <img src="/images/icons/audio-on.png" />
                   )}
                 </Button>
               )}
@@ -220,18 +220,21 @@ const ImageCard = ({
           : null}
         {showZoom && (
           <Button
-            className={styles.zoomButton}
+            className={[styles.zoomButton, keepRatio ? styles.keepRatioButton : ''].join(' ')}
             onClick={() => onClickZoomOut()}
           >
             <img src="/images/zoom_btn.png" />
           </Button>
         )}
         {hasAudio && (mainImageType === 1 || defaultMainImageType === 1) && showMute && (
-          <Button className={styles.muteButton} onClick={() => onClickMute()}>
+          <Button
+            className={[styles.muteButton, keepRatio ? styles.keepRatioButton : ''].join(' ')}
+            onClick={() => onClickMute()}
+          >
             {videoMuted ? (
-              <img src="/images/audio-off.png" />
+              <img src="/images/icons/audio-off.png" />
             ) : (
-              <img src="/images/audio-on.png" />
+              <img src="/images/icons/audio-on.png" />
             )}
           </Button>
         )}

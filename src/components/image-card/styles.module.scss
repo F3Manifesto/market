@@ -168,6 +168,10 @@ $borderColor: #4E4AFF;
       border: none;
       padding: 0;
 
+      &.keepRatioButton {
+        bottom: -50px;
+      }
+
       transition: 0.3s;
       &:hover {
         background: transparent;
@@ -183,6 +187,10 @@ $borderColor: #4E4AFF;
       height: 25px;
       border: none;
       padding: 0;
+
+      &.keepRatioButton {
+        bottom: -50px;
+      }
 
       img {
         width: 100%;

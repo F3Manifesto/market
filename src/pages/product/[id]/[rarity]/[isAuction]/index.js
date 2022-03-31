@@ -90,15 +90,12 @@ const Product = ({ pageTitle }) => {
   const [secondModels, setSecondModels] = useState([]);
   const monaPerEth = useSelector(getMonaPerEth);
   const exchangeRate = useSelector(getExchangeRateETH);
-  const [loveCount, setLoveCount] = useState(0);
-  const [viewCount, setViewCount] = useState(0);
   const [owners, setOwners] = useState([]);
   const [sourceType, setSourceType] = useState([]);
   const [mainImage, setMainImage] = useState("");
   const [mainImageType, setMainImageType] = useState(0);
 
   const [isFetchedProduct, setIsFetchedProduct] = useState(false);
-  const [isFetchedViewCount, setIsFetchedViewCount] = useState(false);
   const [isFetchedSecondDesigners, setIsFetchedSecondDesigners] =
     useState(false);
   const [isFetchedSecondModels, setIsFetchedSecondModels] =
@@ -317,30 +314,6 @@ const Product = ({ pageTitle }) => {
       setIsFetchedSecondDesigners(true);
     }
 
-    const fetchViews = async () => {
-      const viewData = await digitalaxApi.getViews("product", id);
-      setLoveCount(
-        viewData && viewData[0] && viewData[0].loves
-          ? viewData[0].loves.length
-          : 0
-      );
-      setViewCount(
-        viewData && viewData[0] && viewData[0].viewCount
-          ? viewData[0].viewCount
-          : 0
-      );
-      setIsFetchedViewCount(true);
-    };
-
-    const addViewCount = async () => {
-      const data = await digitalaxApi.addView("product", id);
-      if (data) {
-        setViewCount(data.viewCount);
-      }
-    };
-
-    fetchViews();
-    addViewCount();
   }, []);
 
   useEffect(() => {
@@ -404,17 +377,6 @@ const Product = ({ pageTitle }) => {
     }
   };
 
-  const addLove = async () => {
-    const data = await digitalaxApi.addLove(account, secretKey, "product", id);
-    if (data && data["success"]) {
-      setLoveCount(loveCount + 1);
-    }
-  };
-
-  const onClickLove = () => {
-    addLove();
-  };
-
   const onClickSeeAllWearers = () => {
     dispatch(
       openCurrentWearersModal({
@@ -454,7 +416,7 @@ const Product = ({ pageTitle }) => {
     else if (product?.garment?.image || product?.image) setMainImageType(2);
   }, [product]);
 
-  if (!isFetchedProduct || !isFetchedSecondDesigners || !isFetchedViewCount || !isFetchedSecondModels) {
+  if (!isFetchedProduct || !isFetchedSecondDesigners || !isFetchedSecondModels) {
     return <ProductPageLoader />;
   }
 
