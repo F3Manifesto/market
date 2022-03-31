@@ -1,5 +1,9 @@
 @import "../../assets/scss/helpers/grid.scss";
 
+$bgColor: #4E4AFF;
+$textColor: white;
+$fontFamily: 'LEMON MILK';
+
 @keyframes scrolling {
   0% {
     transform: translateX(-1342px);
@@ -11,60 +15,15 @@
 
 .wrapper {
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: transparent;
-
-  .animationForm {
-    display: flex;
-    animation: scrolling 12s linear infinite;
-
-    .node {
-      display: flex;
-      align-items: center;
-
-      .toptext {
-        width: 800px;
-      }
-
-      .text {
-        text-transform: uppercase;
-        text-align: center;
-        color: transparent;
-        font-weight: 600;
-        font-family: m12;
-        padding: 1.5rem 3rem;
-        -webkit-text-stroke: 1px rgb(125, 254, 220);
-        word-break: unset;
-        white-space: nowrap;
-
-        @media (min-width: 1440px) {
-          font-size: 70px;
-        }
-
-        @media (max-width: 1440px) {
-          font-size: 70px;
-        }
-
-        @media (max-width: 1200px) {
-          font-size: 70px;
-        }
-
-        @media (max-width: 920px) {
-          font-size: 70px;
-        }
-      }
-    }
-  }
-}
-
-.wrapper2 {
-  width: 100%;
-  background-color: white;
+  background-color: $bgColor;
   padding: 1.5vw 0;
   z-index: 2;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   .node {
     margin: auto;
@@ -77,18 +36,20 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     a {
       padding: 5px 20px;
       width: 100%;
-      font-family: Bebas Neue;
+      font-family: $fontFamily;
       font-style: normal;
       font-weight: bold;
       font-size: 20px;
       line-height: 148%;
       text-align: center;
+      text-decoration: underline;
 
-      color: black !important;
+      color: $textColor !important;
 
       transition: all 0.2s ease-out;
       &:hover {

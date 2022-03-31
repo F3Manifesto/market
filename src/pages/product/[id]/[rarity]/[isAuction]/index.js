@@ -15,8 +15,6 @@ import ProductPageLoader from "@components/product-page-loader";
 
 import {
   getDigitalaxMarketplaceV2Offer,
-  getGarmentByAuctionId,
-  getGarmentV2ByAuctionId,
   getGarmentV2ByCollectionId,
   getDigitalaxNFTStakersByGarments,
   getGuildWhitelistedNFTStakersByGarments,
@@ -31,7 +29,7 @@ import {
 } from "@selectors/global.selectors";
 import { getAccount } from "@selectors/user.selectors";
 import { getUser } from "@helpers/user.helpers";
-import { getRarity, reviseUrl } from "@utils/helpers";
+import { reviseUrl } from "@utils/helpers";
 import config from "@utils/config";
 import {
   openBespokeModal,
@@ -44,7 +42,6 @@ import globalActions from "@actions/global.actions";
 
 import secondDesignerData from "src/data/second-designers.json";
 import secondModelData from "src/data/second-models.json";
-import { getCollectionGroupById } from "@services/api/apiService";
 
 const POLYGON_CHAINID = 0x89;
 
@@ -181,17 +178,7 @@ const Product = ({ pageTitle }) => {
   useEffect(() => {
     const fetchGarmentV2ByID = async () => {
       const users = await digitalaxApi.getAllUsersName();
-      // const { digitalaxModelCollectionGroup } = await getCollectionGroupById(
-      //   chainId,
-      //   id
-      // );
-      // const ids = [];
-      // digitalaxModelCollectionGroup.auctions.forEach((auction) =>
-      //   ids.push(auction.id)
-      // );
-      // digitalaxModelCollectionGroup.collections.forEach((collection) =>
-      //   ids.push(collection.id)
-      // );
+
       dispatch(globalActions.setAllUsers(users));
 
       if (!parseInt(isAuction)) {
@@ -256,26 +243,7 @@ const Product = ({ pageTitle }) => {
           });
         }
       } else {
-        // if (parseInt(id) > 4) {
-        //   const { digitalaxGarmentV2Auction } = await getGarmentV2ByAuctionId(
-        //     chainId,
-        //     id
-        //   );
-        //   const ownersList =
-        //     digitalaxGarmentV2Auction && digitalaxGarmentV2Auction.resulted
-        //       ? await getOwners([digitalaxGarmentV2Auction?.garment], 1, users)
-        //       : [];
-        //   setOwners(ownersList);
-        //   setTokenIds([digitalaxGarmentV2Auction.garment.id]);
-        //   setProduct(digitalaxGarmentV2Auction);
-        // } else {
-        //   const { digitalaxGarmentAuction } = await getGarmentByAuctionId(
-        //     chainId,
-        //     id
-        //   );
-        //   setTokenIds([digitalaxGarmentAuction.garment.id]);
-        //   setProduct(digitalaxGarmentAuction);
-        // }
+        
       }
 
       setIsFetchedProduct(true);
@@ -386,7 +354,6 @@ const Product = ({ pageTitle }) => {
       const fetchSourceType = async () => {
         const data = await digitalaxApi.getSourceType(product.garment.name);
         if (data?.sourceType) setSourceType(data.sourceType);
-        // if (isLookHakathon() && data?.LOOKNFTInspo) setLookInspo(data?.LOOKNFTInspo.split(','));
       };
 
       fetchSourceType();
@@ -513,7 +480,6 @@ const Product = ({ pageTitle }) => {
 
       <div className={styles.wrapper}>
         <section className={styles.mainSection}>
-          {/* <div className={styles.leftBar} /> */}
           <Container>
             <div className={styles.body}>
               <div
@@ -524,7 +490,8 @@ const Product = ({ pageTitle }) => {
               >
                 <div className={styles.productName}>
                   {" "}
-                  {product?.garment?.name}{" "}
+                  i Coined Web3 Fashion
+                  {" "}
                 </div>{" "}
                 <div />
                 <div className={styles.imageCardWrapper}>
@@ -539,7 +506,11 @@ const Product = ({ pageTitle }) => {
                     }
                     mainImageType={mainImageType}
                     mainImage={mainImage}
+
                     keepRatio={true}
+                    showMute={true}
+                    showZoom={true}
+
                     borderType={'none'}
                   />
 
@@ -576,7 +547,7 @@ const Product = ({ pageTitle }) => {
                 <div className={styles.amount}>
                   {parseInt(isAuction) !== 1 ? (
                     <>
-                      {offer?.amountSold} of {offer?.totalAmount}
+                      1 of 60
                     </>
                   ) : (
                     <>{`${days}:${hours}:${minutes}`}</>
@@ -591,19 +562,21 @@ const Product = ({ pageTitle }) => {
                 </div>
 
                 <InfoCard
-                  borderColor="black"
-                  boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                  mainColor="black"
+                  borderColor="transparent"
+                  boxShadow2=""
+                  mainColor="transparent"
                 >
                   <div className={styles.infoCard}>
                     <div className={styles.skinName}>
                       <div className={styles.text}>
                         {" "}
-                        {getRarity(parseInt(rarity))}{" "}
+                        D.O.E. COMMON{" "}
                       </div>
                     </div>
                     <div className={styles.description}>
-                      {product?.garment?.description}
+                      If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. 
+                      <br /><br />
+                      If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. 
                     </div>
                   </div>
                 </InfoCard>
@@ -728,7 +701,6 @@ const Product = ({ pageTitle }) => {
               <div className={styles.leftBar} />
               <Container>
                 <div className={styles.designerBody}>
-                  <div className={styles.title}> model </div>
                   <div className={styles.data}>
                     <a
                       href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
@@ -741,7 +713,7 @@ const Product = ({ pageTitle }) => {
                       />
                     </a>
                     <div className={styles.infoWrapper}>
-                      {/* {owners.length ? (
+                      {owners.length ? (
                         <div className={styles.wearersLabel}>
                           current wearer/S
                         </div>
@@ -757,7 +729,7 @@ const Product = ({ pageTitle }) => {
                         />
                       ) : (
                         <></>
-                      )} */}
+                      )}
                       <InfoCard
                         borderColor="#e6bf00"
                         boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
@@ -806,7 +778,6 @@ const Product = ({ pageTitle }) => {
                     <div className={styles.leftBar} />
                     <Container>
                       <div className={styles.designerBody}>
-                        <div className={styles.title}> model </div>
                         <div className={styles.data}>
                           <a
                             href={`https://models.digitalax.xyz/models/${item.name}`}
@@ -857,10 +828,8 @@ const Product = ({ pageTitle }) => {
         {product?.designer ? (
           <>
             <section className={styles.designerSection}>
-              <div className={styles.leftBar} />
               <Container>
                 <div className={styles.designerBody}>
-                  <div className={styles.title}> designer </div>
                   <div className={styles.data}>
                     <a
                       href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
@@ -946,10 +915,8 @@ const Product = ({ pageTitle }) => {
                     )}
                     key={item.name}
                   >
-                    <div className={styles.leftBar} />
                     <Container>
                       <div className={styles.designerBody}>
-                        <div className={styles.title}> designer </div>
                         <div className={styles.data}>
                           <a
                             href={`https://designers.digitalax.xyz/designers/${item.name}`}
