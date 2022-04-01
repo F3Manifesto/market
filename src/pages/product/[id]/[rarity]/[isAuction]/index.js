@@ -480,7 +480,7 @@ const Product = ({ pageTitle }) => {
                     <div className={styles.actions}>
                       <div className={styles.buttonWrapper}>
                         <PriceCard
-                          mode={1}
+                          mode={0}
                           mainText={getPriceElement()}
                           subText={
                             parseInt(isAuction) === 1
