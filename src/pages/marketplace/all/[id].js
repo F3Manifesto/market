@@ -30,22 +30,6 @@ const Auctions = () => {
         chainId,
         id
       );
-      // if (
-      //   !(
-      //     digitalaxModelCollectionGroup.auctions.length === 1 &&
-      //     digitalaxModelCollectionGroup.auctions[0].id === "0"
-      //   )
-      // ) {
-      //   digitalaxModelCollectionGroup.auctions.forEach((auction) => {
-      //     aucs.push({
-      //       ...auction,
-      //       topBid: auction.topBid || 0,
-      //       sold: Date.now() > auction.endTime * 1000,
-      //       auction: true,
-      //       rarity: "Exclusive",
-      //     });
-      //   });
-      // }
 
       const { digitalaxModelMarketplaceOffers } =
         await getDigitalaxMarketplaceV2Offers(chainId);
@@ -88,13 +72,6 @@ const Auctions = () => {
     fetchCollectionGroup();
   }, []);
 
-  const getLogo = () => {
-    if (id === "0") return "/images/metaverse/amongus-logo1.png";
-    if (id === "1") return "/images/metaverse/minecraft-logo.png";
-    if (id === "3") return "/images/metaverse/auctionsLogo.png";
-    return null;
-  };
-
   if (loading) {
     return (
       <div className={styles.wrapper}>
@@ -111,9 +88,6 @@ const Auctions = () => {
   return (
     <div className={styles.wrapper}>
       <HeroSection
-        // width={id === "0" ? "60%" : "80%"}
-        // title="RUNWAY"
-        // subTitle="MODELS AND LOOKS"
         filter={filter}
         setFilter={(v) => setFilter(v)}
         setSortBy={(v) => setSortBy(v)}
