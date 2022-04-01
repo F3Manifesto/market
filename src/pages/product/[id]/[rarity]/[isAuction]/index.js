@@ -693,9 +693,8 @@ const Product = ({ pageTitle }) => {
                         <></>
                       )}
                       <InfoCard
-                        borderColor="#e6bf00"
-                        boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                        mainColor="#e6bf00"
+                        boxShadow2=""
+                        mainColor="#4E4AFF"
                       >
                         <a
                           href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
@@ -753,9 +752,8 @@ const Product = ({ pageTitle }) => {
                           </a>
                           <div className={styles.infoWrapper}>
                             <InfoCard
-                              borderColor="#e6bf00"
-                              boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                              mainColor="#e6bf00"
+                              boxShadow2=""
+                              mainColor="#4E4AFF"
                             >
                               <a
                                 href={`https://models.digitalax.xyz/models/${item.name}`}
@@ -822,9 +820,8 @@ const Product = ({ pageTitle }) => {
                         <></>
                       )}
                       <InfoCard
-                        borderColor="#e6bf00"
-                        boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                        mainColor="#e6bf00"
+                        boxShadow2=""
+                        mainColor="#4E4AFF"
                       >
                         <a
                           href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
@@ -909,9 +906,8 @@ const Product = ({ pageTitle }) => {
                               <></>
                             )}
                             <InfoCard
-                              borderColor="#e6bf00"
-                              boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                              mainColor="#e6bf00"
+                              boxShadow2=""
+                              mainColor="#4E4AFF"
                             >
                               <a
                                 href={`https://designers.digitalax.xyz/designers/${item.name}`}

@@ -749,19 +749,19 @@ $nameColor: #4E4AFF;
 
         .name {
           text-transform: uppercase;
-          color: black;
+          color: $infoTitleColor;
           font-size: 22px;
           line-height: 27px;
           font-weight: 800;
-          font-family: Bebas Neue;
+          font-family: $infoTextFontFamily;
         }
 
         .description {
-          font-family: Bebas Neue;
+          font-family: $infoTextFontFamily;
           font-weight: 300;
           font-size: 1rem;
           line-height: 18px;
-          color: black;
+          color: $infoTitleColor;
         }
 
         .profileButton {
