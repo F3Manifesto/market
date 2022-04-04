@@ -1,3 +1,6 @@
+$bgColor: #4E4AFF;
+$textColor: white;
+
 .wrapper {
   position: relative;
   width: fit-content;
@@ -5,7 +8,7 @@
 
   .background {
     position: absolute;
-    background: #e6bf00;
+    background: $bgColor;
     width: 100%;
     height: 75%;
     left: 0;
@@ -38,11 +41,11 @@
     position: relative;
     text-decoration: underline;
 
-    font-family: Bebas Neue;
+    font-family: Gilroy;
     font-weight: 800;
     font-size: 15px;
     line-height: 18px;
-    color: black;
+    color: $textColor;
 
     background: transparent;
     border: none;

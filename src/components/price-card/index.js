@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const PriceCard = ({ mode = 0, mainText, subText }) => {
+const PriceCard = ({ mode = 0, mainText, bgColor, subText }) => {
   
   return (
     <div className={styles.wrapper}>
-      <div className={styles.mainWrapper}>
+      <div className={styles.mainWrapper} style={
+        {
+          backgroundColor: bgColor
+        }
+      }>
         <div className={styles.mainText}>
           <p className={mode == 1 ? styles.smallFont : ""}> {mainText} </p>
         </div>

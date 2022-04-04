@@ -8,6 +8,7 @@ $infoTitleColor: white;
 $infoTitleBorderColor: #4E4AFF;
 $infoTextFontFamily: 'LEMON MILK';
 $infoTextColor: #4E4AFF;
+$btnBgColor: #4E4AFF;
 
 $nameColor: #4E4AFF;
 
@@ -120,53 +121,45 @@ $nameColor: #4E4AFF;
         .imageCardWrapper {
           .actionsWrapper {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             width: 100%;
             margin-top: 2rem;
           }
 
-          .actions {
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            z-index: 10;
+          .buttonWrapper {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            height: 70px;
 
-            .buttonWrapper {
-              display: flex;
-              flex-direction: column;
-              width: 200px;
-              margin: auto;
-
-              .buttonLabel {
-                font-family: Inter;
-                font-style: normal;
-                font-weight: 800;
-                font-size: 9px;
-                text-transform: uppercase;
-                line-height: 11px;
-                letter-spacing: 0.56em;
-                text-align: center;
-                color: #ffffff;
-              }
+            .buttonLabel {
+              font-family: Inter;
+              font-style: normal;
+              font-weight: 800;
+              font-size: 9px;
+              text-transform: uppercase;
+              line-height: 11px;
+              letter-spacing: 0.56em;
+              text-align: center;
+              color: #ffffff;
             }
           }
-
+  
           .viewBidHistory {
             position: relative;
-            background: rgba(92, 89, 91, 0.5);
+            background: $btnBgColor;
             color: white;
-            font-size: 24px;
+            font-size: 18px;
             padding: 0.75rem 1rem;
+            margin-left: 20px;
+            
             text-transform: uppercase;
             font-weight: bold;
-            font-family: "Bebas Neue";
+            font-family: $infoTextFontFamily;
             border: none;
-            margin-top: 1rem;
-            width: 80%;
             align-self: center;
+            height: 70px;
 
             @include transition();
 
@@ -385,6 +378,7 @@ $nameColor: #4E4AFF;
       display: flex;
       margin-top: 10px;
       width: 100%;
+      justify-content: center;
 
       @media (max-width: 768px) {
         margin-top: 3rem;
@@ -426,7 +420,13 @@ $nameColor: #4E4AFF;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        flex-grow: 1;
+        width: 560px;
+        // flex-grow: 1;
+
+        @media (max-width: 768px) {
+          width: 90%;
+        }
+  
 
         .amount {
           color: $infoTitleColor;
@@ -446,10 +446,10 @@ $nameColor: #4E4AFF;
             margin-top: -30px;
             align-items: center;
             text-shadow: none;
-            color: #e6bf00;
+            color: white;
 
             .questionMark {
-              border: 1px solid #e6bf00;
+              border: 1px solid $infoTitleBorderColor;
               border-radius: 50%;
               width: 27px;
               height: 27px;
@@ -470,7 +470,7 @@ $nameColor: #4E4AFF;
               left: 2rem;
               display: none;
               background: white;
-              border: 2px solid #e6bf00;
+              border: 2px solid $infoTitleBorderColor;
               padding: 7px 12px;
               justify-content: center;
               align-items: center;
@@ -478,10 +478,12 @@ $nameColor: #4E4AFF;
               font-weight: 800;
               font-size: 14px;
               margin-left: 10px;
+              color: $infoTextColor;
+              -webkit-text-stroke: 0;
 
               a {
                 text-decoration: underline;
-                color: #e6bf00;
+                color: $infoTextColor;
               }
             }
 
@@ -621,12 +623,12 @@ $nameColor: #4E4AFF;
 
           .wearersLabel {
             text-transform: uppercase;
-            font-family: Bebas Neue;
+            font-family: Gilroy;
             font-weight: 800;
             font-size: 10px;
             line-height: 18px;
             letter-spacing: 0.12em;
-            color: #e6bf00;
+            color: $infoTitleBorderColor;
             margin-left: 10px;
             margin-bottom: 2px;
           }

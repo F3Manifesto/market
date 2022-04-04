@@ -6,13 +6,13 @@ $backColor: #4E4AFF;
 
 .button {
   position: relative;
-  color: white;
   background-color: $backColor;
   width: 150px;
   min-width: 150px;
   border: none;
   outline: none;
   color: white;
+  padding: 0.8rem;
 
   @include transition();
 
@@ -25,25 +25,21 @@ $backColor: #4E4AFF;
     width: 100%;
   }
 
-  span {
+  div {
     text-transform: uppercase;
     // font-style: italic;
     font-size: 1.5rem;
     font-weight: 600;
     font-family: $fontFamily;
     line-height: 120%;
-    position: absolute;
     text-align: center;
-    left: 50%;
-    top: 48%;
     z-index: 10;
-    transform: translate(-50%, -50%);
     white-space: nowrap;
   }
 
   &[disabled] {
     cursor: not-allowed;
-    span {
+    div {
       opacity: 0.6;
     }
   }

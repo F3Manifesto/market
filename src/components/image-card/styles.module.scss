@@ -117,13 +117,6 @@ $borderColor: #4E4AFF;
       height: 100%;
     }
 
-    .buyNow {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, 50%);
-    }
-
     .reversePrice {
       position: absolute;
       top: 2rem;
@@ -298,6 +291,13 @@ $borderColor: #4E4AFF;
         top: calc(80vh + 10px);
       }
     }
+  }
+
+  .buyNow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
   }
 
   @include sm-width {

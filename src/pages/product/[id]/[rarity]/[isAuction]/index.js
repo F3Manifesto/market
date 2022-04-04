@@ -477,20 +477,12 @@ const Product = ({ pageTitle }) => {
                   />
 
                   <div className={styles.actionsWrapper}>
-                    <div className={styles.actions}>
-                      <div className={styles.buttonWrapper}>
-                        <PriceCard
-                          mode={0}
-                          mainText={getPriceElement()}
-                          subText={
-                            parseInt(isAuction) === 1
-                              ? product.topBid && parseInt(product.topBid) !== 0
-                                ? "highest bid"
-                                : "reserve price"
-                              : "sale price"
-                          }
-                        />
-                      </div>
+                    <div className={styles.buttonWrapper}>
+                      <PriceCard
+                        bgColor={'#4E4AFF'}
+                        mode={0}
+                        mainText={getPriceElement()}
+                      />
                     </div>
                     <button
                       type="button"
