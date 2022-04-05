@@ -468,7 +468,7 @@ const Product = ({ pageTitle }) => {
                   <div className={styles.actionsWrapper}>
                     <div className={styles.buttonWrapper}>
                       <PriceCard
-                        bgColor={'#4E4AFF'}
+                        bgColor={"#4E4AFF"}
                         mode={0}
                         mainText={getPriceElement()}
                       />
@@ -483,49 +483,49 @@ const Product = ({ pageTitle }) => {
                     </button>
                   </div>
 
-                {!!sourceType.length && (
-                <div className={styles.rightSection}>
-                  {sourceType.map((st) => (
-                    <div className={styles.item}>
-                      <label className={styles.checkContainer}>
-                        <input
-                          type="checkbox"
-                          className={styles.check}
-                          checked
-                        />
-                        <span className={styles.checkmark} />
-                      </label>
-                      <div className={styles.label}> {st} </div>
-                      <span className={styles.tooltip}>
-                        {" "}
-                        {sourceTypeDescription[st]}{" "}
-                      </span>
+                  {!!sourceType.length && (
+                    <div className={styles.rightSection}>
+                      {sourceType.map((st) => (
+                        <div className={styles.item}>
+                          <label className={styles.checkContainer}>
+                            <input
+                              type="checkbox"
+                              className={styles.check}
+                              checked
+                            />
+                            <span className={styles.checkmark} />
+                          </label>
+                          <div className={styles.label}> {st} </div>
+                          <span className={styles.tooltip}>
+                            {" "}
+                            {sourceTypeDescription[st]}{" "}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {!!sourceType.length && (
-                  <div className={styles.mobileRightSection}>
-                    {sourceType.map((st) => (
-                      <div className={styles.item}>
-                        <label className={styles.checkContainer}>
-                          <input
-                            type="checkbox"
-                            className={styles.check}
-                            checked
-                          />
-                          <span className={styles.checkmark} />
-                        </label>
-                        <div className={styles.label}> {st} </div>
-                        <span className={styles.tooltip}>
-                          {" "}
-                          {sourceTypeDescription[st]}{" "}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                  {!!sourceType.length && (
+                    <div className={styles.mobileRightSection}>
+                      {sourceType.map((st) => (
+                        <div className={styles.item}>
+                          <label className={styles.checkContainer}>
+                            <input
+                              type="checkbox"
+                              className={styles.check}
+                              checked
+                            />
+                            <span className={styles.checkmark} />
+                          </label>
+                          <div className={styles.label}> {st} </div>
+                          <span className={styles.tooltip}>
+                            {" "}
+                            {sourceTypeDescription[st]}{" "}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -677,10 +677,7 @@ const Product = ({ pageTitle }) => {
                       ) : (
                         <></>
                       )}
-                      <InfoCard
-                        boxShadow2=""
-                        mainColor="#4E4AFF"
-                      >
+                      <InfoCard boxShadow2="" mainColor="#4E4AFF">
                         <a
                           href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
                           target="_blank"
@@ -725,10 +722,7 @@ const Product = ({ pageTitle }) => {
                             />
                           </a>
                           <div className={styles.infoWrapper}>
-                            <InfoCard
-                              boxShadow2=""
-                              mainColor="#4E4AFF"
-                            >
+                            <InfoCard boxShadow2="" mainColor="#4E4AFF">
                               <a
                                 href={`https://models.digitalax.xyz/models/${item.name}`}
                                 target="_blank"
@@ -782,10 +776,7 @@ const Product = ({ pageTitle }) => {
                       ) : (
                         <></>
                       )}
-                      <InfoCard
-                        boxShadow2=""
-                        mainColor="#4E4AFF"
-                      >
+                      <InfoCard boxShadow2="" mainColor="#4E4AFF">
                         <a
                           href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
                           target="_blank"
@@ -857,10 +848,7 @@ const Product = ({ pageTitle }) => {
                             ) : (
                               <></>
                             )}
-                            <InfoCard
-                              boxShadow2=""
-                              mainColor="#4E4AFF"
-                            >
+                            <InfoCard boxShadow2="" mainColor="#4E4AFF">
                               <a
                                 href={`https://designers.digitalax.xyz/designers/${item.name}`}
                                 target="_blank"
