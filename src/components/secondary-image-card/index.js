@@ -4,12 +4,7 @@ import InfoCard from "@components/info-card";
 import ImageCard from "@components/image-card";
 import PriceCard from "@components/price-card";
 import { useSelector } from "react-redux";
-import {
-  getChainId,
-  getExchangeRateETH,
-  getMonaPerEth,
-} from "@selectors/global.selectors";
-import { useRouter } from "next/router";
+import { getExchangeRateETH, getMonaPerEth } from "@selectors/global.selectors";
 import styles from "./styles.module.scss";
 
 const SecondaryImageCard = ({

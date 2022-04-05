@@ -8,7 +8,7 @@ const NewButton = ({ onClick, text, className, disable = false, backgroundType =
     <>
       <button type="button" className={classes} onClick={onClick} disabled={disable}>
         {/* <img src={`./images/metaverse/${backgroundType == 1 ? 'gray_button2.png' : 'gray_button.png'}`} /> */}
-        <span> {text} </span>
+        <div> {text} </div>
       </button>
     </>
   );

@@ -19,14 +19,14 @@ const UserList = props => {
                 <a target='_self'>
                   <img 
                     className={avatar && avatar != '' ? styles.rounded : ''}
-                    src={`${avatar && avatar != '' ? avatar : '/images/user-profile/user-avatar-black.png'}`} 
+                    src={`${avatar && avatar != '' ? avatar : '/images/user-profile/user-avatar-white.png'}`} 
                   />
                 </a>
               </Link>
               :
               <img 
                 className={avatar && avatar != '' ? styles.rounded : ''}
-                src={`${avatar && avatar != '' ? avatar : '/images/user-profile/user-avatar-black.png'}`} 
+                src={`${avatar && avatar != '' ? avatar : '/images/user-profile/user-avatar-white.png'}`} 
                 key={item.name}
               />
             )

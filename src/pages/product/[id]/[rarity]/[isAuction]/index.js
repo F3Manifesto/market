@@ -466,20 +466,12 @@ const Product = ({ pageTitle }) => {
                   />
 
                   <div className={styles.actionsWrapper}>
-                    <div className={styles.actions}>
-                      <div className={styles.buttonWrapper}>
-                        <PriceCard
-                          mode={1}
-                          mainText={getPriceElement()}
-                          subText={
-                            parseInt(isAuction) === 1
-                              ? product.topBid && parseInt(product.topBid) !== 0
-                                ? "highest bid"
-                                : "reserve price"
-                              : "sale price"
-                          }
-                        />
-                      </div>
+                    <div className={styles.buttonWrapper}>
+                      <PriceCard
+                        bgColor={'#4E4AFF'}
+                        mode={0}
+                        mainText={getPriceElement()}
+                      />
                     </div>
                     <button
                       type="button"
@@ -490,6 +482,50 @@ const Product = ({ pageTitle }) => {
                       history
                     </button>
                   </div>
+
+                {!!sourceType.length && (
+                <div className={styles.rightSection}>
+                  {sourceType.map((st) => (
+                    <div className={styles.item}>
+                      <label className={styles.checkContainer}>
+                        <input
+                          type="checkbox"
+                          className={styles.check}
+                          checked
+                        />
+                        <span className={styles.checkmark} />
+                      </label>
+                      <div className={styles.label}> {st} </div>
+                      <span className={styles.tooltip}>
+                        {" "}
+                        {sourceTypeDescription[st]}{" "}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!!sourceType.length && (
+                  <div className={styles.mobileRightSection}>
+                    {sourceType.map((st) => (
+                      <div className={styles.item}>
+                        <label className={styles.checkContainer}>
+                          <input
+                            type="checkbox"
+                            className={styles.check}
+                            checked
+                          />
+                          <span className={styles.checkmark} />
+                        </label>
+                        <div className={styles.label}> {st} </div>
+                        <span className={styles.tooltip}>
+                          {" "}
+                          {sourceTypeDescription[st]}{" "}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 </div>
               </div>
             </div>
@@ -535,27 +571,7 @@ const Product = ({ pageTitle }) => {
                     </div>
                   </div>
                 </InfoCard>
-                {!!sourceType.length && (
-                  <div className={styles.mobileRightSection}>
-                    {sourceType.map((st) => (
-                      <div className={styles.item}>
-                        <label className={styles.checkContainer}>
-                          <input
-                            type="checkbox"
-                            className={styles.check}
-                            checked
-                          />
-                          <span className={styles.checkmark} />
-                        </label>
-                        <div className={styles.label}> {st} </div>
-                        <span className={styles.tooltip}>
-                          {" "}
-                          {sourceTypeDescription[st]}{" "}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
+
                 {!!product?.additionalSources?.length && (
                   <div className={styles.additionalImages}>
                     {[getOriginalImage(), ...product?.additionalSources].map(
@@ -622,27 +638,6 @@ const Product = ({ pageTitle }) => {
                   </>
                 )}
               </div>
-              {!!sourceType.length && (
-                <div className={styles.rightSection}>
-                  {sourceType.map((st) => (
-                    <div className={styles.item}>
-                      <label className={styles.checkContainer}>
-                        <input
-                          type="checkbox"
-                          className={styles.check}
-                          checked
-                        />
-                        <span className={styles.checkmark} />
-                      </label>
-                      <div className={styles.label}> {st} </div>
-                      <span className={styles.tooltip}>
-                        {" "}
-                        {sourceTypeDescription[st]}{" "}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
           </Container>
         </section>
@@ -683,9 +678,8 @@ const Product = ({ pageTitle }) => {
                         <></>
                       )}
                       <InfoCard
-                        borderColor="#e6bf00"
-                        boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                        mainColor="#e6bf00"
+                        boxShadow2=""
+                        mainColor="#4E4AFF"
                       >
                         <a
                           href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
@@ -699,17 +693,6 @@ const Product = ({ pageTitle }) => {
                         <div className={styles.description}>
                           {product?.model?.description}
                         </div>
-                        <a
-                          href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
-                          target="_blank"
-                        >
-                          <button
-                            type="button"
-                            className={styles.profileButton}
-                          >
-                            View Full Profile
-                          </button>
-                        </a>
                       </InfoCard>
                     </div>
                   </div>
@@ -743,9 +726,8 @@ const Product = ({ pageTitle }) => {
                           </a>
                           <div className={styles.infoWrapper}>
                             <InfoCard
-                              borderColor="#e6bf00"
-                              boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                              mainColor="#e6bf00"
+                              boxShadow2=""
+                              mainColor="#4E4AFF"
                             >
                               <a
                                 href={`https://models.digitalax.xyz/models/${item.name}`}
@@ -756,17 +738,6 @@ const Product = ({ pageTitle }) => {
                               <div className={styles.description}>
                                 {item.description}
                               </div>
-                              <a
-                                href={`https://models.digitalax.xyz/designers/${item.name}`}
-                                target="_blank"
-                              >
-                                <button
-                                  type="button"
-                                  className={styles.profileButton}
-                                >
-                                  View Full Profile
-                                </button>
-                              </a>
                             </InfoCard>
                           </div>
                         </div>
@@ -812,9 +783,8 @@ const Product = ({ pageTitle }) => {
                         <></>
                       )}
                       <InfoCard
-                        borderColor="#e6bf00"
-                        boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                        mainColor="#e6bf00"
+                        boxShadow2=""
+                        mainColor="#4E4AFF"
                       >
                         <a
                           href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
@@ -828,17 +798,6 @@ const Product = ({ pageTitle }) => {
                         <div className={styles.description}>
                           {product?.designer?.description}
                         </div>
-                        <a
-                          href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
-                          target="_blank"
-                        >
-                          <button
-                            type="button"
-                            className={styles.profileButton}
-                          >
-                            View Full Profile
-                          </button>
-                        </a>
                       </InfoCard>
                       <a
                         href="https://designers.digitalax.xyz/getdressed"
@@ -899,9 +858,8 @@ const Product = ({ pageTitle }) => {
                               <></>
                             )}
                             <InfoCard
-                              borderColor="#e6bf00"
-                              boxShadow2="inset 0px 0px 10px 10px rgba(255, 255, 255, 0.47)"
-                              mainColor="#e6bf00"
+                              boxShadow2=""
+                              mainColor="#4E4AFF"
                             >
                               <a
                                 href={`https://designers.digitalax.xyz/designers/${item.name}`}
@@ -912,17 +870,6 @@ const Product = ({ pageTitle }) => {
                               <div className={styles.description}>
                                 {item.description}
                               </div>
-                              <a
-                                href={`https://designers.digitalax.xyz/designers/${item.name}`}
-                                target="_blank"
-                              >
-                                <button
-                                  type="button"
-                                  className={styles.profileButton}
-                                >
-                                  View Full Profile
-                                </button>
-                              </a>
                             </InfoCard>
                             <a
                               href="https://designers.digitalax.xyz/getdressed"

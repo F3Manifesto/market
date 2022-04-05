@@ -254,17 +254,6 @@ const ImageCard = ({
         {imgUrl ? (
           <img src={reviseUrl(imgUrl)} className={styles.image} />
         ) : null}
-        {showButton && (
-          <div className={styles.buyNow}>
-            <NewButton
-              text={
-                disable ? "Sold Out" : isAuction ? "Place A Bid" : "Buy Now"
-              }
-              onClick={onBuyNow}
-              disable={disable}
-            />
-          </div>
-        )}
         {!!offerCount && (
           <div className={styles.offerCount}>
             <span>{offerCount}</span> Offers
@@ -308,6 +297,18 @@ const ImageCard = ({
           </Link>
         ) : (
           renderImage()
+        )}
+
+        {showButton && (
+          <div className={styles.buyNow}>
+            <NewButton
+              text={
+                disable ? "Sold Out" : isAuction ? "Place A Bid" : "Buy Now"
+              }
+              onClick={onBuyNow}
+              disable={disable}
+            />
+          </div>
         )}
       </div>
     </>

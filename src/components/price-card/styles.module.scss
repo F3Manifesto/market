@@ -4,24 +4,23 @@ $fontFamily: 'LEMON MILK';
 $fontColor: white;
 $subFontColor: #4E4AFF;
 $strokeColor: #4E4AFF;
+$bgColor: #4E4AFF;
 
 .wrapper {
   position: relative;
   width: 100%;
+  height: 100%;
 
   .mainWrapper {
     position: relative;
     min-height: 40px;
-
-    .backImage {
-      width: 100%;
-    }
+    height: 100%;
+    display: flex;
+    align-items: center;
 
     .mainText {
       width: 100%;
       height: 100%;
-      position: absolute;
-      top: 0;
       display: flex;
       align-items: center;
       justify-content: center;
