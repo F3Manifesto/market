@@ -138,6 +138,56 @@
           }
         }
       }
+
+      .buttonWrapper {
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .menuWrapper {
+        position: absolute;
+        margin-top: 10px;
+        z-index: 9;
+      
+        button {
+          color: black;
+        }
+      }
+      
+      .menuButton {
+        @include reset-button();
+        @include active();
+        border: 1px solid #e6e6e6;
+        background-color: white;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 10px 16px;
+        width: 100%;
+        top: 100%;
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .hashAddress {
+        :global {
+          .smallPhotoWithText__hashAddress {
+            max-width: 94px;
+          }
+        }
+      }
+      
+      .arrowBottom {
+        display: flex;
+        align-items: center;
+        @include reset-button();
+        @include active();
+      
+        .arrowBottomImg {
+          padding: 8px 0 8px 8px;
+        }
+      }
+      
     } 
 
       
