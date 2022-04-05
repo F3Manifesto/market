@@ -179,6 +179,16 @@ class EspaApiService {
     }
   }
 
+  async getAllDesigners() {
+    try {
+      const data = await get("/get-all-designers");
+
+      return data;
+    } catch (e) {
+      return null;
+    }
+  }
+
   async getModelById(id) {
     try {
       const data = await get("/get-model-by-id", { modelId: id });

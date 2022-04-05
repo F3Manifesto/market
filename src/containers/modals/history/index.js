@@ -14,12 +14,13 @@ import {
   getDigitalaxGarmentPurchaseHistories,
   getDigitalaxGarmentV2PurchaseHistories,
   getDigitalaxMarketplacePurchaseHistories,
-  getDigitalaxMarketplaceV2PurchaseHistories,
+  getDigitalaxMarketplaceV3PurchaseHistories,
 } from "@services/api/apiService";
 import { getChainId } from "@selectors/global.selectors";
 import Loader from "@components/loader";
 import { getEnabledNetworkByChainId } from "@services/network.service";
 import config from "@utils/config";
+import { tokens as paymentTokens } from "../../../utils/paymentTokens";
 
 const History = ({ className, title, type }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,14 @@ const History = ({ className, title, type }) => {
       dispatch(closeBidHistoryModal());
     } else {
       dispatch(closePurchaseHistoryModal());
+    }
+  };
+
+  const getTokenName = (address) => {
+    for (const key in paymentTokens) {
+      if (paymentTokens[key].address === address) {
+        return key;
+      }
     }
   };
 
@@ -56,22 +65,18 @@ const History = ({ className, title, type }) => {
         } else {
           if (!v1) {
             const network = getEnabledNetworkByChainId(chainId);
-            const { digitalaxModelMarketplacePurchaseHistories } =
-              await getDigitalaxMarketplaceV2PurchaseHistories(
+            const { digitalaxMarketplaceV3PurchaseHistories } =
+              await getDigitalaxMarketplaceV3PurchaseHistories(
                 chainId,
                 tokenIds
               );
-            const { trades } = await getAllTradesByTokensAndTokenIds(
-              config.NIX_URL[network.alias]
+
+            setHistory(
+              digitalaxMarketplaceV3PurchaseHistories.map((history) => ({
+                ...history,
+                tokenName: getTokenName(history.paymentToken),
+              }))
             );
-            setHistory([
-              ...digitalaxModelMarketplacePurchaseHistories,
-              ...trades.filter((trade) =>
-                trade.orders.find((order) =>
-                  tokenIds.includes(order.tokenIds[0])
-                )
-              ),
-            ]);
           } else {
             const { digitalaxMarketplacePurchaseHistories } =
               await getDigitalaxMarketplacePurchaseHistories(chainId, tokenIds);
@@ -122,7 +127,7 @@ const History = ({ className, title, type }) => {
                           {tx.value
                             ? tx.value / 10 ** 18
                             : tx.orders[0].price / 10 ** 18}{" "}
-                          $MONA{" "}
+                          ${tx.tokenName}{" "}
                         </td>
                         <td>
                           {" "}

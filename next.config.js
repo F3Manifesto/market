@@ -31,6 +31,7 @@ const {
   DLTA_API_URL,
   EIP721_URL,
   DIGITALAX_NFT_V2_ADDRESS,
+  DIGITALAX_API_URLS,
   NIX_URL,
 } = require('config');
 const withImages = require('next-images');
@@ -71,6 +72,7 @@ module.exports = withImages({
     SECONDARY_MARKETPLACE_ADDRESS,
     DLTA_API_URL,
     EIP721_URL,
+    DIGITALAX_API_URLS,
     DIGITALAX_NFT_V2_ADDRESS,
     NIX_URL,
   },

@@ -18,7 +18,7 @@ import {
   getDigitalaxGenesisNFTs,
   getDigitalaxGenesisStakedTokensByOwner,
   getCollectionV2ByGarmentId,
-  getDigitalaxMarketplaceV2Offer,
+  getDigitalaxMarketplaceV3Offer,
   getPodeNFTV2sByOwner,
   getPodeNFTV2StakersByStaker,
   getDigitalaxCollectorV2ByOwner,
@@ -29,7 +29,7 @@ import {
   getGuildWhitelistedNFTStakersByStaker,
   getAllNFTsByOwner,
   getSecondaryOrderByOwner,
-  getDigitalaxMarketplaceV2Offers,
+  getDigitalaxMarketplaceV3Offers,
   getNFTById,
   getSecondaryOrderByContractTokenAndBuyorsell,
   getPatronMarketplaceOffers,
@@ -67,6 +67,7 @@ import {
 } from "@constants/nft_categories";
 
 import { MAINNET_CHAINID, POLYGON_CHAINID } from "@constants/global.constants";
+import { getAllItemsByOwner } from "@services/api/rarible.service";
 
 const categories = [
   DIGITAL_CHANGING_ROOM,
@@ -88,6 +89,43 @@ const DigitalChangingRoom = (props) => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
   const [ownedOrders, setOwnedOrders] = useState([]);
   const showPerPage = 10;
+
+  const getNftData = async (products) => {
+    const nftData = [];
+    const allUsers = await digitalaxApi.getAllUsersName();
+
+    for (let i = 0; i < products.length; i += 1) {
+      const nft = products[i];
+      const designerAttribute = nft.meta?.attributes?.find(
+        (attribute) => attribute.key === "Designer"
+      );
+      if (!designerAttribute) continue;
+      const designerData = allDesigners.find(
+        (designer) =>
+          designer.designerId ===
+          (designerAttribute.value === "Kodomodachi"
+            ? "Mirth"
+            : designerAttribute.value)
+      );
+      const seller = allUsers.find(
+        (user) => user?.wallet?.toLowerCase() === nft?.creators[0].account
+      );
+      nftData.push({
+        ...nft,
+        price: nft.bestSellOrder?.makePrice,
+        nftData: {
+          ...getRaribleNftDataFromMeta(nft.meta),
+          designer: {
+            name: designerData?.designerId,
+            image: designerData?.image_url,
+          },
+        },
+        seller,
+      });
+    }
+
+    return nftData;
+  };
 
   useEffect(() => {
     const getAllNFTs = async () => {
@@ -375,91 +413,15 @@ const DigitalChangingRoom = (props) => {
         owner
       );
 
-      const network = getEnabledNetworkByChainId(chainId);
-      const { tokens: secondaryMarketplaceNfts } = await getAllNFTsByOwner(
-        owner,
-        config.EIP721_URL[network.alias]
+      const nfts = await getAllItemsByOwner(account);
+      const polygonNfts = nfts.items.filter(
+        (nft) => nft.blockchain === "POLYGON"
       );
-      const { digitalaxModelMarketplaceOffers: v2Offers } =
-        await getDigitalaxMarketplaceV2Offers(chainId);
-
-      const { orders } = await getSecondaryOrderByOwner(
-        config.NIX_URL[network.alias],
-        owner
-      );
-
-      const nftData = [];
-      const allUsers = await digitalaxApi.getAllUsersName();
-
-      for (let i = 0; i < secondaryMarketplaceNfts.length; i += 1) {
-        const nft = secondaryMarketplaceNfts[i];
-        console.log({ nft });
-        const { token } = await getNFTById(
-          `${nft?.contract?.id}_${nft?.tokenID}`,
-          config.EIP721_URL[network.alias]
-        );
-        const { orders } = await getSecondaryOrderByContractTokenAndBuyorsell(
-          config.NIX_URL[network.alias],
-          nft?.contract?.id,
-          [nft?.tokenID],
-          "Buy"
-        );
-        const attributes = (JSON.parse(token?.metadata) || {}).attributes;
-        const designer = attributes.find(
-          (attribute) => attribute.trait_type === "Designer"
-        )?.value;
-        const designerData =
-          (await digitalaxApi.getDesignerById(
-            designer === "Kodomodachi" ? "Mirth" : designer
-          )) || [];
-        const seller = allUsers.find(
-          (user) => user.wallet?.toLowerCase() === token?.owner.id
-        );
-
-        nftData.push({
-          ...nft,
-          nftData: {
-            ...token,
-            designer: {
-              name: designerData[0]?.designerId,
-              image: designerData[0]?.image_url,
-            },
-          },
-          user: seller ?? {},
-          orders: filterOrders(orders),
-        });
-      }
-
-      setOwnedOrders(filterOrders(orders));
-
-      // console.log('digitalaxNFTsMainnet: ', digitalaxNFTsMainnet)
-      // console.log('digitalaxNFTsPolygon: ', digitalaxNFTsPolygon)
-      // console.log('digitalaxNFTStakersPolygon: ', digitalaxNFTStakersPolygon)
-      // console.log('digitalaxStakedNFTsMainnet: ', digitalaxStakedNFTsMainnet)
-      // console.log('digitalaxNFTV2sPolygon: ', digitalaxNFTV2sPolygon)
-      // console.log('digitalaxSubscriptionsPolygon: ', digitalaxSubscriptionsPolygon)
-      // console.log('digitalaxGenesisNFTsMainnet: ', digitalaxGenesisNFTsMainnet)
-      // console.log('digitalaxStakedGenesisNFTsMainnet: ', digitalaxStakedGenesisNFTsMainnet)
-      // console.log('podeNFTv2sPolygon: ', podeNFTv2sPolygon)
-      // console.log('podeStakedNFTsPolygon: ', podeStakedNFTsPolygon)
+      const nftData = await getNftData(polygonNfts);
 
       const fetchedNFTs = {};
 
-      fetchedNFTs[SECONDARY_MARKETPLACE_NFT] = [
-        ...secondaryMarketplaceNfts
-          .filter((token) =>
-            v2Offers.find((offer) =>
-              offer.garmentCollection?.garments?.find(
-                (garment) =>
-                  garment.owner === token.owner.id &&
-                  garment.id === token.tokenID
-              )
-            )
-          )
-          .map((item) => {
-            return { ...item, type: "digitalaxSecondaryMarketplace" };
-          }),
-      ];
+      fetchedNFTs[SECONDARY_MARKETPLACE_NFT] = nftData;
 
       fetchedNFTs[DIGITAL_CHANGING_ROOM] = [
         ...digitalaxNFTsMainnet.map((item) => {
@@ -578,16 +540,16 @@ const DigitalChangingRoom = (props) => {
       }
 
       // check marketplace if the collection id exists
-      const { digitalaxMarketplaceV2Offers } =
-        await getDigitalaxMarketplaceV2Offer(
+      const { digitalaxF3MMarketplaceOffers } =
+        await getDigitalaxMarketplaceV3Offer(
           POLYGON_CHAINID,
           digitalaxGarmentV2Collections[0].id
         );
 
       // if it doesn't exist, it's not able to show as product.
       if (
-        !digitalaxMarketplaceV2Offers ||
-        digitalaxMarketplaceV2Offers.length <= 0
+        !digitalaxF3MMarketplaceOffers ||
+        digitalaxF3MMarketplaceOffers.length <= 0
       ) {
         console.log("not on marketplace");
         return;
@@ -644,21 +606,11 @@ const DigitalChangingRoom = (props) => {
         {ownedNFTs[categories[currentCategory]] &&
           ownedNFTs[categories[currentCategory]].map((item, index) => {
             if (currentCategory === 6) {
-              console.log({ item });
               return (
                 <SecondaryInfoCard
-                  product={{
-                    ...item,
-                    token: {
-                      id: item.contract.id,
-                    },
-                    tokenId: item.tokenID,
-                  }}
-                  offers={item.orders || []}
-                  user={item.user}
-                  nftData={item.nftData}
-                  order={getOrderForNFT(item)}
                   key={item.id}
+                  product={item}
+                  nftData={item.nftData}
                   showCollectionName
                 />
               );

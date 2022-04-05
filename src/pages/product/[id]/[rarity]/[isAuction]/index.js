@@ -14,7 +14,7 @@ import PriceCard from "@components/price-card";
 import ProductPageLoader from "@components/product-page-loader";
 
 import {
-  getDigitalaxMarketplaceV2Offer,
+  getDigitalaxMarketplaceV3Offer,
   getGarmentV2ByCollectionId,
   getDigitalaxNFTStakersByGarments,
   getGuildWhitelistedNFTStakersByGarments,
@@ -98,8 +98,7 @@ const Product = ({ pageTitle }) => {
   const [isFetchedProduct, setIsFetchedProduct] = useState(false);
   const [isFetchedSecondDesigners, setIsFetchedSecondDesigners] =
     useState(false);
-  const [isFetchedSecondModels, setIsFetchedSecondModels] =
-    useState(false);
+  const [isFetchedSecondModels, setIsFetchedSecondModels] = useState(false);
 
   const sourceTypeDescription = {
     AR: "You can wear and view this fashion in AR",
@@ -181,19 +180,21 @@ const Product = ({ pageTitle }) => {
       if (!parseInt(isAuction)) {
         const children = [];
 
-        const { digitalaxModelCollection } = await getGarmentV2ByCollectionId(
+        const { digitalaxF3MNFTCollection } = await getGarmentV2ByCollectionId(
           chainId,
-          id
+          id,
+          0
         );
-        if (digitalaxModelCollection.id) {
-          const { digitalaxModelMarketplaceOffers } =
-            await getDigitalaxMarketplaceV2Offer(
+        if (digitalaxF3MNFTCollection.id) {
+          const { digitalaxF3MMarketplaceOffers } =
+            await getDigitalaxMarketplaceV3Offer(
               chainId,
-              digitalaxModelCollection.id
+              digitalaxF3MNFTCollection.id,
+              0
             );
 
-          if (digitalaxModelCollection.garments[0].children.length) {
-            digitalaxModelCollection.garments[0].children.forEach(
+          if (digitalaxF3MNFTCollection.garments[0].children.length) {
+            digitalaxF3MNFTCollection.garments[0].children.forEach(
               async (child) => {
                 const info = await fetchTokenUri(child.tokenUri);
                 children.push({
@@ -206,41 +207,37 @@ const Product = ({ pageTitle }) => {
 
           setOwners(
             await getOwners(
-              digitalaxModelMarketplaceOffers[0].garmentCollection?.garments,
-              digitalaxModelMarketplaceOffers[0].amountSold,
+              digitalaxF3MMarketplaceOffers[0].garmentCollection?.garments,
+              digitalaxF3MMarketplaceOffers[0].amountSold,
               users
             )
           );
           setTokenIds(
-            digitalaxModelMarketplaceOffers[0].garmentCollection?.garments?.map(
+            digitalaxF3MMarketplaceOffers[0].garmentCollection?.garments?.map(
               (garment) => garment.id
             )
           );
           setOffer({
-            id: digitalaxModelMarketplaceOffers[0].id,
-            primarySalePrice:
-              digitalaxModelMarketplaceOffers[0].primarySalePrice,
-            startTime: digitalaxModelMarketplaceOffers[0].startTime,
-            endTime: digitalaxModelMarketplaceOffers[0].endTime,
-            amountSold: digitalaxModelMarketplaceOffers[0].amountSold,
+            id: digitalaxF3MMarketplaceOffers[0].id,
+            primarySalePrice: digitalaxF3MMarketplaceOffers[0].primarySalePrice,
+            startTime: digitalaxF3MMarketplaceOffers[0].startTime,
+            endTime: digitalaxF3MMarketplaceOffers[0].endTime,
+            amountSold: digitalaxF3MMarketplaceOffers[0].amountSold,
             totalAmount:
-              digitalaxModelMarketplaceOffers[0].garmentCollection?.garments
+              digitalaxF3MMarketplaceOffers[0].garmentCollection?.garments
                 ?.length,
           });
 
           setProduct({
-            id: digitalaxModelCollection.id,
-            garment: digitalaxModelCollection.garments[0],
+            id: digitalaxF3MNFTCollection.id,
+            garment: digitalaxF3MNFTCollection.garments[0],
             children,
             additionalSources:
-              digitalaxModelCollection.garments[0]?.additionalSources,
-            designer: digitalaxModelCollection.designer,
-            model: digitalaxModelCollection.model,
-            developer: digitalaxModelCollection.developer,
+              digitalaxF3MNFTCollection.garments[0]?.additionalSources,
+            designer: digitalaxF3MNFTCollection.designer,
           });
         }
       } else {
-        
       }
 
       setIsFetchedProduct(true);
@@ -254,19 +251,13 @@ const Product = ({ pageTitle }) => {
       );
     });
 
-    console.log('secondModel: ', secondModel)
-
-    if (
-      secondModel &&
-      secondModel.model &&
-      secondModel.model.length > 0
-    ) {
+    if (secondModel && secondModel.model && secondModel.model.length > 0) {
       const secondModelsRes = [];
       secondModel.model.map((modelItem) => {
         fetch(modelItem)
           .then((response) => response.json())
           .then((modelData) => {
-            console.log('modelData: ', modelData)
+            console.log("modelData: ", modelData);
             secondModelsRes.push({
               name: modelData["Model ID"],
               description: modelData["description"],
@@ -274,15 +265,13 @@ const Product = ({ pageTitle }) => {
             });
             setSecondModels(secondModelsRes);
             setIsFetchedSecondModels(true);
-            console.log('secondModelsRes: ', secondModelsRes)
-
+            console.log("secondModelsRes: ", secondModelsRes);
           });
       });
     } else {
       setSecondModels([]);
       setIsFetchedSecondModels(true);
     }
-
 
     const secondDesigner = secondDesignerData.find((item) => {
       return (
@@ -313,7 +302,6 @@ const Product = ({ pageTitle }) => {
       setSecondDesigners([]);
       setIsFetchedSecondDesigners(true);
     }
-
   }, []);
 
   useEffect(() => {
@@ -416,7 +404,11 @@ const Product = ({ pageTitle }) => {
     else if (product?.garment?.image || product?.image) setMainImageType(2);
   }, [product]);
 
-  if (!isFetchedProduct || !isFetchedSecondDesigners || !isFetchedSecondModels) {
+  if (
+    !isFetchedProduct ||
+    !isFetchedSecondDesigners ||
+    !isFetchedSecondModels
+  ) {
     return <ProductPageLoader />;
   }
 
@@ -452,8 +444,7 @@ const Product = ({ pageTitle }) => {
               >
                 <div className={styles.productName}>
                   {" "}
-                  i Coined Web3 Fashion
-                  {" "}
+                  i Coined Web3 Fashion{" "}
                 </div>{" "}
                 <div />
                 <div className={styles.imageCardWrapper}>
@@ -468,12 +459,10 @@ const Product = ({ pageTitle }) => {
                     }
                     mainImageType={mainImageType}
                     mainImage={mainImage}
-
                     keepRatio={true}
                     showMute={true}
                     showZoom={true}
-
-                    borderType={'none'}
+                    borderType={"none"}
                   />
 
                   <div className={styles.actionsWrapper}>
@@ -508,17 +497,15 @@ const Product = ({ pageTitle }) => {
               <div className={styles.leftSection}>
                 <div className={styles.amount}>
                   {parseInt(isAuction) !== 1 ? (
-                    <>
-                      1 of 60
-                    </>
+                    <>1 of 60</>
                   ) : (
                     <>{`${days}:${hours}:${minutes}`}</>
                   )}
                   <div className={styles.helper}>
                     <span className={styles.questionMark}>?</span>
                     <span className={styles.description}>
-                      You can also stake this NFT for yield + get the
-                      original source file.
+                      You can also stake this NFT for yield + get the original
+                      source file.
                     </span>
                   </div>
                 </div>
@@ -530,15 +517,21 @@ const Product = ({ pageTitle }) => {
                 >
                   <div className={styles.infoCard}>
                     <div className={styles.skinName}>
-                      <div className={styles.text}>
-                        {" "}
-                        D.O.E. COMMON{" "}
-                      </div>
+                      <div className={styles.text}> D.O.E. COMMON </div>
                     </div>
                     <div className={styles.description}>
-                      If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. 
-                      <br /><br />
-                      If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. If the coined fashion is not good enough then did it even exist. 
+                      If the coined fashion is not good enough then did it even
+                      exist. If the coined fashion is not good enough then did
+                      it even exist. If the coined fashion is not good enough
+                      then did it even exist. If the coined fashion is not good
+                      enough then did it even exist.
+                      <br />
+                      <br />
+                      If the coined fashion is not good enough then did it even
+                      exist. If the coined fashion is not good enough then did
+                      it even exist. If the coined fashion is not good enough
+                      then did it even exist. If the coined fashion is not good
+                      enough then did it even exist.
                     </div>
                   </div>
                 </InfoCard>
@@ -565,38 +558,37 @@ const Product = ({ pageTitle }) => {
                 )}
                 {!!product?.additionalSources?.length && (
                   <div className={styles.additionalImages}>
-                    {[
-                      getOriginalImage(),
-                      ...product?.additionalSources,
-                    ].map((item) => {
-                      if (item.type === "image") {
-                        return (
-                          <img
-                            src={reviseUrl(item.url)}
-                            key={item.id}
-                            onClick={() => {
-                              setMainImage(item.url);
-                              setMainImageType(2);
-                            }}
-                          />
-                        );
-                      } else if (item.type === "animation") {
-                        return (
-                          <video
-                            muted
-                            autoPlay
-                            loop
-                            key={item.id}
-                            onClick={() => {
-                              setMainImage(item.url);
-                              setMainImageType(1);
-                            }}
-                          >
-                            <source src={reviseUrl(item.url)} />
-                          </video>
-                        );
+                    {[getOriginalImage(), ...product?.additionalSources].map(
+                      (item) => {
+                        if (item.type === "image") {
+                          return (
+                            <img
+                              src={reviseUrl(item.url)}
+                              key={item.id}
+                              onClick={() => {
+                                setMainImage(item.url);
+                                setMainImageType(2);
+                              }}
+                            />
+                          );
+                        } else if (item.type === "animation") {
+                          return (
+                            <video
+                              muted
+                              autoPlay
+                              loop
+                              key={item.id}
+                              onClick={() => {
+                                setMainImage(item.url);
+                                setMainImageType(1);
+                              }}
+                            >
+                              <source src={reviseUrl(item.url)} />
+                            </video>
+                          );
+                        }
                       }
-                    })}
+                    )}
                   </div>
                 )}
                 {!!product?.children?.length && (
@@ -620,9 +612,7 @@ const Product = ({ pageTitle }) => {
                               <img src={reviseUrl(child.image_url)} />
                             ) : child.animation_url ? (
                               <video muted autoPlay loop>
-                                <source
-                                  src={reviseUrl(child.animation_url)}
-                                />
+                                <source src={reviseUrl(child.animation_url)} />
                               </video>
                             ) : null}
                           </a>

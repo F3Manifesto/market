@@ -9,6 +9,13 @@
   "ENVIRONMENT": "",
   "NETWORKS": ["rinkeby", "goerli", "mumbai", "mainnet", "matic"],
   "API_URLS": {
+    "mainnet": "https://api.thegraph.com/subgraphs/name/digitalax/f3m-subgraph",
+    "rinkeby": "https://api.thegraph.com/subgraphs/name/digitalax/digitalaxropsten",
+    "mumbai": "https://api.thegraph.com/subgraphs/name/digitalax/f3m-subgraph",
+    "matic": "https://api.thegraph.com/subgraphs/name/digitalax/f3m-subgraph",
+    "goerli": "https://api.thegraph.com/subgraphs/name/digitalax/digitalaxgoerli"
+  },
+  "DIGITALAX_API_URLS": {
     "mainnet": "https://api.thegraph.com/subgraphs/name/digitalax/digitalaxmatic",
     "rinkeby": "https://api.thegraph.com/subgraphs/name/digitalax/digitalaxropsten",
     "mumbai": "https://api.thegraph.com/subgraphs/name/digitalax/digitalaxmatic",
@@ -19,6 +26,15 @@
     "mainnet": "https://api.thegraph.com/subgraphs/name/digitalax/eip721dlta",
     "matic": "https://api.thegraph.com/subgraphs/name/digitalax/eip721dlta",
     "mumbai": "https://api.thegraph.com/subgraphs/name/camerons29/eip721-mumbai"
+  },
+  "RARIBLE_API_URL": {
+    "matic": "https://polygon-api.rarible.org/v0.1",
+    "mumbai": "https://polygon-api-staging.rarible.org/v0.1"
+  },
+  "MARKETPLACE_NFT_ADDRESS": {
+    "mainnet": "",
+    "matic": "0x32a89d8c7e511bd3c21d9e4e6ef6044033231490",
+    "mumbai": "0x1Bc6D640710759Be37E5DCD1b23B322250353751"
   },
   "NIX_URL": {
     "mainnet": "https://api.thegraph.com/subgraphs/name/digitalax/nix-matic",
@@ -52,7 +68,7 @@
     "rinkeby": "0xAcA4eaf530085B062dB530634DA637e266a823C9",
     "goerli": "0x655f2166b0709cd575202630952d71e2bb0d61af",
     "mumbai": "0x18a38C3EB196671d702017C323a562D00a6eD003",
-    "matic": "0x68FEe8726D617460d717ecCcC35556d7C32696bD"
+    "matic": "0x019e14E4eb7A9bA47BA48aE7ADD21e64E008484e"
   },
   "ROOT_TUNNEL_ADDRESS": {
     "mainnet": "0xb6ec8b0a52c1bae5b6aa890cd0ec9704398d0d55",

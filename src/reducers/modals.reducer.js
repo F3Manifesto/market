@@ -1,6 +1,6 @@
-import { createModule } from 'redux-modules';
-import cloneDeep from 'lodash.clonedeep';
-import { Map } from 'immutable';
+import { createModule } from "redux-modules";
+import cloneDeep from "lodash.clonedeep";
+import { Map } from "immutable";
 
 const DEFAULT_FIELDS = Map({
   isShowModalConnectMetamask: false,
@@ -26,11 +26,12 @@ const DEFAULT_FIELDS = Map({
   isShowOfferSucceeded: false,
   isDelistSuccess: false,
   isSecondaryProductUpdated: 0,
+  isTokenSelect: false,
   params: null,
 });
 
 export default createModule({
-  name: 'modals',
+  name: "modals",
   initialState: cloneDeep(DEFAULT_FIELDS),
   transformations: {
     setValue: {

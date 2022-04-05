@@ -10,6 +10,16 @@ export const COLLECTIONS = gql`
   }
 `;
 
+export const PAYABLE_TOKEN_REQUEST = gql`
+  query payableTokenReport($id: ID) {
+    payableTokenReport(id: $id) {
+      id
+      payload
+      timestamp
+    }
+  }
+`;
+
 export const COLLECTIONSV2 = gql`
   query collectionsv2 {
     digitalaxModelCollections(first: 1000) {
@@ -22,8 +32,8 @@ export const COLLECTIONSV2 = gql`
 `;
 
 export const COLLECTION_GROUPS = gql`
-  query digitalaxModelCollectionGroups {
-    digitalaxModelCollectionGroups(first: 100) {
+  query digitalaxF3MCollectionGroups {
+    digitalaxF3MCollectionGroups(first: 100) {
       id
       collections(where: { id_not: "0" }) {
         id
@@ -33,32 +43,6 @@ export const COLLECTION_GROUPS = gql`
           animation
           image
           name
-        }
-        model {
-          id
-          name
-          image
-        }
-        designer {
-          id
-          name
-          image
-        }
-        valueSold
-      }
-      digiBundle(where: { id_not: "0" }) {
-        id
-        rarity
-        garments(first: 1000) {
-          id
-          animation
-          image
-          name
-        }
-        model {
-          id
-          name
-          image
         }
         designer {
           id
@@ -87,8 +71,8 @@ export const DIGITALAX_GARMENT_COLLECTIONS = gql`
 `;
 
 export const DIGITALAX_MARKETPLACE_OFFERS = gql`
-  query digitalaxModelMarketplaceOffers {
-    digitalaxModelMarketplaceOffers(first: 100) {
+  query digitalaxF3MMarketplaceOffers {
+    digitalaxF3MMarketplaceOffers: digitalaxF3MMarketplaceOffers(first: 100) {
       id
       primarySalePrice
       garmentCollection {
@@ -139,8 +123,8 @@ export const COLLECTION_GROUP_BY_ID = gql`
 `;
 
 export const GARMENTV2_BY_COLLECTION_ID = gql`
-  query digitalaxModelCollection($id: ID!) {
-    digitalaxModelCollection(id: $id) {
+  query digitalaxF3MNFTCollection($id: ID!) {
+    digitalaxF3MNFTCollection(id: $id) {
       id
       garments(first: 1000) {
         id
@@ -165,18 +149,6 @@ export const GARMENTV2_BY_COLLECTION_ID = gql`
         }
       }
       designer {
-        id
-        name
-        description
-        image
-      }
-      model {
-        id
-        name
-        description
-        image
-      }
-      developer {
         id
         name
         description
@@ -268,9 +240,9 @@ export const GARMENT_BY_AUCTION_ID = gql`
   }
 `;
 
-export const DIGITALAX_MARKETPLACE_V2_OFFER = gql`
-  query digitalaxModelMarketplaceOffers($garmentCollection: String!) {
-    digitalaxModelMarketplaceOffers(
+export const DIGITALAX_MARKETPLACE_V3_OFFER = gql`
+  query digitalaxF3MMarketplaceOffers($garmentCollection: String!) {
+    digitalaxF3MMarketplaceOffers(
       where: { garmentCollection: $garmentCollection }
     ) {
       id
@@ -289,8 +261,8 @@ export const DIGITALAX_MARKETPLACE_V2_OFFER = gql`
 `;
 
 export const DIGITALAX_MARKETPLACE_OFFER = gql`
-  query digitalaxModelMarketplaceOffers($garmentCollection: String!) {
-    digitalaxModelMarketplaceOffers(
+  query digitalaxF3MMarketplaceOffers($garmentCollection: String!) {
+    digitalaxF3MMarketplaceOffers(
       where: { garmentCollection: $garmentCollection }
     ) {
       id
@@ -307,9 +279,9 @@ export const DIGITALAX_MARKETPLACE_OFFER = gql`
   }
 `;
 
-export const DIGITALAX_MARKETPLACE_V2_OFFERS = gql`
-  query digitalaxModelMarketplaceOffers {
-    digitalaxModelMarketplaceOffers(
+export const DIGITALAX_MARKETPLACE_V3_OFFERS = gql`
+  query digitalaxF3MMarketplaceOffers {
+    digitalaxF3MMarketplaceOffers: digitalaxF3MMarketplaceOffers(
       first: 1000
       where: { garmentCollection_gte: "0" }
     ) {
@@ -329,7 +301,7 @@ export const DIGITALAX_MARKETPLACE_V2_OFFERS = gql`
   }
 `;
 
-export const DIGITALAX_MARKETPLACE_V2_PURCHASE_HISTORIES = gql`
+export const DIGITALAX_MARKETPLACE_V3_PURCHASE_HISTORIES = gql`
   query digitalaxModelMarketplacePurchaseHistories($ids: [ID!]) {
     digitalaxModelMarketplacePurchaseHistories(where: { token_in: $ids }) {
       id

@@ -5,7 +5,7 @@ import PixelLoader from "@components/pixel-loader";
 import Container from "@components/container";
 import {
   getCollectionGroupById,
-  getDigitalaxMarketplaceV2Offers,
+  getDigitalaxMarketplaceV3Offers,
 } from "@services/api/apiService";
 import { useSelector } from "react-redux";
 import { getChainId } from "@selectors/global.selectors";
@@ -30,25 +30,9 @@ const Auctions = () => {
         chainId,
         id
       );
-      // if (
-      //   !(
-      //     digitalaxModelCollectionGroup.auctions.length === 1 &&
-      //     digitalaxModelCollectionGroup.auctions[0].id === "0"
-      //   )
-      // ) {
-      //   digitalaxModelCollectionGroup.auctions.forEach((auction) => {
-      //     aucs.push({
-      //       ...auction,
-      //       topBid: auction.topBid || 0,
-      //       sold: Date.now() > auction.endTime * 1000,
-      //       auction: true,
-      //       rarity: "Exclusive",
-      //     });
-      //   });
-      // }
 
-      const { digitalaxModelMarketplaceOffers } =
-        await getDigitalaxMarketplaceV2Offers(chainId);
+      const { digitalaxF3MMarketplaceOffers } =
+        await getDigitalaxMarketplaceV3Offers(chainId);
       if (
         !(
           digitalaxModelCollectionGroup.collections.length === 1 &&
@@ -56,7 +40,7 @@ const Auctions = () => {
         )
       ) {
         digitalaxModelCollectionGroup.collections.forEach((collection) => {
-          const foundOfferItem = digitalaxModelMarketplaceOffers.find(
+          const foundOfferItem = digitalaxF3MMarketplaceOffers.find(
             (offer) => offer.id === collection.id
           );
           if (!foundOfferItem) return;

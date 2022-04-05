@@ -30,10 +30,13 @@ export const filterProducts = (prods, filter, sortBy) => {
   if (filter.length) {
     filteredProducts = prods.filter(
       (prod) =>
-        prod.designer?.name?.toLowerCase().includes(filter.toLowerCase()) ||
-        prod.model?.name?.toLowerCase().includes(filter.toLowerCase()) ||
-        prod.garment?.name?.toLowerCase().includes(filter.toLowerCase()) ||
+        prod.designer?.name.toLowerCase().includes(filter.toLowerCase()) ||
+        prod.garment?.name.toLowerCase().includes(filter.toLowerCase()) ||
         prod.name?.toLowerCase().includes(filter.toLowerCase()) ||
+        prod.nftData?.name?.toLowerCase().includes(filter.toLowerCase()) ||
+        prod.nftData?.designer.name
+          ?.toLowerCase()
+          .includes(filter.toLowerCase()) ||
         prod.owners?.find(
           (item) =>
             item.username &&
@@ -52,8 +55,25 @@ export const filterProducts = (prods, filter, sortBy) => {
         break;
       case "2":
         filteredProducts.sort((a, b) => {
-          const aPrice = a.primarySalePrice || a.topBid || a.lastSalePrice || 0;
-          const bPrice = b.primarySalePrice || b.topBid || b.lastSalePrice || 0;
+          const aPrice =
+            a.primarySalePrice ||
+            a.topBid ||
+            a.lastSalePrice ||
+            a.price ||
+            a.bidPrice ||
+            0;
+          const bPrice =
+            b.primarySalePrice ||
+            b.topBid ||
+            b.lastSalePrice ||
+            b.price ||
+            b.bidPrice ||
+            0;
+          if (typeof aPrice === "number") {
+            if (aPrice < bPrice) return 1;
+            if (aPrice > bPrice) return -1;
+            return 0;
+          }
           if (BigInt(aPrice) < BigInt(bPrice)) return 1;
           if (BigInt(aPrice) > BigInt(bPrice)) return -1;
           return 0;
@@ -61,20 +81,24 @@ export const filterProducts = (prods, filter, sortBy) => {
         break;
       case "3":
         filteredProducts.sort((a, b) => {
-          const aPrice = a.primarySalePrice || a.topBid || a.lastSalePrice || 0;
-          const bPrice = b.primarySalePrice || b.topBid || b.lastSalePrice || 0;
+          const aPrice =
+            a.primarySalePrice || a.topBid || a.lastSalePrice || a.price || 0;
+          const bPrice =
+            b.primarySalePrice || b.topBid || b.lastSalePrice || b.price || 0;
+          if (typeof aPrice === "number") {
+            if (aPrice > bPrice) return 1;
+            if (aPrice < bPrice) return -1;
+            return 0;
+          }
           if (BigInt(aPrice) > BigInt(bPrice)) return 1;
           if (BigInt(aPrice) < BigInt(bPrice)) return -1;
           return 0;
         });
         break;
       case "4":
-        filteredProducts = filteredProducts.filter((prod) => {
-          return (
-            (prod.auction && parseInt(prod.endTime) < Date.now() / 1000) ||
-            prod.sold
-          );
-        });
+        filteredProducts = filteredProducts.filter(
+          (prod) => prod.auction && parseInt(prod.endTime) < Date.now() / 1000
+        );
         break;
       case "5":
         filteredProducts = filteredProducts.filter((prod) => prod.auction);

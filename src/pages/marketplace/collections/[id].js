@@ -8,7 +8,7 @@ import HeroSection from "@components/hero-section";
 import ProductInfoCard from "@components/product-info-card";
 import {
   getCollectionGroupById,
-  getDigitalaxMarketplaceV2Offers,
+  getDigitalaxMarketplaceV3Offers,
 } from "@services/api/apiService";
 import digitalaxApi from "@services/api/espa/api.service";
 import { getChainId } from "@selectors/global.selectors";
@@ -57,15 +57,15 @@ const Collections = () => {
         chainId,
         id
       );
-      const { digitalaxModelMarketplaceOffers } =
-        await getDigitalaxMarketplaceV2Offers(chainId);
+      const { digitalaxF3MMarketplaceOffers } =
+        await getDigitalaxMarketplaceV3Offers(chainId);
 
       const users = await digitalaxApi.getAllUsersName();
 
       let colls = [];
 
       digitalaxModelCollectionGroup.collections.forEach((collection) => {
-        const foundOfferItem = digitalaxModelMarketplaceOffers.find(
+        const foundOfferItem = digitalaxF3MMarketplaceOffers.find(
           (offer) => offer.id === collection.id
         );
         colls.push({

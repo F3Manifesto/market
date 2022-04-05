@@ -30,11 +30,11 @@
       {
         "indexed": false,
         "internalType": "bool",
-        "name": "freezeETHPayment",
+        "name": "freezeERC20Payment",
         "type": "bool"
       }
     ],
-    "name": "FreezeETHPaymentToggled",
+    "name": "FreezeERC20PaymentToggled",
     "type": "event"
   },
   {
@@ -43,11 +43,11 @@
       {
         "indexed": false,
         "internalType": "bool",
-        "name": "freezeMonaERC20Payment",
+        "name": "freezeETHPayment",
         "type": "bool"
       }
     ],
-    "name": "FreezeMonaERC20PaymentToggled",
+    "name": "FreezeETHPaymentToggled",
     "type": "event"
   },
   {
@@ -136,19 +136,38 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "primarySalePrice",
+        "name": "monaTransferredAmount",
         "type": "uint256"
       },
       {
         "indexed": false,
-        "internalType": "bool",
-        "name": "paidInErc20",
-        "type": "bool"
+        "internalType": "uint256",
+        "name": "orderId",
+        "type": "uint256"
+      }
+    ],
+    "name": "OfferPurchased",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "bundleTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "paymentToken",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "monaTransferredAmount",
+        "name": "discountToPayInERC20",
         "type": "uint256"
       },
       {
@@ -156,15 +175,9 @@
         "internalType": "uint256",
         "name": "platformFee",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "discountToPayInERC20",
-        "type": "uint256"
       }
     ],
-    "name": "OfferPurchased",
+    "name": "OfferPurchasedWithPaymentToken",
     "type": "event"
   },
   {
@@ -281,6 +294,44 @@
       {
         "indexed": false,
         "internalType": "uint256",
+        "name": "availableIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateOfferAvailableIndex",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "garmentCollectionId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "customPaymentToken",
+        "type": "address"
+      }
+    ],
+    "name": "UpdateOfferCustomPaymentToken",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "garmentCollectionId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
         "name": "maxAmount",
         "type": "uint256"
       }
@@ -359,10 +410,27 @@
     "type": "event"
   },
   {
+    "inputs": [],
+    "name": "MATIC_TOKEN",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
-      { "internalType": "uint256", "name": "_amountInMona", "type": "uint256" }
+      { "internalType": "uint256", "name": "_amountInUSDT", "type": "uint256" }
     ],
     "name": "_estimateETHAmount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_token", "type": "address" },
+      { "internalType": "uint256", "name": "_amountInUSDT", "type": "uint256" }
+    ],
+    "name": "_estimateTokenAmount",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -383,14 +451,33 @@
   {
     "inputs": [
       {
+        "internalType": "uint256[]",
+        "name": "_garmentCollectionIds",
+        "type": "uint256[]"
+      },
+      { "internalType": "address", "name": "_paymentToken", "type": "address" },
+      { "internalType": "uint256", "name": "_orderId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_shippingUSD", "type": "uint256" }
+    ],
+    "name": "batchBuyOffer",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_garmentCollectionId",
         "type": "uint256"
-      }
+      },
+      { "internalType": "address", "name": "_paymentToken", "type": "address" },
+      { "internalType": "uint256", "name": "_orderId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_shippingUSD", "type": "uint256" }
     ],
     "name": "buyOffer",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -451,7 +538,7 @@
   },
   {
     "inputs": [],
-    "name": "freezeMonaERC20Payment",
+    "name": "freezeERC20Payment",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
     "type": "function"
@@ -461,7 +548,7 @@
     "name": "garmentCollection",
     "outputs": [
       {
-        "internalType": "contract ModelsCollection",
+        "internalType": "contract DigitalaxGarmentCollectionV2",
         "name": "",
         "type": "address"
       }
@@ -473,7 +560,11 @@
     "inputs": [],
     "name": "garmentNft",
     "outputs": [
-      { "internalType": "contract IModelsNFT", "name": "", "type": "address" }
+      {
+        "internalType": "contract IDigitalaxGarmentNFT",
+        "name": "",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -518,6 +609,25 @@
         "type": "uint256"
       }
     ],
+    "name": "getOfferAvailableIndex",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_availableIndex",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_garmentCollectionId",
+        "type": "uint256"
+      }
+    ],
     "name": "getOfferMaxAmount",
     "outputs": [
       { "internalType": "uint256", "name": "_maxAmount", "type": "uint256" }
@@ -533,17 +643,17 @@
         "type": "address"
       },
       {
-        "internalType": "contract IModelsNFT",
+        "internalType": "contract IDigitalaxGarmentNFT",
         "name": "_garmentNft",
         "type": "address"
       },
       {
-        "internalType": "contract ModelsCollection",
+        "internalType": "contract DigitalaxGarmentCollectionV2",
         "name": "_garmentCollection",
         "type": "address"
       },
       {
-        "internalType": "contract IDigitalaxMonaOracle",
+        "internalType": "contract IDripOracle",
         "name": "_oracle",
         "type": "address"
       },
@@ -554,7 +664,7 @@
       },
       {
         "internalType": "address",
-        "name": "_monaErc20Token",
+        "name": "_wethERC20Token",
         "type": "address"
       },
       {
@@ -585,7 +695,7 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "name": "lastOracleQuote",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
@@ -598,13 +708,6 @@
     ],
     "name": "lastPurchasedTime",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "monaErc20Token",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -647,12 +750,15 @@
     "inputs": [],
     "name": "oracle",
     "outputs": [
-      {
-        "internalType": "contract IDigitalaxMonaOracle",
-        "name": "",
-        "type": "address"
-      }
+      { "internalType": "contract IDripOracle", "name": "", "type": "address" }
     ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "paymentTokenHistory",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -696,7 +802,7 @@
   },
   {
     "inputs": [],
-    "name": "toggleFreezeMonaERC20Payment",
+    "name": "toggleFreezeERC20Payment",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -790,6 +896,24 @@
         "type": "uint256"
       },
       {
+        "internalType": "uint256",
+        "name": "_availableIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateOfferAvailableIndex",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_garmentCollectionId",
+        "type": "uint256"
+      },
+      {
         "internalType": "address[]",
         "name": "_designersOverride",
         "type": "address[]"
@@ -855,7 +979,7 @@
   {
     "inputs": [
       {
-        "internalType": "contract IDigitalaxMonaOracle",
+        "internalType": "contract IDripOracle",
         "name": "_oracle",
         "type": "address"
       }
@@ -882,6 +1006,13 @@
     "inputs": [],
     "name": "versionRecipient",
     "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "wethERC20Token",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
