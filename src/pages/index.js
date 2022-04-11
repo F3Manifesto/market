@@ -88,6 +88,7 @@ const LandingPage = () => {
       chainId,
       0
     );
+    console.log({ digitalaxF3MCollectionGroups });
     const { digitalaxF3MMarketplaceOffers } =
       await getDigitalaxMarketplaceV3Offers(chainId, 0);
     const users = await digitalaxApi.getAllUsersName();

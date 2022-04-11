@@ -87,22 +87,12 @@ export const DIGITALAX_MARKETPLACE_OFFERS = gql`
 `;
 
 export const COLLECTION_GROUP_BY_ID = gql`
-  query digitalaxModelCollectionGroup($id: ID!) {
-    digitalaxModelCollectionGroup(id: $id) {
+  query digitalaxF3MCollectionGroup($id: ID!) {
+    digitalaxF3MCollectionGroup(id: $id) {
       id
       collections(where: { id_not: "0" }) {
         id
         designer {
-          id
-          name
-          image
-        }
-        developer {
-          id
-          name
-          image
-        }
-        model {
           id
           name
           image
@@ -302,8 +292,8 @@ export const DIGITALAX_MARKETPLACE_V3_OFFERS = gql`
 `;
 
 export const DIGITALAX_MARKETPLACE_V3_PURCHASE_HISTORIES = gql`
-  query digitalaxModelMarketplacePurchaseHistories($ids: [ID!]) {
-    digitalaxModelMarketplacePurchaseHistories(where: { token_in: $ids }) {
+  query digitalaxMarketplaceV3PurchaseHistories($ids: [ID!]) {
+    digitalaxMarketplaceV3PurchaseHistories(where: { token_in: $ids }) {
       id
       timestamp
       transactionHash
@@ -1107,8 +1097,8 @@ export const GET_ALL_TRADES_BY_TOKEN_AND_TOKENID = gql`
 `;
 
 export const GET_DIGITALAX_COLLECTION_GROUPS_BY_GARMENT = gql`
-  query digitalaxModelCollectionGroups($garment: [String!]) {
-    digitalaxModelCollectionGroups(first: 1000) {
+  query digitalaxF3MCollectionGroups($garment: [String!]) {
+    digitalaxF3MCollectionGroups(first: 1000) {
       id
       collections(where: { garments_contains: $garment }) {
         garments {

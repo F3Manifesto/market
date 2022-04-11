@@ -6,6 +6,7 @@ import PriceCard from "@components/price-card";
 import { useSelector } from "react-redux";
 import { getExchangeRateETH, getMonaPerEth } from "@selectors/global.selectors";
 import styles from "./styles.module.scss";
+import NewButton from "@components/buttons/newbutton";
 
 const SecondaryImageCard = ({
   product,
@@ -23,31 +24,7 @@ const SecondaryImageCard = ({
       <>
         {`${product?.price} $MONA`}
         <span>
-          {` ($${(
-            parseFloat(monaPerEth) *
-            exchangeRate *
-            product?.price
-          ).toFixed(2)})
-        `}
-        </span>
-      </>
-    );
-  };
-
-  const getHighestPrice = () => {
-    let maxBid = 0;
-    offers.forEach((offer) => {
-      if (maxBid < offer.price) maxBid = offer.price;
-    });
-
-    return (
-      <>
-        {`${(maxBid / 10 ** 18).toFixed(2)} $MONA`}
-        <span>
-          {` ($${(
-            (parseFloat(monaPerEth) * exchangeRate * maxBid) /
-            10 ** 18
-          ).toFixed(2)})
+          {` ($${(parseFloat(monaPerEth) * product?.price).toFixed(2)})
         `}
         </span>
       </>
@@ -79,8 +56,8 @@ const SecondaryImageCard = ({
           <div className={styles.infoWrapper}>
             <Link href={generateUrl(product?.id)}>
               <a className={styles.link}>
-                <img src="/images/metaverse/gray_button2.png" />
-                <span>MANAGE ITEM</span>
+                <NewButton text="MANAGE ITEM" />
+                {/* <span>MANAGE ITEM</span> */}
               </a>
             </Link>
             {product?.bestSellOrder ? (

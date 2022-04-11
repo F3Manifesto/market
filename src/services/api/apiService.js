@@ -67,12 +67,14 @@ import {
 } from "./gql.apiService";
 import config from "../../utils/config";
 
-const apiRequest = (chainId, gql, params, type = 1) =>
-  request(
+const apiRequest = (chainId, gql, params, type = 1) => {
+  console.log({ type });
+  return request(
     type === 0 ? config.API_URLS["matic"] : config.DIGITALAX_API_URLS["matic"],
     gql,
     params
   );
+};
 
 export const getCollections = async (chainId) =>
   apiRequest(chainId, COLLECTIONS);
@@ -81,13 +83,13 @@ export const getCollectionsV2 = async (chainId) =>
   apiRequest(chainId, COLLECTIONSV2);
 
 export const getCollectionGroups = async (chainId, type = 0) =>
-  apiRequest(chainId, COLLECTION_GROUPS, type);
+  apiRequest(chainId, COLLECTION_GROUPS, null, type);
 
 export const getDigitalaxGarmentCollections = async (chainId) =>
   apiRequest(chainId, DIGITALAX_GARMENT_COLLECTIONS);
 
-export const getCollectionGroupById = async (chainId, id) =>
-  apiRequest(chainId, COLLECTION_GROUP_BY_ID, { id });
+export const getCollectionGroupById = async (chainId, id, type = 0) =>
+  apiRequest(chainId, COLLECTION_GROUP_BY_ID, { id }, type);
 
 export const getGarmentV2ByCollectionId = async (chainId, id, type = 0) =>
   apiRequest(chainId, GARMENTV2_BY_COLLECTION_ID, { id }, type);
@@ -122,12 +124,19 @@ export const getDigitalaxMarketplaceOffer = async (
 ) => apiRequest(chainId, DIGITALAX_MARKETPLACE_OFFER, { garmentCollection });
 
 export const getDigitalaxMarketplaceV3Offers = async (chainId, type = 0) =>
-  apiRequest(chainId, DIGITALAX_MARKETPLACE_V3_OFFERS, type);
+  apiRequest(chainId, DIGITALAX_MARKETPLACE_V3_OFFERS, null, type);
 
 export const getDigitalaxMarketplaceV3PurchaseHistories = async (
   chainId,
-  ids
-) => apiRequest(chainId, DIGITALAX_MARKETPLACE_V3_PURCHASE_HISTORIES, { ids });
+  ids,
+  type = 0
+) =>
+  apiRequest(
+    chainId,
+    DIGITALAX_MARKETPLACE_V3_PURCHASE_HISTORIES,
+    { ids },
+    type
+  );
 
 export const getDigitalaxMarketplacePurchaseHistories = async (chainId, ids) =>
   apiRequest(chainId, DIGITALAX_MARKETPLACE_PURCHASE_HISTORIES, { ids });

@@ -68,6 +68,7 @@ import {
 
 import { MAINNET_CHAINID, POLYGON_CHAINID } from "@constants/global.constants";
 import { getAllItemsByOwner } from "@services/api/rarible.service";
+import SecondaryImageCard from "@components/secondary-image-card";
 
 const categories = [
   DIGITAL_CHANGING_ROOM,
@@ -607,10 +608,9 @@ const DigitalChangingRoom = (props) => {
           ownedNFTs[categories[currentCategory]].map((item, index) => {
             if (currentCategory === 6) {
               return (
-                <SecondaryInfoCard
+                <SecondaryImageCard
                   key={item.id}
                   product={item}
-                  nftData={item.nftData}
                   showCollectionName
                 />
               );

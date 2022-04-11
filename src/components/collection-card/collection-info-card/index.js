@@ -1,13 +1,13 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
+import React from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
-import InfoCard from '@components/info-card';
-import PriceCard from '@components/price-card';
+import InfoCard from "@components/info-card";
+import PriceCard from "@components/price-card";
 
-import { getExchangeRateETH, getMonaPerEth } from '@selectors/global.selectors';
+import { getExchangeRateETH, getMonaPerEth } from "@selectors/global.selectors";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 const CollectionInfoCard = ({ collection }) => {
   const monaPerEth = useSelector(getMonaPerEth);
@@ -18,22 +18,18 @@ const CollectionInfoCard = ({ collection }) => {
       <>
         {parseFloat(collection.sold).toFixed(2)} $MONA
         <span>
-          {` `}(${(parseFloat(monaPerEth) * exchangeRate * collection.sold).toFixed(2)})
+          {` `}(${(parseFloat(monaPerEth) * collection.sold).toFixed(2)})
         </span>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
       <InfoCard>
         <div className={styles.cardBodyWrapper}>
           <div className={styles.pricesWrapper}>
-            <PriceCard
-              mode={0}
-              mainText={getPrice()}
-              subText="total sold"
-            />
+            <PriceCard mode={0} mainText={getPrice()} subText="total sold" />
           </div>
           <Link href={`/marketplace/all/${collection.id}`}>
             <a className={styles.link}>

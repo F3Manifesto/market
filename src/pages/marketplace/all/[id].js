@@ -26,20 +26,21 @@ const Auctions = () => {
     const fetchCollectionGroup = async () => {
       setLoading(true);
       let colls = [];
-      const { digitalaxModelCollectionGroup } = await getCollectionGroupById(
+      const { digitalaxF3MCollectionGroup } = await getCollectionGroupById(
         chainId,
-        id
+        id,
+        0
       );
 
       const { digitalaxF3MMarketplaceOffers } =
         await getDigitalaxMarketplaceV3Offers(chainId);
       if (
         !(
-          digitalaxModelCollectionGroup.collections.length === 1 &&
-          digitalaxModelCollectionGroup.collections[0].id === "0"
+          digitalaxF3MCollectionGroup.collections.length === 1 &&
+          digitalaxF3MCollectionGroup.collections[0].id === "0"
         )
       ) {
-        digitalaxModelCollectionGroup.collections.forEach((collection) => {
+        digitalaxF3MCollectionGroup.collections.forEach((collection) => {
           const foundOfferItem = digitalaxF3MMarketplaceOffers.find(
             (offer) => offer.id === collection.id
           );

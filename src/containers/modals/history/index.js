@@ -68,7 +68,8 @@ const History = ({ className, title, type }) => {
             const { digitalaxMarketplaceV3PurchaseHistories } =
               await getDigitalaxMarketplaceV3PurchaseHistories(
                 chainId,
-                tokenIds
+                tokenIds,
+                0
               );
 
             setHistory(

@@ -29,7 +29,11 @@ import { useRouter } from "next/router";
 import api from "@services/api/api.service";
 import ws from "@services/api/ws.service";
 import { convertToEth } from "@helpers/price.helpers";
-import { getDigitalaxGarmentNftV2GlobalStats } from "@services/api/apiService";
+import {
+  getDigitalaxGarmentNftV2GlobalStats,
+  getPayableTokenReport,
+} from "@services/api/apiService";
+import { tokens } from "@utils/paymentTokens";
 
 if (config.SENTRY_DSN) {
   Sentry.init({
@@ -46,13 +50,14 @@ const InitWrapper = (props) => {
   useEffect(() => {
     dispatch(globalActions.initApp());
     const fetchMonaPerEth = async () => {
-      const { digitalaxGarmentNFTV2GlobalStats } =
-        await getDigitalaxGarmentNftV2GlobalStats();
-      dispatch(
-        globalActions.setMonaPerEth(
-          convertToEth(digitalaxGarmentNFTV2GlobalStats[0].monaPerEth)
-        )
+      const { payableTokenReport } = await getPayableTokenReport(
+        chainId,
+        tokens["mona"].address
       );
+      const monaUsdPrice = 1 / (payableTokenReport.payload / 1e18);
+
+      // const { digitalaxGarmentNFTV2GlobalStats } = await getDigitalaxGarmentNftV2GlobalStats();
+      dispatch(globalActions.setMonaPerEth(monaUsdPrice));
     };
 
     const fetchPreData = async () => {

@@ -59,9 +59,7 @@ const BuyNow = ({ className, title, buttonText1, buttonText2 }) => {
         );
 
         const updatedPrice = payableTokenReport.payload / 1e18;
-        setCryptoPrice(
-          ((ethPrice * monaPerEth * priceEth) / updatedPrice).toFixed(4)
-        );
+        setCryptoPrice((priceEth * updatedPrice).toFixed(4));
       };
 
       fetchCryptoPrice();
@@ -159,9 +157,11 @@ const BuyNow = ({ className, title, buttonText1, buttonText2 }) => {
             </p>
             <div className={styles.selectWrapper}>
               <span>
-                {crypto
-                  ? cryptoPrice
-                  : removeZeros(`${parseFloat(priceEth).toFixed(4)}`)}{" "}
+                {crypto !== "mona"
+                  ? crypto === "dai"
+                    ? parseFloat(cryptoPrice).toFixed(1)
+                    : cryptoPrice
+                  : (priceEth / monaPerEth).toFixed(4)}{" "}
                 ${crypto ? crypto : "MONA"}
               </span>
               <Button

@@ -1,5 +1,5 @@
 .wrapper {
-  background: black;
+  background: #ffef62;
 
   .backBtn {
     font-family: Inter;
@@ -12,8 +12,8 @@
     text-align: center;
 
     color: #ffffff;
-    background: #111111;
-    border: 1px solid #3d3b3c;
+    background: #4e4aff;
+    border: 1px solid #4e4aff;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 0.5rem;
@@ -42,7 +42,7 @@
     text-align: center;
     text-transform: uppercase;
 
-    color: #d3d3d3;
+    color: #4e4aff;
 
     @media (max-width: 576px) {
       padding: 1rem;

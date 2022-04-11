@@ -52,7 +52,7 @@ export const getItemsByCollection = (address, continuation = null) =>
 
 export const getOrderBidsByItem = (itemId) =>
   window.raribleSdk.apis.order.getOrderBidsByItem({
-    itemId,
+    itemId: itemId?.includes("POLYGON") ? itemId : `POLYGON:${itemId}`,
     status: "ACTIVE",
   });
 

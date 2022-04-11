@@ -378,16 +378,11 @@ const Product = ({ pageTitle }) => {
   const getPriceElement = () => {
     return (
       <>
-        {(getPrice() / 10 ** 18).toFixed(2)}
+        {(getPrice() / 10 ** 18 / monaPerEth).toFixed(2)}
         {` MONA `}
         <span>
           ($
-          {(
-            (getPrice() / 10 ** 18) *
-            parseFloat(monaPerEth) *
-            exchangeRate
-          ).toFixed(2)}
-          )
+          {(getPrice() / 10 ** 18).toFixed(2)})
         </span>
       </>
     );

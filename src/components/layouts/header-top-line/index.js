@@ -10,15 +10,35 @@ import Button from "@components/buttons/button";
 import styles from "./styles.module.scss";
 import { openConnectMetamaskModal } from "@actions/modals.actions";
 import SmallPhotoWithText from "@components/small-photo-with-text";
+import userActions from "@actions/user.actions";
+import { Router, useRouter } from "next/router";
 
 const HeaderTopLine = ({ buttonText }) => {
   const [isCollapse, setIsCollapse] = useState(false);
   const [isShowMenu, setIsShowMenu] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const router = useRouter();
 
   const handleClick = () => {
     dispatch(openConnectMetamaskModal());
+  };
+
+  if (!user) {
+    dispatch(userActions.checkStorageAuth());
+  }
+
+  const handleLogoutClick = () => {
+    setIsShowMenu(false);
+    dispatch(userActions.logout());
+  };
+  const handleProfileClick = () => {
+    setIsShowMenu(false);
+    router.push("/profile").then(() => window.scrollTo(0, 0));
+  };
+  const handleManageInventory = () => {
+    setIsShowMenu(false);
+    router.push("/inventories").then(() => window.scrollTo(0, 0));
   };
 
   return (

@@ -33,12 +33,9 @@ const ProductInfoCard = ({
   const getPrice = () => {
     return (
       <>
-        {`${(price / 10 ** 18).toFixed(2)} $MONA`}
+        {`${(price / parseFloat(monaPerEth) / 10 ** 18).toFixed(2)} $MONA`}
         <span>
-          {` ($${(
-            (parseFloat(monaPerEth) * exchangeRate * price) /
-            10 ** 18
-          ).toFixed(2)})
+          {` ($${(price / 10 ** 18).toFixed(2)})
         `}
         </span>
       </>

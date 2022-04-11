@@ -8,14 +8,25 @@ import { getAccount } from "@selectors/user.selectors";
 import digitalaxApi from "@services/api/espa/api.service";
 import styles from "./styles.module.scss";
 import SecondaryInfoCard from "@components/secondary-info-card";
+import { getAllDesigners, getChainId } from "@selectors/global.selectors";
+import { getEnabledNetworkByChainId } from "@services/network.service";
+import { getRaribleNftDataFromMeta } from "@utils/rarible";
+import {
+  getActivitiesByUser,
+  getAllItemsByOwner,
+  getItemByIds,
+} from "@services/api/rarible.service";
 
 const ManageInventory = () => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [secondFilter, setSecondFilter] = useState();
   const [loading, setLoading] = useState(true);
   const account = useSelector(getAccount);
+  const chainId = useSelector(getChainId);
+  const network = getEnabledNetworkByChainId(chainId);
   const allDesigners = useSelector(getAllDesigners).toJS();
 
   const getNftData = (products) => {
@@ -108,7 +119,7 @@ const ManageInventory = () => {
 
   useEffect(() => {
     if (allUsers.length && allDesigners.length) fetchNfts();
-  }, [allUsers, allDesigners]);
+  }, [allUsers.length, allDesigners.length]);
 
   useEffect(() => {
     if (secondFilter === "1") {
@@ -130,9 +141,6 @@ const ManageInventory = () => {
     );
   };
 
-  const sortedNfts = sortNfts() || [];
-  const filteredProducts = filterNfts(sortedNfts);
-
   return (
     <div className={styles.wrapper}>
       <HeroSection
@@ -153,7 +161,7 @@ const ManageInventory = () => {
       ) : (
         <Container>
           <div className={styles.productsWrapper}>
-            {filteredProducts.map((product) => {
+            {filterNfts(filteredProducts).map((product) => {
               if (secondFilter === "3") {
                 return (
                   <SecondaryInfoCard

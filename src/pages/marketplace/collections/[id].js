@@ -53,7 +53,7 @@ const Collections = () => {
 
   useEffect(() => {
     const fetchCollectionGroup = async () => {
-      const { digitalaxModelCollectionGroup } = await getCollectionGroupById(
+      const { digitalaxF3MCollectionGroup } = await getCollectionGroupById(
         chainId,
         id
       );
@@ -64,7 +64,7 @@ const Collections = () => {
 
       let colls = [];
 
-      digitalaxModelCollectionGroup.collections.forEach((collection) => {
+      digitalaxF3MCollectionGroup.collections.forEach((collection) => {
         const foundOfferItem = digitalaxF3MMarketplaceOffers.find(
           (offer) => offer.id === collection.id
         );

@@ -40,9 +40,9 @@ const SecondaryInfoCard = ({
     if (price) {
       return (
         <>
-          {`${price} $MONA`}
+          {`${(price / monaPerEth).toFixed(2)} $MONA`}
           <span>
-            {` ($${(parseFloat(monaPerEth) * exchangeRate * price).toFixed(2)})
+            {` ($${price.toFixed(2)})
             `}
           </span>
         </>
@@ -57,9 +57,9 @@ const SecondaryInfoCard = ({
   };
 
   const generateLink = () => {
-    return `/secondary-product/${product?.contract.split(":")[1]}:${
-      product?.tokenId
-    }`;
+    return `https://fashion.digitalax.xyz/secondary-product/${
+      product?.contract.split(":")[1]
+    }:${product?.tokenId}`;
   };
 
   return (
