@@ -19,13 +19,13 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchCollectionGroups = async () => {
       setLoading(true);
-      const { digitalaxF3MCollectionGroup } = await getCollectionGroups(
+      const { digitalaxF3MCollectionGroups } = await getCollectionGroups(
         chainId
       );
 
       const collections = [];
 
-      const sortedCollectionGroups = digitalaxF3MCollectionGroup.sort(
+      const sortedCollectionGroups = digitalaxF3MCollectionGroups.sort(
         (a, b) => {
           if (parseInt(a.id) > parseInt(b.id)) return -1;
           if (parseInt(a.id) === parseInt(b.id)) return 0;
@@ -75,7 +75,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <HeroSection filter setFilter={(e) => setFilter(e)} />
+      <HeroSection filter={''} setFilter={(e) => setFilter(e)} />
 
       <section className={styles.collectionSection}>
         <div className={styles.collectionWrapper}>
