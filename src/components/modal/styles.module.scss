@@ -26,18 +26,19 @@ $fontColor: #FFEF62;
   & p {
     font-family: 'Newyork';
   }
+  
   & span,
   & button,
   & a {
-    color: black !important;
-    font-family: 'Newyork';
+    color: $bgColor !important;
+    font-family: 'Lemon Milk';
+    text-align: left;
   }
 
   & button {
-    background: white;
+    background: $fontColor;
 
     &:not([disabled], .closeIcon):hover {
-      background-color: white !important;
       opacity: 0.8;
     }
   }
