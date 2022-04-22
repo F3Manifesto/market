@@ -285,16 +285,16 @@ class BidActions extends BaseActions {
     };
   }
 
-  buyNow(id, value, isMona) {
+  buyNow(id, value, isMona, crypto) {
     return async (_, getState) => {
       const account = getState().user.get("account");
       const chainId = getState().global.get("chainId");
-      console.log({ account });
+      const paymentTokenContractAddress = tokens[crypto].address;
       const marketplaceContract = await getMarketplaceContractAddressByChainId(
         chainId
       );
       const contract = await getMarketplaceContract(chainId);
-      if (isMona) {
+      if (isMona && crypto !== "matic") {
         const monaContractAddress = await getMonaContractAddressByChainId(
           chainId
         );
@@ -326,7 +326,9 @@ class BidActions extends BaseActions {
       }
       console.log({ contract });
       console.log({ id });
-      const listener = contract.methods.buyOffer(id).send({ from: account });
+      const listener = contract.methods
+        .buyOffer(id, paymentTokenContractAddress, 0, 0)
+        .send({ from: account });
       const promise = new Promise((resolve, reject) => {
         listener.on("error", (error) => reject(error));
         listener.on("confirmation", (transactionHash) =>
