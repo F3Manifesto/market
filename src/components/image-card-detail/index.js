@@ -17,7 +17,7 @@ import { getChainId } from "@selectors/global.selectors";
 import Button from "@components/buttons/button";
 import styles from "./styles.module.scss";
 
-const ImageCard = ({
+const ImageCardDetail = ({
   mainImage,
   mainImageType,
   data,
@@ -308,14 +308,14 @@ const ImageCard = ({
         ) : (
           renderImage()
         )}
-{/* 
+
         <div className={styles.amount}>
           {parseInt(isAuction) !== 1 ? (
             <>1 of 60</>
           ) : (
             <>{`${days}:${hours}:${minutes}`}</>
           )}
-        </div> */}
+        </div>
 
         {/* <div className={styles.buttonWrapper}>
           <PriceCard
@@ -341,4 +341,4 @@ const ImageCard = ({
   );
 };
 
-export default ImageCard;
+export default ImageCardDetail;

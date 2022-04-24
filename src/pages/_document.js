@@ -185,6 +185,11 @@ class MyDocument extends Document {
               font-family: 'NewYork';
               src: url("./fonts/NewYork.otf");
             }
+
+            @font-face {
+              font-family: 'Akira Expanded';
+              src: url("./fonts/Akira Expanded Demo.otf");
+            }
           
           `,
             }}

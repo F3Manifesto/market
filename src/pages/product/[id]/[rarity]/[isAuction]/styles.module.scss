@@ -78,47 +78,46 @@ $nameColor: #4E4AFF;
         .productName {
           width: 100%;
           left: 50%;
-          padding: 2rem 0;
+          padding: 2rem 0 0;
           text-align: center;
-          color: $nameColor;
-          font-size: 30px;
+          text-transform: uppercase;
+          color: $infoTextColor;
+          font-size: 3.5vw;
           line-height: 125%;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-
-          font-family: $productNameFontFamily;
+          font-family: 'Akira Expanded';
           font-style: normal;
-          font-weight: 900;
+          font-weight: 400;
           margin: auto;
 
           @include sm-width {
-            width: 400px;
+            // width: 400px;
           }
 
           @include md-width {
             font-size: 30px;
-            width: 500px;
+            // width: 500px;
           }
 
           @include lg-width {
             font-size: 40px;
-            width: 350px;
+            // width: 350px;
             margin: 0;
           }
 
           @include xl-width {
             font-size: 50px;
-            width: 400px;
+            // width: 400px;
           }
 
           @include xxl-width {
             font-size: 60px;
-            width: 500px;
+            // width: 500px;
           }
         }
 
         .imageCardWrapper {
+          margin-top: -1.5vw;
+          
           .actionsWrapper {
             display: flex;
             flex-direction: row;
@@ -127,25 +126,6 @@ $nameColor: #4E4AFF;
             margin-top: 2rem;
           }
 
-          .buttonWrapper {
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            height: 70px;
-
-            .buttonLabel {
-              font-family: Inter;
-              font-style: normal;
-              font-weight: 800;
-              font-size: 9px;
-              text-transform: uppercase;
-              line-height: 11px;
-              letter-spacing: 0.56em;
-              text-align: center;
-              color: #ffffff;
-            }
-          }
-  
           .viewBidHistory {
             position: relative;
             background: $btnBgColor;
@@ -425,78 +405,6 @@ $nameColor: #4E4AFF;
 
         @media (max-width: 768px) {
           width: 90%;
-        }
-  
-
-        .amount {
-          color: $infoTitleColor;
-          -webkit-text-stroke: 2px $infoTitleBorderColor;
-          font-family: $infoTitleFontFamily;
-          font-size: 40px;
-          font-weight: bold;
-          margin-bottom: 1rem;
-          display: flex;
-          width: 200%;
-
-          .helper {
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            height: 52px;
-            margin-top: -30px;
-            align-items: center;
-            text-shadow: none;
-            color: white;
-
-            .questionMark {
-              border: 1px solid $infoTitleBorderColor;
-              border-radius: 50%;
-              width: 27px;
-              height: 27px;
-              font-size: 23px;
-
-              display: flex;
-              font-family: Inter;
-              font-style: normal;
-              font-weight: 600;
-              justify-content: center;
-              align-items: center;
-              margin-left: 10px;
-            }
-
-            .description {
-              position: absolute;
-              top: 0;
-              left: 2rem;
-              display: none;
-              background: white;
-              border: 2px solid $infoTitleBorderColor;
-              padding: 7px 12px;
-              justify-content: center;
-              align-items: center;
-              font-family: Gilroy;
-              font-weight: 800;
-              font-size: 14px;
-              margin-left: 10px;
-              color: $infoTextColor;
-              -webkit-text-stroke: 0;
-
-              a {
-                text-decoration: underline;
-                color: $infoTextColor;
-              }
-            }
-
-            &:hover {
-              .description {
-                display: block;
-                width: 200px;
-                @include md-width {
-                  width: 300px;
-                }
-              }
-            }
-          }
         }
 
         .additionalImages {

@@ -5,7 +5,7 @@ import cn from "classnames";
 import Head from "next/head";
 import styles from "./styles.module.scss";
 
-import ImageCard from "@components/image-card";
+import ImageCardDetail from "@components/image-card-detail";
 import InfoCard from "@components/info-card";
 import Container from "@components/container";
 import UserList from "@components/user-list";
@@ -423,6 +423,8 @@ const Product = ({ pageTitle }) => {
     }
   };
 
+  console.log('product: ', product)
+
   return (
     <>
       <Head></Head>
@@ -439,11 +441,11 @@ const Product = ({ pageTitle }) => {
               >
                 <div className={styles.productName}>
                   {" "}
-                  i Coined Web3 Fashion{" "}
+                  {product.garment?.name}{" "}
                 </div>{" "}
                 <div />
                 <div className={styles.imageCardWrapper}>
-                  <ImageCard
+                  <ImageCardDetail
                     data={product}
                     price={(getPrice() / 10 ** 18).toFixed(2)}
                     isAuction={!!parseInt(isAuction)}
@@ -457,17 +459,17 @@ const Product = ({ pageTitle }) => {
                     keepRatio={true}
                     showMute={true}
                     showZoom={true}
-                    borderType={"none"}
+                    borderType={"blue"}
                   />
 
                   <div className={styles.actionsWrapper}>
-                    <div className={styles.buttonWrapper}>
+                    {/* <div className={styles.buttonWrapper}>
                       <PriceCard
                         bgColor={"#4E4AFF"}
                         mode={0}
                         mainText={getPriceElement()}
                       />
-                    </div>
+                    </div> */}
                     <button
                       type="button"
                       className={styles.viewBidHistory}
@@ -526,21 +528,6 @@ const Product = ({ pageTitle }) => {
             </div>
             <div className={styles.infoWrapper}>
               <div className={styles.leftSection}>
-                <div className={styles.amount}>
-                  {parseInt(isAuction) !== 1 ? (
-                    <>1 of 60</>
-                  ) : (
-                    <>{`${days}:${hours}:${minutes}`}</>
-                  )}
-                  <div className={styles.helper}>
-                    <span className={styles.questionMark}>?</span>
-                    <span className={styles.description}>
-                      You can also stake this NFT for yield + get the original
-                      source file.
-                    </span>
-                  </div>
-                </div>
-
                 <InfoCard
                   borderColor="transparent"
                   boxShadow2=""
@@ -648,7 +635,7 @@ const Product = ({ pageTitle }) => {
                       href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
                       target="_blank"
                     >
-                      <ImageCard
+                      <ImageCardDetail
                         showButton={false}
                         imgUrl={product?.model?.image}
                         borderType="black"
@@ -710,7 +697,7 @@ const Product = ({ pageTitle }) => {
                             href={`https://models.digitalax.xyz/models/${item.name}`}
                             target="_blank"
                           >
-                            <ImageCard
+                            <ImageCardDetail
                               showButton={false}
                               imgUrl={item.image}
                               borderType="black"
@@ -747,7 +734,7 @@ const Product = ({ pageTitle }) => {
                       href={`https://designers.digitalax.xyz/designers/${product?.designer?.name}`}
                       target="_blank"
                     >
-                      <ImageCard
+                      <ImageCardDetail
                         showButton={false}
                         imgUrl={product?.designer?.image}
                         borderType="black"
@@ -819,7 +806,7 @@ const Product = ({ pageTitle }) => {
                             href={`https://designers.digitalax.xyz/designers/${item.name}`}
                             target="_blank"
                           >
-                            <ImageCard
+                            <ImageCardDetail
                               showButton={false}
                               imgUrl={item.image}
                               borderType="black"
