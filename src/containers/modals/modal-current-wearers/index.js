@@ -18,7 +18,7 @@ import {
   getDigitalaxNFTStakersByGarments,
   getGuildWhitelistedNFTStakersByGarments,
 } from "@services/api/apiService";
-import digitalaxApi from "@services/api/espa/api.service";
+
 import config from "@utils/config";
 const POLYGON_CHAINID = 0x89;
 

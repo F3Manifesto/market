@@ -28,22 +28,22 @@ $nameColor: #4E4AFF;
     }
 
     .body {
-      padding: 7.5rem 0rem;
+      padding: 7.5rem 0rem 0 0;
 
       @include xs-width {
-        padding: 7.5rem 1rem;
+        padding: 7.5rem 1rem 0 0;
       }
 
       @include md-width {
-        padding: 7.5rem 0rem;
+        padding: 7.5rem 0rem 0 0;
       }
 
       @include xl-width {
-        padding: 7.5rem 0rem;
+        padding: 7.5rem 0rem 0 0;
       }
 
       @include xxl-width {
-        padding: 7.5rem 0rem;
+        padding: 7.5rem 0rem 0 0;
       }
 
       .mainBodySameWidth {
@@ -82,7 +82,7 @@ $nameColor: #4E4AFF;
           text-align: center;
           text-transform: uppercase;
           color: $infoTextColor;
-          font-size: 3.5vw;
+          font-size: 30px;
           line-height: 125%;
           font-family: 'Akira Expanded';
           font-style: normal;
@@ -90,6 +90,7 @@ $nameColor: #4E4AFF;
           margin: auto;
 
           @include sm-width {
+            font-size: 30px;
             // width: 400px;
           }
 
@@ -117,37 +118,6 @@ $nameColor: #4E4AFF;
 
         .imageCardWrapper {
           margin-top: -1.5vw;
-          
-          .actionsWrapper {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            margin-top: 2rem;
-          }
-
-          .viewBidHistory {
-            position: relative;
-            background: $btnBgColor;
-            color: white;
-            font-size: 18px;
-            padding: 0.75rem 1rem;
-            margin-left: 20px;
-            
-            text-transform: uppercase;
-            font-weight: bold;
-            font-family: $infoTextFontFamily;
-            border: none;
-            align-self: center;
-            height: 70px;
-
-            @include transition();
-
-            &:hover {
-              @include scale();
-              @include transition();
-            }
-          }
 
           .lookTitle {
             font-family: Gilroy;
@@ -356,9 +326,12 @@ $nameColor: #4E4AFF;
 
     .infoWrapper {
       display: flex;
+      flex-direction: column;
       margin-top: 10px;
+      margin-bottom: 80px;
       width: 100%;
       justify-content: center;
+      align-items: center;
 
       @media (max-width: 768px) {
         margin-top: 3rem;
@@ -422,9 +395,62 @@ $nameColor: #4E4AFF;
           }
         }
       }
+
+      .actionsWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+  
+        .wearersLabel {
+          text-transform: uppercase;
+          font-family: Gilroy;
+          font-weight: 800;
+          font-size: 10px;
+          line-height: 18px;
+          letter-spacing: 0.12em;
+          color: $infoTitleBorderColor;
+          margin-left: 10px;
+          margin-bottom: 2px;
+        }
+  
+        .userList {
+          margin-bottom: 40px;
+          margin-left: 10px;
+        }
+
+
+        .viewBidHistory {
+          position: relative;
+          background: $btnBgColor;
+          color: white;
+          font-size: 18px;
+          padding: 0.7rem 1rem;
+          border-radius: 14px;
+          margin-left: 20px;
+          
+          text-transform: uppercase;
+          font-weight: bold;
+          font-family: $infoTextFontFamily;
+          border: none;
+          align-self: center;
+
+          @include transition();
+
+          &:hover {
+            @include scale();
+            @include transition();
+          }
+        }
+      }
     }
 
+    
+
     .infoCard {
+      margin-top: 20px;
       color: white;
       font-family: $infoTextFontFamily;
       font-size: 22px;
@@ -445,13 +471,14 @@ $nameColor: #4E4AFF;
       }
 
       .skinName {
-        margin-bottom: 0.5rem;
+        margin-bottom: 2rem;
 
         .text {
           font-family: $infoTextFontFamily;
           font-style: normal;
           font-weight: bold;
           color: $infoTextColor;
+          text-align: center;
         }
       }
 
@@ -529,23 +556,6 @@ $nameColor: #4E4AFF;
           flex-direction: column;
           justify-content: center;
 
-          .wearersLabel {
-            text-transform: uppercase;
-            font-family: Gilroy;
-            font-weight: 800;
-            font-size: 10px;
-            line-height: 18px;
-            letter-spacing: 0.12em;
-            color: $infoTitleBorderColor;
-            margin-left: 10px;
-            margin-bottom: 2px;
-          }
-
-          .userList {
-            margin-bottom: 40px;
-            margin-left: 10px;
-          }
-
           a {
             margin-top: 20px;
 
@@ -610,6 +620,8 @@ $nameColor: #4E4AFF;
         }
       }
     }
+
+
   }
 
   .margin50 {

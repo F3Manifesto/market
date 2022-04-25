@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRarityId, reviseUrl } from "@utils/helpers";
 import { getChainId } from "@selectors/global.selectors";
 import Button from "@components/buttons/button";
+import PriceCard from "@components/price-card";
 import styles from "./styles.module.scss";
 
 const ImageCardDetail = ({
@@ -38,6 +39,7 @@ const ImageCardDetail = ({
   isAuction = false,
   v1 = false,
   borderType = "blue",
+  priceMainText = ''
 }) => {
   const router = useRouter();
   const account = useSelector(getAccount);
@@ -317,13 +319,20 @@ const ImageCardDetail = ({
           )}
         </div>
 
-        {/* <div className={styles.buttonWrapper}>
-          <PriceCard
-            bgColor={"#4E4AFF"}
-            mode={0}
-            mainText={getPriceElement()}
-          />
-        </div> */}
+        <div className={styles.buttonWrapper}>
+          {
+            isAuction ? (
+              <>
+                <PriceCard mainText={getTime()} subText={"TIME LEFT"} />
+                <PriceCard mainText={getPrice()} subText={"HIGHEST BID"} />
+              </>
+            ) : (  
+              <PriceCard
+                mainText={priceMainText}
+              />
+            )
+          }
+        </div>
 
         {showButton && (
           <div className={styles.buyNow}>

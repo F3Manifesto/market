@@ -461,25 +461,8 @@ const Product = ({ pageTitle }) => {
                     showMute={true}
                     showZoom={true}
                     borderType={"blue"}
+                    priceMainText={getPriceElement()}
                   />
-
-                  <div className={styles.actionsWrapper}>
-                    {/* <div className={styles.buttonWrapper}>
-                      <PriceCard
-                        bgColor={"#4E4AFF"}
-                        mode={0}
-                        mainText={getPriceElement()}
-                      />
-                    </div> */}
-                    <button
-                      type="button"
-                      className={styles.viewBidHistory}
-                      onClick={onHistory}
-                    >
-                      view {parseInt(isAuction) === 1 ? "bid" : "purchase"}{" "}
-                      history
-                    </button>
-                  </div>
 
                   {!!sourceType.length && (
                     <div className={styles.rightSection}>
@@ -621,7 +604,43 @@ const Product = ({ pageTitle }) => {
                   </>
                 )}
               </div>
+              <div className={styles.actionsWrapper}>
+                {(owners.length) ? (
+                  <div className={styles.wearersLabel}>
+                    current wearer/S
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {owners.length ? (
+                  <UserList
+                    className={styles.userList}
+                    userLimit={7}
+                    users={owners}
+                    onClickSeeAll={onClickSeeAllWearers}
+                  />
+                ) : (
+                  <></>
+                )}
+                {/* <div className={styles.buttonWrapper}>
+                  <PriceCard
+                    bgColor={"#4E4AFF"}
+                    mode={0}
+                    mainText={getPriceElement()}
+                  />
+                </div> */}
+                <button
+                  type="button"
+                  className={styles.viewBidHistory}
+                  onClick={onHistory}
+                >
+                  view {parseInt(isAuction) === 1 ? "bid" : "purchase"}{" "}
+                  history
+                </button>
+              </div>
             </div>
+
+
           </Container>
         </section>
         <BannerBar className={styles.homeHeroBar} type={2} />
@@ -636,7 +655,7 @@ const Product = ({ pageTitle }) => {
 
 
 
-        {product?.model ? (
+        {/* {product?.model ? (
           <>
             <section className={styles.designerSection}>
               <div className={styles.leftBar} />
@@ -653,39 +672,6 @@ const Product = ({ pageTitle }) => {
                         borderType="black"
                       />
                     </a>
-                    <div className={styles.infoWrapper}>
-                      {owners.length ? (
-                        <div className={styles.wearersLabel}>
-                          current wearer/S
-                        </div>
-                      ) : (
-                        <></>
-                      )}
-                      {owners.length ? (
-                        <UserList
-                          className={styles.userList}
-                          userLimit={7}
-                          users={owners}
-                          onClickSeeAll={onClickSeeAllWearers}
-                        />
-                      ) : (
-                        <></>
-                      )}
-                      <InfoCard boxShadow2="" mainColor="#4E4AFF">
-                        <a
-                          href={`https://models.digitalax.xyz/models/${product?.model?.name}`}
-                          target="_blank"
-                        >
-                          <div className={styles.name}>
-                            {" "}
-                            {product?.model?.name}{" "}
-                          </div>
-                        </a>
-                        <div className={styles.description}>
-                          {product?.model?.description}
-                        </div>
-                      </InfoCard>
-                    </div>
                   </div>
                 </div>
               </Container>
@@ -872,7 +858,7 @@ const Product = ({ pageTitle }) => {
                 );
               })}
           </>
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );
