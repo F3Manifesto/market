@@ -117,7 +117,7 @@ const MyApp = ({ Component, pageProps, store, err }) => {
         <link
           rel="icon"
           type="image/png"
-          href="/images/icons/favicon-digitalax.ico"
+          href="/images/icons/favicon.ico"
         />
         <script src="https://cdn.rawgit.com/progers/pathseg/master/pathseg.js"></script>
       </Head>
