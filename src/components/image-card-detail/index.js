@@ -30,6 +30,7 @@ const ImageCardDetail = ({
   showZoom = false,
   keepRatio = false,
   imgUrl = null,
+  offer={},
   offerCount = null,
   reservePrice = null,
   price,
@@ -107,6 +108,7 @@ const ImageCardDetail = ({
   };
 
   const onClickZoomIn = () => {
+    console.log('here..........')
     setZoomMedia(false);
   };
 
@@ -160,7 +162,7 @@ const ImageCardDetail = ({
               zoomMedia ? styles.zoomWrapper : styles.mediaWrapper,
               keepRatio ? styles.keepRatio : "",
             ].join(" ")}
-            onClick={() => onClickZoomIn()}
+            onClick={() => zoomMedia ? onClickZoomIn() : onClickZoomOut()}
           >
             {
               // Video
@@ -219,7 +221,7 @@ const ImageCardDetail = ({
             )}
           </div>
         ) : null}
-        {showZoom && (
+        {/* {showZoom && (
           <Button
             className={[
               styles.zoomButton,
@@ -229,7 +231,7 @@ const ImageCardDetail = ({
           >
             <img src="/images/zoom_btn.png" />
           </Button>
-        )}
+        )} */}
         {hasAudio &&
           (mainImageType === 1 || defaultMainImageType === 1) &&
           showMute && (
@@ -283,7 +285,7 @@ const ImageCardDetail = ({
             </a>
           </Link>
         ) : null}
-        {showDesigner ? (
+        {/* {showDesigner ? (
           <a
             href={`https://models.digitalax.xyz/models/${data?.model?.name}`}
             target="_blank"
@@ -294,7 +296,7 @@ const ImageCardDetail = ({
               <div className={styles.name}>{data?.model?.name} </div>
             </div>
           </a>
-        ) : null}
+        ) : null} */}
         {withLink ? (
           <Link
             href={
@@ -313,7 +315,9 @@ const ImageCardDetail = ({
 
         <div className={styles.amount}>
           {parseInt(isAuction) !== 1 ? (
-            <>1 of 60</>
+            <>
+              {offer?.amountSold} of {offer?.totalAmount}
+            </>
           ) : (
             <>{`${days}:${hours}:${minutes}`}</>
           )}

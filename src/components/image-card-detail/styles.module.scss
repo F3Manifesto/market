@@ -66,9 +66,9 @@ $borderColor: #4E4AFF;
 
   .bodyWrapper {
     position: relative;
-    background-color: $borderColor;
+    // background-color: $borderColor;
     // padding: 1rem;
-    border-radius: 2rem;
+    // border-radius: 2rem;
     height: 300px;
     // background: black;
     // box-shadow: inset 0px 0px 30px 20px rgba(197, 32, 129, 0.5),
@@ -76,7 +76,7 @@ $borderColor: #4E4AFF;
 
     &.blue {
       z-index: 100;
-      border: 3px solid $borderColor;
+      // border: 3px solid $borderColor;
     }
 
     &.none {
@@ -203,6 +203,7 @@ $borderColor: #4E4AFF;
       height: 100%;
       border-radius: 2rem;
       overflow: hidden;
+      cursor: pointer;
       // transition: all 0.3s;
       video,
       img {
@@ -331,6 +332,15 @@ $borderColor: #4E4AFF;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    button {
+      padding: 10px 25px;
+
+      div {
+        font-size: 1rem;
+
+      }
+    }
   }
 
   @include sm-width {

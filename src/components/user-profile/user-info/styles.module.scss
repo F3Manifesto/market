@@ -1,4 +1,5 @@
 $blue: #4E4AFF;
+$yellow: #ffef62;
 
 .wrapper {
   display: flex;
@@ -8,7 +9,7 @@ $blue: #4E4AFF;
   .title {
     color: $blue;
     text-align: center;
-    font-family: Bebas Neue;
+    font-family: 'Newyork';
     font-weight: 800;
     font-size: 50px;
     line-height: 53px;
@@ -135,15 +136,17 @@ $blue: #4E4AFF;
       .editProfileButton {
         margin-top: 40px;
         background: $blue;
-        color: white;
-        font-family: Bebas Neue;
+        color: $yellow;
+        font-family: 'Inter';
 
-        font-weight: bold;
+        font-family: Inter;
+        font-weight: 700;
         font-size: 15px;
         line-height: 18px;
         text-align: center;
-        letter-spacing: 0.12em;
+        letter-spacing: .12em;
         text-transform: uppercase;
+
         padding: 10px 15px;
         width: fit-content;
       }
@@ -167,10 +170,10 @@ $blue: #4E4AFF;
 
     .userNameHere {
       background: $blue;
-      color: white;
-      font-family: Bebas Neue;
+      color: $yellow;
+      font-family: 'Inter';
 
-      font-weight: bold;
+      font-weight: 700;
       font-size: 15px;
       line-height: 18px;
       text-align: center;
@@ -184,7 +187,7 @@ $blue: #4E4AFF;
   .bottomLine {
     margin-top: 50px;
     width: 80%;
-    border: 2px solid #e6bf00;
-    background-color: #e6bf00;
+    border: 2px solid $blue;
+    background-color: $blue;
   }
 }

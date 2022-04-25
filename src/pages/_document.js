@@ -190,6 +190,12 @@ class MyDocument extends Document {
               font-family: 'Akira Expanded';
               src: url("./fonts/Akira Expanded Demo.otf");
             }
+
+            @font-face {
+              font-family: 'Cypher';
+              font-weight: 400;
+              src: url("./fonts/Cypher-Regular.ttf");
+            }
           
           `,
             }}

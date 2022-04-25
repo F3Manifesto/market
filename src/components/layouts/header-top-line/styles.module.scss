@@ -3,6 +3,8 @@
 @import '../../../assets/scss/helpers/helpers.scss';
 @import "../../../assets/scss/base/responsive.scss";
 
+$yellow: #FFEF62;
+
 .headerWrapper {
   @include wrapper();
   display: flex;
@@ -10,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 8px;
+  padding: 8px;
   background: #4e4aff;
   z-index: 115;
 
@@ -24,17 +26,17 @@
 
   .logo {
     cursor: pointer;
-    padding-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    // padding-left: 10px;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
   
     @media screen and (max-width: 1000px) {
-      width: 70px;
+      // width: 70px;
     }
   
     @media screen and (max-width: 768px) {
-      padding: 0px 5px;
-      width: 50px;
+      // padding: 0px 5px;
+      // width: 50px;
     }
   }
 
@@ -94,7 +96,8 @@
         padding-top: 10px;
         white-space: nowrap;
         text-decoration-line: underline;
-        color: #FFFFFF;
+        color: $yellow;
+        font-weight: 400;
   
         &:hover {
           opacity: 0.8;

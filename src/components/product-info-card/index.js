@@ -97,6 +97,7 @@ const ProductInfoCard = ({
                 >
                   <a>
                     <NewButton
+                      // className={styles.buyNowButton}
                       disable={sold}
                       text={sold ? "Sold" : "Place a Bid"}
                     />
@@ -114,6 +115,7 @@ const ProductInfoCard = ({
               >
                 <a>
                   <NewButton
+                    // className={styles.buyNowButton}
                     disable={sold}
                     text={sold ? "Sold out" : "Buy Now"}
                   />

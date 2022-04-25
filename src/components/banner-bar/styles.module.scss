@@ -4,14 +4,6 @@ $bgColor: #4E4AFF;
 $textColor: white;
 $fontFamily: 'LEMON MILK';
 
-@keyframes scrolling {
-  0% {
-    transform: translateX(-1342px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
 
 .wrapper {
   width: 100%;
@@ -47,17 +39,12 @@ $fontFamily: 'LEMON MILK';
       font-size: 20px;
       line-height: 148%;
       text-align: center;
-      text-decoration: underline;
-
       color: $textColor !important;
 
       transition: all 0.2s ease-out;
       &:hover {
         transition: all 0.2s ease-out;
-        text-shadow: 0px 5px 10px #ffffff;
-        transform: translate3d(0px, -1px, 10px);
-        -webkit-text-stroke: 1px solid black;
-        // transform: translateY(10px);
+        text-decoration: underline;
       }
     }
 

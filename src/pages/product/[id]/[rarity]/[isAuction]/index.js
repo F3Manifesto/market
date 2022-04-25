@@ -29,7 +29,7 @@ import {
 } from "@selectors/global.selectors";
 import { getAccount } from "@selectors/user.selectors";
 import { getUser } from "@helpers/user.helpers";
-import { reviseUrl } from "@utils/helpers";
+import { getRarity, reviseUrl } from "@utils/helpers";
 import config from "@utils/config";
 import {
   openBespokeModal,
@@ -466,6 +466,7 @@ const Product = ({ pageTitle }) => {
                     data={product}
                     price={(getPrice() / 10 ** 18).toFixed(2)}
                     isAuction={!!parseInt(isAuction)}
+                    offer={offer}
                     disable={
                       (parseInt(isAuction) === 1 &&
                         Date.now() > product.endTime * 1000) ||
@@ -535,21 +536,15 @@ const Product = ({ pageTitle }) => {
                 >
                   <div className={styles.infoCard}>
                     <div className={styles.skinName}>
-                      <div className={styles.text}> D.O.E. COMMON </div>
+                      <div className={styles.text}>
+                        {" "}
+                        {getRarity(parseInt(rarity))}{" "}
+                      </div>
                     </div>
                     <div className={styles.description}>
-                      If the coined fashion is not good enough then did it even
-                      exist. If the coined fashion is not good enough then did
-                      it even exist. If the coined fashion is not good enough
-                      then did it even exist. If the coined fashion is not good
-                      enough then did it even exist.
-                      <br />
-                      <br />
-                      If the coined fashion is not good enough then did it even
-                      exist. If the coined fashion is not good enough then did
-                      it even exist. If the coined fashion is not good enough
-                      then did it even exist. If the coined fashion is not good
-                      enough then did it even exist.
+                    {
+                      product?.garment?.description  
+                    }
                     </div>
                   </div>
                 </InfoCard>
