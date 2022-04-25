@@ -1,9 +1,11 @@
 @import '../../../assets/scss/helpers/grid.scss';
 
+$blue: #4E4AFF;
+
 .wrapper {
   margin: auto;
   position: relative;
-  background: #0A0A0A;
+  background: #FFEF62;
   padding: 150px 1rem 100px;
   min-height: 800px;
 
@@ -16,8 +18,8 @@
     width: 154px;
     height: 41px;
     
-    background: #FFFFFF;
-    color: #000000;
+    background: $blue;
+    color: white;
     border: none;    
     margin-left: 10%;
 
