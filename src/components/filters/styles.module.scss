@@ -214,6 +214,7 @@ $inputColor: #4E4AFF;
       border: 3px solid $borderColor;
       padding: 7px 12px;
       width: 190px;
+      text-transform: uppercase;
 
       justify-content: center;
       align-items: center;
@@ -223,7 +224,7 @@ $inputColor: #4E4AFF;
       line-height: 20px;
 
       left: 100px;
-      height: 58px;
+      height: 40px;
       color: $labelColor;
 
       a {

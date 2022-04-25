@@ -1,3 +1,5 @@
+$yellow: #FFEF62;
+
 .footer {
   margin-top: -24px;
   .footerCaption {
@@ -21,6 +23,7 @@
   }
 
   p {
+    color: $yellow;
     margin-bottom: 1rem;
   }
 }
@@ -45,7 +48,7 @@
 
   .active {
     img {
-      border-color: #ff2095 !important;
+      border-color: $yellow !important;
     }
   }
 

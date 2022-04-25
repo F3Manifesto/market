@@ -1,3 +1,4 @@
+$yellow: #FFEF62;
 .footer {
   margin-top: -24px;
   .footerCaption {
@@ -17,6 +18,11 @@
     a {
       text-decoration: underline;
       cursor: pointer;
+    }
+
+    span,
+    a {
+      color: $yellow !important;
     }
   }
 }
@@ -40,6 +46,7 @@
   span {
     min-width: 200px;
     margin-right: 40px;
+    color: $yellow !important;
   }
 }
 
@@ -50,14 +57,14 @@
 .button {
   min-width: 170px;
   height: 44px;
-  background: #111111;
+  background: $yellow;
   border: 0.7px solid #ffffff;
   box-sizing: border-box;
   border-radius: 5px;
 
   &:not([disabled]):hover {
     opacity: 0.8;
-    background: #111111 !important;
+    // background: white !important;
   }
 
   &:disabled {

@@ -39,7 +39,7 @@ const Filters = ({
             <div className={styles.helper}>
               <span className={styles.questionMark}>?</span>
               <span className={styles.description}>
-                FILTER BY DESIGNER, OUTFIT NAME OR COLLECTOR ID
+                Filter by Item Name
               </span>
             </div>
           </div>
