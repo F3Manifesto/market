@@ -11,6 +11,7 @@ import Container from "@components/container";
 import UserList from "@components/user-list";
 import BannerBar from "@components/banner-bar";
 import PriceCard from "@components/price-card";
+import SlidingPanels from "@components/SlidingPanels";
 import ProductPageLoader from "@components/product-page-loader";
 
 import {
@@ -624,6 +625,17 @@ const Product = ({ pageTitle }) => {
           </Container>
         </section>
         <BannerBar className={styles.homeHeroBar} type={2} />
+        <SlidingPanels openPreview={() => {}} />
+
+
+
+
+
+
+
+
+
+
         {product?.model ? (
           <>
             <section className={styles.designerSection}>

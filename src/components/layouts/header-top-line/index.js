@@ -132,12 +132,12 @@ const HeaderTopLine = ({ buttonText }) => {
                     >
                       Profile
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => handleManageInventory()}
                       className={styles.menuButton}
                     >
                       Manage Inventory
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => handleLogoutClick()}
                       className={styles.menuButton}
