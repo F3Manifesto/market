@@ -1,0 +1,22 @@
+.modalWrapper {
+  background: transparent !important;
+  max-width: 95% !important;
+  .contentWrapper {
+    display: flex;
+    justify-content: center;
+    .itemLargeImg {
+      width: 100vw;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    .itemLargeImgZoom {
+      border: none;
+    }
+    
+    .itemFitContent {
+      width: fit-content;
+    }
+  }
+  
+}

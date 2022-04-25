@@ -31,7 +31,7 @@ const SlidingPanels = ({ openPreview }) => {
       >
         {imageArray.map((item, index) => {
           return (
-            <div key={index} onClick={() => onClickZoomOut(item)}>
+            <div className={styles.panelItem} key={index} onClick={() => onClickZoomOut(item)}>
               <img src={item} />
             </div>
           );

@@ -22,7 +22,6 @@ import getOrCreateStore from "../lib/with-redux-store";
 
 import config from "../utils/config";
 import "../assets/scss/global.scss";
-import Particles from "@components/particles";
 import LoadingOverlay from "react-loading-overlay";
 import digitalaxApi from "@services/api/espa/api.service";
 import { useRouter } from "next/router";

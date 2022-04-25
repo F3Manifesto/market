@@ -6,10 +6,15 @@ import styles from './styles.module.scss'
 
 
 const Modal = ({
-  className, title, withCloseIcon, text, onClose, children, titleStyle,
+  wrapperClassName,
+  className, title, withCloseIcon, 
+  text, onClose, children, titleStyle,
 }) => (
-  <div className={styles.wrapper}>
-    <div className={cn(styles.modal, className)}>
+  <div className={cn(styles.wrapper, !withCloseIcon && styles.wrapperClassName)}>
+    <div
+      className={cn(styles.modal, className)}
+      onClick={!withCloseIcon && onClose}
+    >
       {(title || withCloseIcon) && (
         <div className={styles.modalHeader}>
           {title && <p className={cn(styles.title, titleStyle)}>{title}</p>}

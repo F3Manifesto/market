@@ -14,6 +14,11 @@ $fontColor: #FFEF62;
   z-index: 300;
 }
 
+
+.wrapperClassName {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .modal {
   background-color: $bgColor;
   padding: 48px;

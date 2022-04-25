@@ -68,6 +68,11 @@ export const openPreviewMaterialModal = (params) => (dispatch) =>
 export const closePreviewMaterialModal = () => (dispatch) =>
   dispatch(closeModal("isShowPreviewMaterial", "addScroll"));
 
+export const openPreviewImage = (params) => (dispatch) =>
+  dispatch(openModal("isPreviewImage", "hideScroll", params));
+export const closePreviewImage = () => (dispatch) =>
+  dispatch(closeModal("isPreviewImage", "addScroll"));
+
 export const openRaiseModal = (params) => (dispatch) =>
   dispatch(openModal("isShowModalRaiseBid", "hideScroll", params));
 export const closeRaiseModal = () => (dispatch) =>

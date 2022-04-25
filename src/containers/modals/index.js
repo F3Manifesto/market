@@ -7,6 +7,7 @@ import ModalWithdrawBid from "@containers/modals/modal-withdraw-bid";
 import ModalSignup from "@containers/modals/modal-sign-up";
 import BuyNow from "@containers/modals/buy-now";
 import PreviewMaterial from "@containers/modals/preview-material";
+import PreviewImage from "@containers/modals/preview-image";
 import ModalESPAReady from "./modal-espa-ready";
 import ModalConnectMatic from "./modal-connect-matic";
 import BuyNowCooldown from "./modal-cooldown";
@@ -35,6 +36,7 @@ const Modals = () => {
     isShowModalConnectMatic,
     isShowBuyNow,
     isShowPreviewMaterial,
+    isPreviewImage,
     isShowModalESPAReady,
     isLimit,
     isCoolDown,
@@ -63,6 +65,7 @@ const Modals = () => {
       {isShowModalConnectMatic && <ModalConnectMatic />}
       {isShowBuyNow && <BuyNow />}
       {isShowPreviewMaterial && <PreviewMaterial />}
+      {isPreviewImage && <PreviewImage />}
       {isCoolDown && <BuyNowCooldown />}
       {isLimit && <BuyNowLimit />}
       {isBidHistory && <History type={1} />}

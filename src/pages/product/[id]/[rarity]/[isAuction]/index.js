@@ -10,7 +10,6 @@ import InfoCard from "@components/info-card";
 import Container from "@components/container";
 import UserList from "@components/user-list";
 import BannerBar from "@components/banner-bar";
-import PriceCard from "@components/price-card";
 import SlidingPanels from "@components/SlidingPanels";
 import ProductPageLoader from "@components/product-page-loader";
 
@@ -37,6 +36,7 @@ import {
   openBidHistoryModal,
   openPurchaseHistoryModal,
   openCurrentWearersModal,
+  openPreviewImage,
 } from "@actions/modals.actions";
 
 import globalActions from "@actions/global.actions";
@@ -93,6 +93,7 @@ const Product = ({ pageTitle }) => {
   const exchangeRate = useSelector(getExchangeRateETH);
   const [owners, setOwners] = useState([]);
   const [sourceType, setSourceType] = useState([]);
+  const [sourceFile, setSourceFile] = useState("");
   const [mainImage, setMainImage] = useState("");
   const [mainImageType, setMainImageType] = useState(0);
 
@@ -320,6 +321,17 @@ const Product = ({ pageTitle }) => {
 
       fetchSourceType();
     }
+
+    const tokenUri =
+      product?.garment?.tokenUri;
+
+      tokenUri &&
+        fetch(tokenUri)
+          .then((response) => response.json())
+          .then((jsonData) => setSourceFile(jsonData["Source_File"]))
+          .catch((error) => {
+            console.error(error);
+          });
   }, [product]);
 
   const getPrice = () => {
@@ -388,6 +400,10 @@ const Product = ({ pageTitle }) => {
       </>
     );
   };
+
+  const openPreview = (url) => {
+    dispatch(openPreviewImage({ tokenImage: url }))
+  }
 
   useEffect(() => {
     setMainImage(
@@ -622,13 +638,6 @@ const Product = ({ pageTitle }) => {
                 ) : (
                   <></>
                 )}
-                {/* <div className={styles.buttonWrapper}>
-                  <PriceCard
-                    bgColor={"#4E4AFF"}
-                    mode={0}
-                    mainText={getPriceElement()}
-                  />
-                </div> */}
                 <button
                   type="button"
                   className={styles.viewBidHistory}
@@ -643,15 +652,8 @@ const Product = ({ pageTitle }) => {
 
           </Container>
         </section>
-        <BannerBar className={styles.homeHeroBar} type={2} />
-        <SlidingPanels openPreview={() => {}} />
-
-
-
-
-
-
-
+        <BannerBar className={styles.homeHeroBar} sourceFile={sourceFile}/>
+        <SlidingPanels openPreview={openPreview} />
 
 
 
