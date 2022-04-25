@@ -2,6 +2,7 @@
 
 $yellow: #ffef62;
 $blue: #4E4AFF;
+$fontFamily: 'Lemon Milk';
 
 .container {
   margin: auto;
@@ -18,10 +19,20 @@ $blue: #4E4AFF;
 
 .cardWrapper {
   width: -webkit-fill-available;
+  max-width: 750px;
 
   @include sm-width {
     margin: auto;
     width: fit-content;
+  }
+
+  h1 {
+    font-size: 14px;
+    color: $yellow;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: $fontFamily;
+    width: 100%;
   }
 }
 

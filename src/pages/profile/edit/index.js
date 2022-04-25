@@ -106,6 +106,9 @@ const EditProfile = ({ history }) => {
           // borderColor={"#fff"}
           bodyClass={styles.padding5}
         >
+          <h1>
+            This is your global web3 fashion profile, interoperable across all DIGITALAX protocol stack integrated realms
+          </h1>
           <div className={styles.profileWrapper}>
             <div className={styles.avatarWrapper}>
               <img
