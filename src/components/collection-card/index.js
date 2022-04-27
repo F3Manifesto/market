@@ -7,6 +7,18 @@ import styles from "./styles.module.scss";
 const CollectionCard = ({ collection }) => {
   const collectionNames = [
     "The Interstitials",
+    "",
+    "Web3 Fashion Originals",
+    "The CC0 Arcade",
+    "Dezinformatsiya",
+    "Self Sovereign Essentials",
+    "Hyperutility Packs for Practical Fashion Revolutionairies",
+    "Zk Cypherpunk Zeitgeist",
+    "Zero's Closet",
+    "Edit's Closet",
+    "Znarky's Poignant Guide to NFTs",
+    "The Navigator Chronicles",
+    "My Pocket Empire",
   ];
 
   return (
