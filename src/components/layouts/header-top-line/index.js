@@ -68,21 +68,29 @@ const HeaderTopLine = ({ buttonText }) => {
             DOCUMENTATION
           </a>
           <a
-            href="https://web3fashionmanifesto.f3manifesto.xyz/manifesto/1/"
+            href="https://web3cc0openlibrary.f3manifesto.xyz/"
             className={styles.link}
             target="_blank"
             rel="noreferrer"
           >
-            Web3 Fashion manifesto
+            Web3 CC0 Open Library
           </a>
 
           <a
-            href="https://mirror.xyz/f3manifesto.eth"
+            href="https://market.f3manifesto.xyz/"
             className={styles.link}
             target="_blank"
             rel="noreferrer"
           >
-            Sub-thread weekly
+            IRL Web3 Fashion Market
+          </a>
+          <a
+            href="https://web3fashionmanifesto.f3manifesto.xyz/"
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Web3 Fashion Manifesto
           </a>
           <a
             href="https://themanifest.f3manifesto.xyz/"
@@ -90,15 +98,7 @@ const HeaderTopLine = ({ buttonText }) => {
             target="_blank"
             rel="noreferrer"
           >
-            young letters to a vc
-          </a>
-          <a
-            href="https://web3cc0openlibrary.f3manifesto.xyz/"
-            className={styles.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Matic-Eth Bridge
+            The Manifest Gallery
           </a>
 
           <div className={styles.signBtn}>
