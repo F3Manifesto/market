@@ -30,7 +30,7 @@ const ImageCardDetail = ({
   showZoom = false,
   keepRatio = false,
   imgUrl = null,
-  offer={},
+  offer = {},
   offerCount = null,
   reservePrice = null,
   price,
@@ -40,7 +40,7 @@ const ImageCardDetail = ({
   isAuction = false,
   v1 = false,
   borderType = "blue",
-  priceMainText = ''
+  priceMainText = "",
 }) => {
   const router = useRouter();
   const account = useSelector(getAccount);
@@ -108,7 +108,7 @@ const ImageCardDetail = ({
   };
 
   const onClickZoomIn = () => {
-    console.log('here..........')
+    console.log("here..........");
     setZoomMedia(false);
   };
 
@@ -162,7 +162,7 @@ const ImageCardDetail = ({
               zoomMedia ? styles.zoomWrapper : styles.mediaWrapper,
               keepRatio ? styles.keepRatio : "",
             ].join(" ")}
-            onClick={() => zoomMedia ? onClickZoomIn() : onClickZoomOut()}
+            onClick={() => (zoomMedia ? onClickZoomIn() : onClickZoomOut())}
           >
             {
               // Video
@@ -324,18 +324,14 @@ const ImageCardDetail = ({
         </div>
 
         <div className={styles.buttonWrapper}>
-          {
-            isAuction ? (
-              <>
-                <PriceCard mainText={getTime()} subText={"TIME LEFT"} />
-                <PriceCard mainText={getPrice()} subText={"HIGHEST BID"} />
-              </>
-            ) : (  
-              <PriceCard
-                mainText={priceMainText}
-              />
-            )
-          }
+          {isAuction ? (
+            <>
+              <PriceCard mainText={getTime()} subText={"TIME LEFT"} />
+              <PriceCard mainText={getPrice()} subText={"HIGHEST BID"} />
+            </>
+          ) : (
+            <PriceCard mainText={priceMainText} />
+          )}
         </div>
 
         {showButton && (
