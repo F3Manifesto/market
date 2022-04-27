@@ -1,43 +1,37 @@
 @import "../../../assets/scss/helpers/grid.scss";
 @import "../../../assets/scss/helpers/helpers.scss";
 
-$fontFamily: 'LEMON MILK';
-$backColor: #4E4AFF;
+$fontFamily: "LEMON MILK";
+$backColor: #4e4aff;
 
 .button {
   position: relative;
   background-color: $backColor;
-  width: 150px;
-  min-width: 150px;
-  border-radius: 14px;
+  border-radius: 15px;
   border: none;
   outline: none;
   color: white;
-  padding: 0.8rem;
+  padding: 8px 25px;
 
   @include transition();
 
-  @include sm-width {
-    width: 180px;
-    min-width: 180px;
-  }
+  // @include sm-width {
+  //   width: 180px;
+  //   min-width: 180px;
+  // }
 
   img {
     width: 100%;
   }
 
-  div {
-    text-transform: uppercase;
-    // font-style: italic;
-    // font-size: 1.5rem;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: $fontFamily;
-    line-height: 120%;
-    text-align: center;
-    z-index: 10;
-    white-space: nowrap;
-  }
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: $fontFamily;
+  line-height: 120%;
+  text-align: center;
+  z-index: 10;
+  white-space: nowrap;
 
   &[disabled] {
     cursor: not-allowed;
