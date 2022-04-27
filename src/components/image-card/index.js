@@ -303,12 +303,12 @@ const ImageCard = ({
                   }`
             }
           >
-            <a>{renderImage()}</a>
+            <a className={styles.imgLink}>{renderImage()}</a>
           </Link>
         ) : (
           renderImage()
         )}
-{/* 
+        {/* 
         <div className={styles.amount}>
           {parseInt(isAuction) !== 1 ? (
             <>1 of 60</>

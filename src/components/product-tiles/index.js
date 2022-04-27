@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { getRarityId } from "@utils/helpers"
-import styles from "./ProductTiles.module.scss"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { getRarityId } from "@utils/helpers";
+import styles from "./ProductTiles.module.scss";
 
-
-
-const shuffleArray = array => {
+const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -56,35 +54,39 @@ const ProductTiles = ({ products }) => {
   // console.log("products: ", products);
   // console.log("isMobile: ", isMobile);
 
+  console.log(shuffledArray);
+
   return (
     <div className={styles.wrapper}>
-      {shuffledArray
-        .slice(0, isMobile ? 60 : 80)
-        .map((product, index) => {
-          return (
-            // <Link key={index} href={`product${product?.path}`}>
-            <a
-              key={index}
-              href={`/product/${product?.id}/${getRarityId(
-                product?.rarity
-              )}/${product?.auction ? 1 : 0}`}
-              className={styles.tileWrapper}
-            >
-              {product?.garment && (
-                <Image
-                  alt={product.name || "Product Image"}
-                  className={styles.tileImage}
-                  src={product.garment.image || placeholderImg}
-                  height={540}
-                  width={540}
-                  quality="85"
-                  layout="responsive"
-                />
-              )}
-            </a>
-            // </Link>
-          );
-        })}
+      {shuffledArray.slice(0, isMobile ? 60 : 80).map((product, index) => {
+        return (
+          // <Link key={index} href={`product${product?.path}`}>
+          <a
+            key={index}
+            href={`/product/${product?.id}/${getRarityId(product?.rarity)}/${
+              product?.auction ? 1 : 0
+            }`}
+            className={styles.tileWrapper}
+          >
+            {product?.garment && (
+              <div className={styles.mediaWrapper}>
+                {product?.garment?.image ? (
+                  <img
+                    alt={product.name || "Product Image"}
+                    className={styles.tileImage}
+                    src={product.garment.image || placeholderImg}
+                  />
+                ) : (
+                  <video autoPlay muted loop className={styles.tileVideo}>
+                    <source src={product.garment.animation} />
+                  </video>
+                )}
+              </div>
+            )}
+          </a>
+          // </Link>
+        );
+      })}
     </div>
   );
 };
