@@ -112,7 +112,7 @@ $borderColor: #4e4aff;
       width: 100%;
       height: 100%;
       position: absolute;
-      object-fit: cover !important;
+      // object-fit: cover !important;
     }
 
     .image {
@@ -202,13 +202,13 @@ $borderColor: #4e4aff;
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 2rem;
+      // border-radius: 2rem;
       overflow: hidden;
       cursor: pointer;
       // transition: all 0.3s;
       video,
       img {
-        object-fit: cover;
+        object-fit: contain;
       }
 
       &.keepRatio {
