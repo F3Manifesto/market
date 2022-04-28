@@ -19,6 +19,7 @@ const CollectionCard = ({ collection }) => {
     "Znarky's Poignant Guide to NFTs",
     "The Navigator Chronicles",
     "My Pocket Empire",
+    "Nim's Closet",
   ];
 
   return (
