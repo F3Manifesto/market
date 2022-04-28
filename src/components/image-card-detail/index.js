@@ -182,11 +182,11 @@ const ImageCardDetail = ({
                       var video = videoTagRef.current;
                       // console.log('video: ', video)
                       if (getAudio(video)) {
-                        // console.log('video has audio')
+                        console.log("video has audio");
                         setHasAudio(true);
                       } else {
                         setHasAudio(false);
-                        // console.log(`video doesn't have audio`)
+                        console.log(`video doesn't have audio`);
                       }
                     }}
                   >

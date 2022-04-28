@@ -58,6 +58,8 @@ const BuyNow = ({ className, title, buttonText1, buttonText2 }) => {
           tokens[crypto].address
         );
 
+        console.log({ payableTokenReport });
+
         const updatedPrice = payableTokenReport.payload / 1e18;
         setCryptoPrice((priceEth * updatedPrice).toFixed(4));
       };

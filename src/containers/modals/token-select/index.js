@@ -87,6 +87,13 @@ const TokenSelectModal = () => {
                 <img src="/images/crypto/aave.png" />
                 <span> AAVE </span>
               </div>
+              <div
+                onClick={() => setCrypto("f3m")}
+                className={cn(styles.token, crypto === "f3m" && styles.active)}
+              >
+                <img src="/images/crypto/f3m.png" />
+                <span> F3M </span>
+              </div>
               {/* <div
                 onClick={() => setCrypto('matic')}
                 className={cn(styles.token, crypto === 'matic' && styles.active)}

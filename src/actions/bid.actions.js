@@ -295,18 +295,17 @@ class BidActions extends BaseActions {
       );
       const contract = await getMarketplaceContract(chainId);
       if (isMona && crypto !== "matic") {
-        const monaContractAddress = await getMonaContractAddressByChainId(
-          chainId
+        const paymentTokenContract = await getCryptoPaymentTokenContract(
+          crypto
         );
-        const monaContract = await getMonaTokenContract(monaContractAddress);
-        const allowedValue = await monaContract.methods
+        const allowedValue = await paymentTokenContract.methods
           .allowance(account, marketplaceContract)
           .call({ from: account });
         const jsAllowedValue = parseFloat(
           ethersUtils.formatEther(allowedValue)
         );
         if (jsAllowedValue < 10000000000) {
-          const listener = monaContract.methods
+          const listener = paymentTokenContract.methods
             .approve(marketplaceContract, convertToWei(20000000000))
             .send({ from: account });
           const promise = new Promise((resolve, reject) => {
