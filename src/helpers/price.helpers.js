@@ -43,7 +43,7 @@ export const convertToWei = (value) => {
 };
 
 export const getGasPrice = async () => {
-  await window.web3.eth.getGasPrice();
+  return await window.web3.eth.getGasPrice();
 };
 
 export const removeZeros = (str) => {
