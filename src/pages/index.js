@@ -118,6 +118,7 @@ const LandingPage = () => {
             ),
             primarySalePrice: offer ? offer.primarySalePrice : 0,
             sold: collection.garments.length === parseInt(offer?.amountSold),
+            hasSold: !!parseInt(offer?.amountSold),
             auction: false,
             version: 2,
           });
@@ -150,8 +151,7 @@ const LandingPage = () => {
     "@context": "http://schema.org",
     "@type": "CC0 Web3 Fashion Market",
     title: "F3Manifesto - CC0 Digital Web3 Fashion Market",
-    description:
-      "CC0 Web3 Fashion Market",
+    description: "CC0 Web3 Fashion Market",
   };
 
   const filteredNfts = filterProducts(products, filter, sortBy) || [];
@@ -169,23 +169,17 @@ const LandingPage = () => {
   return (
     <div className={styles.wrapper}>
       <Head>
+        <meta name="description" content="CC0 Web3 Fashion Market" />
         <meta
-          name="description"
-          content="CC0 Web3 Fashion Market"
+          property="og:title"
+          content="F3Manifesto - CC0 Digital Web3 Fashion Market"
         />
-        <meta property="og:title" content="F3Manifesto - CC0 Digital Web3 Fashion Market" />
-        <meta
-          property="og:description"
-          content="CC0 Web3 Fashion Market"
-        />
+        <meta property="og:description" content="CC0 Web3 Fashion Market" />
         <meta property="og:url" content="https://market.f3manifesto.xyz" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@f3manifesto" />
         <meta name="twitter:title" content="F3Manifesto" />
-        <meta
-          name="twitter:description"
-          content="CC0 Web3 Fashion Market"
-        />
+        <meta name="twitter:description" content="CC0 Web3 Fashion Market" />
         <script src="https://cdn.rawgit.com/progers/pathseg/master/pathseg.js"></script>
         <script
           type="application/ld+json"

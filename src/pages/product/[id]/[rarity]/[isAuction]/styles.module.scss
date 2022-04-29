@@ -1,16 +1,16 @@
 @import "../../../../../assets/scss/helpers/grid.scss";
 @import "../../../../../assets/scss/helpers/helpers.scss";
 
-$bgColor: #FFEF62;
-$productNameFontFamily: 'NewYork';
-$infoTitleFontFamily: 'LEMON MILK';
+$bgColor: #ffef62;
+$productNameFontFamily: "NewYork";
+$infoTitleFontFamily: "LEMON MILK";
 $infoTitleColor: white;
-$infoTitleBorderColor: #4E4AFF;
-$infoTextFontFamily: 'LEMON MILK';
-$infoTextColor: #4E4AFF;
-$btnBgColor: #4E4AFF;
+$infoTitleBorderColor: #4e4aff;
+$infoTextFontFamily: "LEMON MILK";
+$infoTextColor: #4e4aff;
+$btnBgColor: #4e4aff;
 
-$nameColor: #4E4AFF;
+$nameColor: #4e4aff;
 
 .wrapper {
   background: $bgColor;
@@ -84,7 +84,7 @@ $nameColor: #4E4AFF;
           color: $infoTextColor;
           font-size: 30px;
           line-height: 125%;
-          font-family: 'Akira Expanded';
+          font-family: "Akira Expanded";
           font-style: normal;
           font-weight: 400;
           margin: auto;
@@ -192,39 +192,39 @@ $nameColor: #4E4AFF;
 
           .rightSection {
             display: none;
-    
+
             @include md-width {
               padding-top: 126px;
               margin-left: 1rem;
               display: flex;
             }
           }
-    
+
           .mobileRightSection {
             display: flex;
             margin-top: 2rem;
-    
+
             @include md-width {
               display: none;
             }
           }
-    
+
           .rightSection,
           .mobileRightSection {
             flex-direction: column;
-    
+
             .item {
               position: relative;
               display: flex;
               align-items: cneter;
               margin-bottom: 1rem;
-    
+
               &:hover {
                 .tooltip {
                   display: block;
                 }
               }
-    
+
               .label {
                 white-space: nowrap;
                 color: $infoTextColor;
@@ -235,7 +235,7 @@ $nameColor: #4E4AFF;
                 display: flex;
                 align-items: center;
               }
-    
+
               .tooltip {
                 display: none;
                 position: absolute;
@@ -253,13 +253,13 @@ $nameColor: #4E4AFF;
                 font-size: 14px;
                 line-height: 20px;
                 /* or 143% */
-    
+
                 align-items: center;
-    
+
                 color: #e6bf00;
               }
             }
-    
+
             .checkContainer {
               display: block;
               position: relative;
@@ -269,7 +269,7 @@ $nameColor: #4E4AFF;
               -moz-user-select: none;
               -ms-user-select: none;
               user-select: none;
-    
+
               .check {
                 position: absolute;
                 opacity: 0;
@@ -277,7 +277,7 @@ $nameColor: #4E4AFF;
                 height: 0;
                 width: 0;
               }
-    
+
               .checkmark {
                 position: absolute;
                 top: 0;
@@ -288,7 +288,7 @@ $nameColor: #4E4AFF;
                 border: 3px solid $infoTitleBorderColor;
                 border-radius: 13px;
                 // box-shadow: 0px 4px 10px 1px $infoTitleBorderColor;
-    
+
                 &:after {
                   content: "";
                   position: absolute;
@@ -296,7 +296,7 @@ $nameColor: #4E4AFF;
                 }
               }
             }
-    
+
             .checkContainer .checkmark:after {
               left: 9px;
               top: 0px;
@@ -310,12 +310,12 @@ $nameColor: #4E4AFF;
               border-top: 0;
               border-left: 0;
             }
-    
+
             /* Show the checkmark when checked */
             .checkContainer input:checked ~ .checkmark:after {
               display: block;
             }
-    
+
             .check {
               background: white;
             }
@@ -401,7 +401,7 @@ $nameColor: #4E4AFF;
         justify-content: center;
         width: 100%;
         margin-top: 2rem;
-  
+
         .wearersLabel {
           text-transform: uppercase;
           font-family: Gilroy;
@@ -411,26 +411,24 @@ $nameColor: #4E4AFF;
           letter-spacing: 0.12em;
           color: $infoTitleBorderColor;
           margin-left: 10px;
-          margin-bottom: 2px;
-        }
-  
-        .userList {
-          margin-bottom: 40px;
-          margin-right: 20px;
+          margin-right: 10px;
         }
 
+        .userList {
+          margin-right: 20px;
+        }
 
         .viewBidHistory {
           position: relative;
           background: $btnBgColor;
           color: white;
-          
+
           padding: 10px 25px;
           font-size: 1rem;
-          
+
           border-radius: 14px;
           // margin-left: 20px;
-          
+
           text-transform: uppercase;
           font-weight: bold;
           font-family: $infoTextFontFamily;
@@ -446,8 +444,6 @@ $nameColor: #4E4AFF;
         }
       }
     }
-
-    
 
     .infoCard {
       margin-top: 20px;
@@ -621,8 +617,6 @@ $nameColor: #4E4AFF;
         }
       }
     }
-
-
   }
 
   .margin50 {

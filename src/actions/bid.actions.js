@@ -1,6 +1,6 @@
 import BaseActions from "@actions/base-actions";
 import { utils as ethersUtils, constants, BigNumber, ethers } from "ethers";
-import { utils } from "web3";
+import Web3, { utils } from "web3";
 import config from "@utils/config";
 import {
   convertFromGWeiToWei,

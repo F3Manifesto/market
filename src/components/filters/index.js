@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
-import styles from './styles.module.scss';
+import React, { useState } from "react";
+import styles from "./styles.module.scss";
 
-const Filters = ({
-  filter,
-  filterChange,
-  sortByChange,
-}) => {
+const Filters = ({ filter, filterChange, sortByChange }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentSelectedIndex, setCurrentSelectedIndex] = useState(0);
   const [currentSelectedType, setCurrentSelectedType] = useState(0);
 
   const filterItems = [
-    ' ',
-    ' most recent ',
-    ' highest price ',
-    ' lowest price ',
-    ' sold ',
-    ' auction ',
-    ' instant buy ',
-    ' exclusive rarity ',
-    ' semi-rare rarity ',
-    ' common rarity ',
+    " ",
+    " most recent ",
+    " highest price ",
+    " lowest price ",
+    " sold ",
+    " auction ",
+    " instant buy ",
+    " exclusive rarity ",
+    " semi-rare rarity ",
+    " common rarity ",
   ];
 
   const onClickItem = (e) => {
-    const value = e.getAttribute('data-value');
+    const value = e.getAttribute("data-value");
+    console.log("this is click item", value);
     setCurrentSelectedIndex(value);
     sortByChange(value);
     setShowFilters(false);
@@ -38,9 +35,7 @@ const Filters = ({
             Search
             <div className={styles.helper}>
               <span className={styles.questionMark}>?</span>
-              <span className={styles.description}>
-                Filter by Item Name
-              </span>
+              <span className={styles.description}>Filter by Item Name</span>
             </div>
           </div>
           <div className={styles.filterInput}>
@@ -71,7 +66,11 @@ const Filters = ({
             <ul className={showFilters ? styles.show : styles.hidden}>
               {filterItems.map((item, index) => {
                 return (
-                  <li key={index} data-value={`${index}`} onClick={(e) => onClickItem(e.target)}>
+                  <li
+                    key={index}
+                    data-value={`${index}`}
+                    onClick={(e) => onClickItem(e.target)}
+                  >
                     {item}
                   </li>
                 );
