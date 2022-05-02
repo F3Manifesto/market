@@ -161,6 +161,22 @@ export const GARMENTV2_BY_COLLECTION_IDS = gql`
   }
 `;
 
+export const DIGITALAX_F3M_NFT_BY_OWNER = gql`
+  query digitalaxF3MCollector($id: ID!) {
+    digitalaxF3MCollector(id: $id) {
+      id
+      parentsOwned {
+        id
+        name
+        description
+        designer
+        image
+        animation
+      }
+    }
+  }
+`;
+
 export const GARMENT_BY_COLLECTION_ID = gql`
   query digitalaxGarmentCollection($id: ID!) {
     digitalaxGarmentCollection(id: $id) {
@@ -577,6 +593,15 @@ export const DIGITALAX_GARMENT_V2_COLLECTION_BY_GARMENT_ID = gql`
       id
       rarity
       garmentAuctionID
+    }
+  }
+`;
+
+export const DIGITALAX_F3M_COLLECTIONS_BY_GARMENT_ID = gql`
+  query digitalaxF3MNFTCollections($garmentIDs: [ID!]) {
+    digitalaxF3MNFTCollections(where: { garments_contains: $garmentIDs }) {
+      id
+      rarity
     }
   }
 `;
