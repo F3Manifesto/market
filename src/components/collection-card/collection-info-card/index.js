@@ -16,9 +16,9 @@ const CollectionInfoCard = ({ collection }) => {
   const getPrice = () => {
     return (
       <>
-        {parseFloat(collection.sold).toFixed(2)} $MONA
+        {(collection.sold / parseFloat(monaPerEth)).toFixed(2)} $MONA
         <span>
-          {` `}(${(parseFloat(monaPerEth) * collection.sold).toFixed(2)})
+          {` `}(${collection.sold.toFixed(2)})
         </span>
       </>
     );
