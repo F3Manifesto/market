@@ -49,14 +49,7 @@ const ProductTiles = ({ products }) => {
     setShuffledArray(shuffled);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item?.addEventListener(
-          "load",
-          () => {
-            item?.play();
-            item?.pause();
-          },
-          false
-        );
+        item?.load();
       });
     }
   }, []);
@@ -65,14 +58,7 @@ const ProductTiles = ({ products }) => {
     screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item?.addEventListener(
-          "load",
-          () => {
-            item?.play();
-            item?.pause();
-          },
-          false
-        );
+        item?.load();
       });
     }
   }, [screenWidth]);
@@ -122,7 +108,6 @@ const ProductTiles = ({ products }) => {
                       loop={document.body.clientWidth <= 576}
                       muted
                       preload={"auto"}
-                      style={{ background: "white" }}
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
                       // key={product.id}
