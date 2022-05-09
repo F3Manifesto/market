@@ -49,8 +49,14 @@ const ProductTiles = ({ products }) => {
     setShuffledArray(shuffled);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item?.play();
-        item?.pause();
+        item.addEventListener(
+          "load",
+          () => {
+            item?.play();
+            item?.pause();
+          },
+          false
+        );
       });
     }
   }, []);
@@ -59,8 +65,14 @@ const ProductTiles = ({ products }) => {
     screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item?.play();
-        item?.pause();
+        item.addEventListener(
+          "load",
+          () => {
+            item?.play();
+            item?.pause();
+          },
+          false
+        );
       });
     }
   }, [screenWidth]);
@@ -105,7 +117,7 @@ const ProductTiles = ({ products }) => {
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
-                      // ref={(element) => refArray.current.push(element)}
+                      ref={(element) => refArray.current.push(element)}
                       muted
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
