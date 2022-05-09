@@ -118,14 +118,20 @@ const ProductTiles = ({ products }) => {
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
                       ref={(element) => refArray.current.push(element)}
+                      autoPlay={document.body.clientWidth <= 576}
+                      loop={document.body.clientWidth <= 576}
                       muted
+                      preload={"auto"}
                       style={{ background: "white" }}
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
                       // key={product.id}
                       playsInline
                     >
-                      <source src={product.garment.animation} />
+                      <source
+                        src={product.garment.animation}
+                        type="video/mp4"
+                      />
                     </video>
                   </LazyLoad>
                 )}
