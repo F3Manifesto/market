@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import LazyLoad from "react-lazyload";
 import { getRarityId } from "@utils/helpers";
@@ -38,6 +38,7 @@ function useWindowDimensions() {
 
 const ProductTiles = ({ products }) => {
   const screenWidth = useWindowDimensions().width;
+  const refArray = useRef(new Array());
   const [isMobile, setIsMobile] = useState(false);
   const [shuffledArray, setShuffledArray] = useState([]);
   // let shuffledArray = []
@@ -46,10 +47,22 @@ const ProductTiles = ({ products }) => {
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
+    if (refArray.current) {
+      refArray.current.map((item) => {
+        item?.play();
+        // item.pause();
+      });
+    }
   }, []);
 
   useEffect(() => {
     screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
+    if (refArray.current) {
+      refArray.current.map((item) => {
+        item?.play();
+        // item.pause();
+      });
+    }
   }, [screenWidth]);
 
   // console.log("products: ", products);
@@ -92,16 +105,14 @@ const ProductTiles = ({ products }) => {
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
+                      ref={(element) => refArray.current.push(element)}
                       muted
-                      controls={document.body.clientWidth <= 576}
+                      // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
-                      key={product.id}
+                      // key={product.id}
                       playsInline
                     >
-                      <source
-                        src={product.garment.animation}
-                        type="media/mp4"
-                      />
+                      <source src={product.garment.animation} />
                     </video>
                   </LazyLoad>
                 )}
