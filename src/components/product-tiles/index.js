@@ -95,7 +95,7 @@ const ProductTiles = ({ products }) => {
                       muted
                       className={styles.tileVideo}
                       key={product.id}
-                      playsinline
+                      playsInline
                     >
                       <source src={product.garment.animation} />
                     </video>
