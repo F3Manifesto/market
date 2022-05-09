@@ -50,7 +50,7 @@ const ProductTiles = ({ products }) => {
     if (refArray.current) {
       refArray.current.map((item) => {
         item?.play();
-        // item.pause();
+        item?.pause();
       });
     }
   }, []);
@@ -60,7 +60,7 @@ const ProductTiles = ({ products }) => {
     if (refArray.current) {
       refArray.current.map((item) => {
         item?.play();
-        // item.pause();
+        item?.pause();
       });
     }
   }, [screenWidth]);
@@ -107,6 +107,7 @@ const ProductTiles = ({ products }) => {
                     <video
                       ref={(element) => refArray.current.push(element)}
                       muted
+                      style={{ background: "white" }}
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
                       // key={product.id}
