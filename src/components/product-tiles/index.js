@@ -91,7 +91,12 @@ const ProductTiles = ({ products }) => {
                   />
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
-                    <video muted className={styles.tileVideo} key={product.id}>
+                    <video
+                      muted
+                      className={styles.tileVideo}
+                      key={product.id}
+                      playsinline
+                    >
                       <source src={product.garment.animation} />
                     </video>
                   </LazyLoad>
