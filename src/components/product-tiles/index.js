@@ -49,7 +49,7 @@ const ProductTiles = ({ products }) => {
     setShuffledArray(shuffled);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item.addEventListener(
+        item?.addEventListener(
           "load",
           () => {
             item?.play();
@@ -65,7 +65,7 @@ const ProductTiles = ({ products }) => {
     screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
     if (refArray.current) {
       refArray.current.map((item) => {
-        item.addEventListener(
+        item?.addEventListener(
           "load",
           () => {
             item?.play();
