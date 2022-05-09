@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import LazyLoad from "react-lazyload";
 import { getRarityId } from "@utils/helpers";
 import styles from "./ProductTiles.module.scss";
 
@@ -56,6 +57,8 @@ const ProductTiles = ({ products }) => {
 
   console.log(shuffledArray);
 
+  // const width =
+
   return (
     <div className={styles.wrapper}>
       {shuffledArray.slice(0, isMobile ? 60 : 80).map((product, index) => {
@@ -71,15 +74,19 @@ const ProductTiles = ({ products }) => {
             {product?.garment && (
               <div className={styles.mediaWrapper}>
                 {product?.garment?.image ? (
-                  <img
+                  <Image
                     alt={product.name || "Product Image"}
                     className={styles.tileImage}
                     src={product.garment.image || placeholderImg}
+                    width={document.body.clientWidth / 20}
+                    height={document.body.clientWidth / 20}
                   />
                 ) : (
-                  <video autoPlay muted loop className={styles.tileVideo}>
-                    <source src={product.garment.animation} />
-                  </video>
+                  <LazyLoad style={{ width: "5vw", height: "5vw" }}>
+                    <video muted className={styles.tileVideo}>
+                      <source src={product.garment.animation} />
+                    </video>
+                  </LazyLoad>
                 )}
               </div>
             )}

@@ -23,7 +23,7 @@
 
     .mediaWrapper {
       position: relative;
-      padding-top: 100%;
+      // padding-top: 100%;
     }
 
     .tileImage {
@@ -50,7 +50,8 @@
     // height: 100px;
 
     @include lg-width {
-      width: 5%;
+      width: 5vw;
+      height: 5vw;
     }
   }
 
