@@ -50,6 +50,9 @@ const ProductTiles = ({ products }) => {
     if (refArray.current) {
       refArray.current.map((item) => {
         item?.load();
+        item?.addEventListener("load", () => {
+          item?.pause();
+        });
       });
     }
   }, []);
@@ -99,10 +102,10 @@ const ProductTiles = ({ products }) => {
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
                       ref={(element) => refArray.current.push(element)}
-                      // autoPlay={document.body.clientWidth <= 576}
-                      // loop={document.body.clientWidth <= 576}
+                      autoPlay={document.body.clientWidth <= 576}
+                      loop={document.body.clientWidth <= 576}
                       muted
-                      // preload={"auto"}
+                      preload={"auto"}
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
                       // key={product.id}
