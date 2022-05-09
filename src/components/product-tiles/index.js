@@ -105,7 +105,7 @@ const ProductTiles = ({ products }) => {
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
-                      ref={(element) => refArray.current.push(element)}
+                      // ref={(element) => refArray.current.push(element)}
                       muted
                       // controls={document.body.clientWidth <= 576}
                       className={styles.tileVideo}
