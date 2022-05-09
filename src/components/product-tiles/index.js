@@ -38,8 +38,8 @@ function useWindowDimensions() {
 
 const ProductTiles = ({ products }) => {
   const screenWidth = useWindowDimensions().width;
+  const isMobile = screenWidth > 707;
   const refArray = useRef(new Array());
-  const [isMobile, setIsMobile] = useState(false);
   const [shuffledArray, setShuffledArray] = useState([]);
   // let shuffledArray = []
   const placeholderImg = "/product-img-placeholder.svg";
@@ -47,6 +47,7 @@ const ProductTiles = ({ products }) => {
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
+    console.log("this is after loading");
     if (refArray.current) {
       refArray.current.map((item) => {
         item?.load();
@@ -56,17 +57,6 @@ const ProductTiles = ({ products }) => {
       });
     }
   }, []);
-
-  useEffect(() => {
-    screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
-  }, [screenWidth]);
-
-  // console.log("products: ", products);
-  // console.log("isMobile: ", isMobile);
-
-  console.log(shuffledArray);
-
-  // const width =
 
   return (
     <div className={styles.wrapper}>
