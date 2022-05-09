@@ -56,11 +56,6 @@ const ProductTiles = ({ products }) => {
 
   useEffect(() => {
     screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
-    if (refArray.current) {
-      refArray.current.map((item) => {
-        item?.load();
-      });
-    }
   }, [screenWidth]);
 
   // console.log("products: ", products);
