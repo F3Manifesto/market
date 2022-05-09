@@ -78,11 +78,19 @@ const ProductTiles = ({ products }) => {
                     alt={product.name || "Product Image"}
                     className={styles.tileImage}
                     src={product.garment.image || placeholderImg}
-                    width={document.body.clientWidth / 20}
-                    height={document.body.clientWidth / 20}
+                    width={
+                      document.body.clientWidth > 576
+                        ? document.body.clientWidth / 20
+                        : document.body.clientWidth / 10
+                    }
+                    height={
+                      document.body.clientWidth > 576
+                        ? document.body.clientWidth / 20
+                        : document.body.clientWidth / 10
+                    }
                   />
                 ) : (
-                  <LazyLoad style={{ width: "5vw", height: "5vw" }}>
+                  <LazyLoad className={styles.lazyVideo}>
                     <video muted className={styles.tileVideo}>
                       <source src={product.garment.animation} />
                     </video>
