@@ -1,9 +1,9 @@
-@import '../../../assets/scss/helpers/grid.scss';
-@import '../../../assets/scss/helpers/variables.scss';
-@import '../../../assets/scss/helpers/helpers.scss';
+@import "../../../assets/scss/helpers/grid.scss";
+@import "../../../assets/scss/helpers/variables.scss";
+@import "../../../assets/scss/helpers/helpers.scss";
 @import "../../../assets/scss/base/responsive.scss";
 
-$yellow: #FFEF62;
+$yellow: #ffef62;
 
 .headerWrapper {
   @include wrapper();
@@ -21,7 +21,7 @@ $yellow: #FFEF62;
     top: 0;
     left: 0;
     width: 100%;
-    padding-right:0;
+    padding-right: 0;
   }
 
   .logo {
@@ -29,11 +29,11 @@ $yellow: #FFEF62;
     // padding-left: 10px;
     // margin-top: 10px;
     // margin-bottom: 10px;
-  
+
     @media screen and (max-width: 1000px) {
       // width: 70px;
     }
-  
+
     @media screen and (max-width: 768px) {
       // padding: 0px 5px;
       // width: 50px;
@@ -45,16 +45,16 @@ $yellow: #FFEF62;
     align-items: center;
     background: #4e4aff;
     padding-right: 20px;
- 
+
     .mobileBtn {
       display: none;
       border: none;
       background: transparent;
-    
+
       &:hover {
         opacity: 0.8;
       }
-    
+
       div {
         width: 35px;
         height: 5px;
@@ -72,9 +72,8 @@ $yellow: #FFEF62;
         margin-top: 10px;
         margin-bottom: 10px;
       }
-
     }
-    
+
     .menuBar {
       display: flex;
       @media (max-width: 768px) {
@@ -91,31 +90,31 @@ $yellow: #FFEF62;
         font-family: Lemon Milk;
         font-size: 12px;
         line-height: 17px;
-  
+
         padding: 0 10px;
-        padding-top: 10px;
+        display: flex;
+        align-items: center;
         white-space: nowrap;
         text-decoration-line: underline;
         color: $yellow;
         font-weight: 400;
-  
+
         &:hover {
           opacity: 0.8;
         }
-      
+
         &:focus {
           outline: none;
         }
-    
+
         @media screen and (max-width: 1000px) {
           font-size: 10px;
         }
       }
 
-      
       .signBtn {
         position: relative;
-      
+
         @media screen and (max-width: 768px) {
           margin-top: 10px;
           justify-self: flex-end;
@@ -132,7 +131,7 @@ $yellow: #FFEF62;
           font-weight: 700;
           font-size: 18px;
           line-height: 20px;
-          color: #FFFFFF;
+          color: #ffffff;
           padding: 10px 20px;
 
           &:hover {
@@ -146,17 +145,17 @@ $yellow: #FFEF62;
         position: relative;
         cursor: pointer;
       }
-      
+
       .menuWrapper {
         position: absolute;
         margin-top: 10px;
         z-index: 9;
-      
+
         button {
           color: black;
         }
       }
-      
+
       .menuButton {
         @include reset-button();
         @include active();
@@ -179,24 +178,22 @@ $yellow: #FFEF62;
           }
         }
       }
-      
+
       .arrowBottom {
         display: flex;
         align-items: center;
         @include reset-button();
         @include active();
-      
+
         .arrowBottomImg {
           padding: 8px 0 8px 8px;
         }
       }
-      
-    } 
+    }
 
-      
     @media (max-width: 768px) {
       padding-right: 5%;
-      
+
       &.expandedMenu {
         position: fixed;
         left: 0;
@@ -211,15 +208,14 @@ $yellow: #FFEF62;
           div {
             display: none;
           }
-          
+
           img {
             display: block;
             width: 30px;
             height: 30px;
-
-          }          
+          }
         }
-        
+
         .menuBar {
           display: flex !important;
           flex-direction: column;
@@ -231,13 +227,9 @@ $yellow: #FFEF62;
             text-align: right;
             font-size: 20px;
             padding: 20px 0px;
-          }  
+          }
         }
       }
     }
-    
   }
-
 }
-
-
