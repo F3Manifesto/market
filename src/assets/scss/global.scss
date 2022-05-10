@@ -1,3 +1,10 @@
 @import "./vendors/normalize.scss";
 @import "./helpers/variables.scss";
 @import "./base/base.scss";
+
+.react-video-thumbnail-image {
+  video,
+  canvas {
+    display: none !important;
+  }
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import LazyLoad from "react-lazyload";
+import VideoImageThumbnail from "react-video-thumbnail-image";
 import { getRarityId } from "@utils/helpers";
 import styles from "./ProductTiles.module.scss";
 import Video from "./video";
@@ -94,7 +95,12 @@ const ProductTiles = ({ products }) => {
                     unsized
                   />
                 ) : (
-                  <Video product={product} />
+                  <VideoImageThumbnail
+                    className={styles.tileVideo}
+                    videoUrl={product?.garment.animation}
+                    thumbnailHandler={(thumbnail) => console.log(thumbnail)}
+                    alt="my test video"
+                  />
                 )}
               </div>
             )}
