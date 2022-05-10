@@ -3,6 +3,7 @@ import Image from "next/image";
 import LazyLoad from "react-lazyload";
 import { getRarityId } from "@utils/helpers";
 import styles from "./ProductTiles.module.scss";
+import Video from "./video";
 
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -41,20 +42,33 @@ const ProductTiles = ({ products }) => {
   const isMobile = screenWidth <= 707;
   const refArray = useRef(new Array());
   const [shuffledArray, setShuffledArray] = useState([]);
-  // let shuffledArray = []
   const placeholderImg = "/product-img-placeholder.svg";
 
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
-    if (refArray.current && isMobile) {
-      refArray.current.map((item) => {
-        item?.load();
-        item?.addEventListener("load", () => {
-          item?.pause();
-        });
-      });
-    }
+    // if (refArray.current) {
+    //   console.log({ refArray });
+    //   refArray.current.map((item) => {
+    //     item?.load();
+    //     item?.addEventListener("load", () => {
+    //       console.log("this is before pause");
+    //       item?.pause();
+    //     });
+    //   });
+    // }
+  }, []);
+
+  useEffect(() => {
+    // if (refArray.current) {
+    //   refArray.current.map((item) => {
+    //     item?.load();
+    //     item?.addEventListener("load", () => {
+    //       console.log("this is before pausing");
+    //       item?.pause();
+    //     });
+    //   });
+    // }
   }, [screenWidth]);
 
   return (
@@ -80,24 +94,7 @@ const ProductTiles = ({ products }) => {
                     unsized
                   />
                 ) : (
-                  <LazyLoad className={styles.lazyVideo} key={product.id}>
-                    <video
-                      ref={(element) => refArray.current.push(element)}
-                      autoPlay={isMobile && screenWidth !== 0}
-                      loop={isMobile && screenWidth !== 0}
-                      muted
-                      preload={"auto"}
-                      // controls={document.body.clientWidth <= 576}
-                      className={styles.tileVideo}
-                      // key={product.id}
-                      playsInline
-                    >
-                      <source
-                        src={product.garment.animation}
-                        type="video/mp4"
-                      />
-                    </video>
-                  </LazyLoad>
+                  <Video product={product} />
                 )}
               </div>
             )}
