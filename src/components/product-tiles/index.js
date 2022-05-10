@@ -55,7 +55,7 @@ const ProductTiles = ({ products }) => {
         });
       });
     }
-  }, []);
+  }, [screenWidth]);
 
   return (
     <div className={styles.wrapper}>
