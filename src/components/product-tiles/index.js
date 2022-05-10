@@ -47,7 +47,6 @@ const ProductTiles = ({ products }) => {
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
-    console.log("this is after loading");
     if (refArray.current) {
       refArray.current.map((item) => {
         item?.load();
@@ -78,22 +77,18 @@ const ProductTiles = ({ products }) => {
                     className={styles.tileImage}
                     src={product.garment.image || placeholderImg}
                     width={
-                      document.body.clientWidth > 576
-                        ? document.body.clientWidth / 20
-                        : document.body.clientWidth / 10
+                      screenWidth > 992 ? screenWidth / 20 : screenWidth / 10
                     }
                     height={
-                      document.body.clientWidth > 576
-                        ? document.body.clientWidth / 20
-                        : document.body.clientWidth / 10
+                      screenWidth > 992 ? screenWidth / 20 : screenWidth / 10
                     }
                   />
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
                       ref={(element) => refArray.current.push(element)}
-                      autoPlay={document.body.clientWidth <= 576}
-                      loop={document.body.clientWidth <= 576}
+                      autoPlay={screenWidth <= 576}
+                      loop={screenWidth <= 576}
                       muted
                       preload={"auto"}
                       // controls={document.body.clientWidth <= 576}
