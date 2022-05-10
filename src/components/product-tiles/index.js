@@ -38,7 +38,7 @@ function useWindowDimensions() {
 
 const ProductTiles = ({ products }) => {
   const screenWidth = useWindowDimensions().width;
-  const isMobile = screenWidth > 707;
+  const isMobile = screenWidth <= 707;
   const refArray = useRef(new Array());
   const [shuffledArray, setShuffledArray] = useState([]);
   // let shuffledArray = []
@@ -76,19 +76,15 @@ const ProductTiles = ({ products }) => {
                     alt={product.name || "Product Image"}
                     className={styles.tileImage}
                     src={product.garment.image || placeholderImg}
-                    width={
-                      screenWidth > 992 ? screenWidth / 20 : screenWidth / 10
-                    }
-                    height={
-                      screenWidth > 992 ? screenWidth / 20 : screenWidth / 10
-                    }
+                    layout="fill"
+                    unsized
                   />
                 ) : (
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
                       ref={(element) => refArray.current.push(element)}
-                      autoPlay={screenWidth <= 576}
-                      loop={screenWidth <= 576}
+                      autoPlay={isMobile}
+                      loop={isMobile}
                       muted
                       preload={"auto"}
                       // controls={document.body.clientWidth <= 576}
