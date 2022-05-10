@@ -135,6 +135,7 @@ const ImageCardDetail = ({
   useEffect(() => {
     if (mainImageType === 1 && videoTagRef.current) {
       videoTagRef.current.load();
+      videoTagRef.current.play();
     }
   }, [mainImageType, mainImage]);
 
