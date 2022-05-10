@@ -47,7 +47,7 @@ const ProductTiles = ({ products }) => {
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
-    if (refArray.current) {
+    if (refArray.current && isMobile) {
       refArray.current.map((item) => {
         item?.load();
         item?.addEventListener("load", () => {
