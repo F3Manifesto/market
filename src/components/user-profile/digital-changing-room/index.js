@@ -33,6 +33,8 @@ import {
   getNFTById,
   getSecondaryOrderByContractTokenAndBuyorsell,
   getPatronMarketplaceOffers,
+  getDigitalaxF3MNftsByOwner,
+  getF3MCollectionByGarmentId,
 } from "@services/api/apiService";
 
 import digitalaxApi from "@services/api/espa/api.service";
@@ -64,6 +66,7 @@ import {
   GDN_MEMBERSHIP_NFT,
   SECONDARY_MARKETPLACE_NFT,
   PATRON_REALM_NFT,
+  DIGITALAX_F3M_NFT,
 } from "@constants/nft_categories";
 
 import { MAINNET_CHAINID, POLYGON_CHAINID } from "@constants/global.constants";
@@ -82,6 +85,7 @@ const categories = [
   GDN_MEMBERSHIP_NFT,
   SECONDARY_MARKETPLACE_NFT,
   PATRON_REALM_NFT,
+  DIGITALAX_F3M_NFT,
 ];
 
 const DigitalChangingRoom = (props) => {
@@ -418,6 +422,11 @@ const DigitalChangingRoom = (props) => {
         owner
       );
 
+      const digitalaxF3MNfts = await getDigitalaxF3MNftsByOwner(
+        POLYGON_CHAINID,
+        owner
+      );
+
       const nfts = await getAllItemsByOwner(account);
       const polygonNfts = nfts.items.filter(
         (nft) => nft.blockchain === "POLYGON"
@@ -426,7 +435,16 @@ const DigitalChangingRoom = (props) => {
 
       const fetchedNFTs = {};
 
-      fetchedNFTs[SECONDARY_MARKETPLACE_NFT] = nftData;
+      fetchedNFTs[SECONDARY_MARKETPLACE_NFT] = nftData.map((data) => ({
+        ...data,
+        ...getRaribleNftDataFromMeta(data.meta),
+      }));
+
+      fetchedNFTs[DIGITALAX_F3M_NFT] =
+        digitalaxF3MNfts.digitalaxF3MCollector.parentsOwned.map((item) => ({
+          ...item,
+          type: "digitalaxF3MNFT",
+        }));
 
       fetchedNFTs[DIGITAL_CHANGING_ROOM] = [
         ...digitalaxNFTsMainnet.map((item) => {
@@ -564,6 +582,17 @@ const DigitalChangingRoom = (props) => {
       window.open(
         `/product/${digitalaxGarmentV2Collections[0].id}/${getRarityId(
           digitalaxGarmentV2Collections[0].rarity
+        )}/0`,
+        "_self"
+      );
+    } else if (type === "digitalaxF3MNFT") {
+      const res = await getF3MCollectionByGarmentId(POLYGON_CHAINID, fashionId);
+      const { digitalaxF3MNFTCollections } = res;
+      console.log({ digitalaxF3MNFTCollections });
+
+      window.open(
+        `product/${digitalaxF3MNFTCollections[0].id}/${getRarityId(
+          digitalaxF3MNFTCollections[0].rarity
         )}/0`,
         "_self"
       );

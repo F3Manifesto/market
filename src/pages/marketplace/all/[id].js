@@ -54,6 +54,7 @@ const Auctions = () => {
             sold:
               collection.garments.length ===
               parseInt(foundOfferItem.amountSold),
+            hasSold: !!parseInt(foundOfferItem.amountSold),
             garment: {
               ...collection.garments[0],
             },

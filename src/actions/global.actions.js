@@ -28,14 +28,14 @@ import ws from "@services/api/ws.service";
 
 import { convertToEth } from "@helpers/price.helpers";
 import {
-  STORAGE_IS_LOGGED_IN,
-  STORAGE_WALLET,
+  F3M_MARKET_STORAGE_IS_LOGGED_IN,
+  F3M_MARKET_STORAGE_WALLET,
 } from "@constants/storage.constants";
 import { WALLET_METAMASK, WALLET_ARKANE } from "@constants/global.constants";
-import { Web3Ethereum } from '@rarible/web3-ethereum';
-import { EthereumWallet } from '@rarible/sdk-wallet';
-import { Blockchain } from '@rarible/api-client';
-import { createRaribleSdk } from '@rarible/sdk';
+import { Web3Ethereum } from "@rarible/web3-ethereum";
+import { EthereumWallet } from "@rarible/sdk-wallet";
+import { Blockchain } from "@rarible/api-client";
+import { createRaribleSdk } from "@rarible/sdk";
 
 class GlobalActions extends BaseActions {
   initApp() {
@@ -55,8 +55,8 @@ class GlobalActions extends BaseActions {
       Check if Arkane loggedIn
        */
       if (
-        (localStorage.getItem(STORAGE_IS_LOGGED_IN) &&
-          localStorage.getItem(STORAGE_WALLET) === WALLET_ARKANE) ||
+        (localStorage.getItem(F3M_MARKET_STORAGE_IS_LOGGED_IN) &&
+          localStorage.getItem(F3M_MARKET_STORAGE_WALLET) === WALLET_ARKANE) ||
         !isMetamaskInstalled()
       ) {
         dispatch(this.changeNetwork(getDefaultNetworkChainId()));
@@ -73,15 +73,15 @@ class GlobalActions extends BaseActions {
        */
       ethereum.on("accountsChanged", (accounts) => {
         const [account] = accounts;
-        if (localStorage.getItem(STORAGE_IS_LOGGED_IN)) {
+        if (localStorage.getItem(F3M_MARKET_STORAGE_IS_LOGGED_IN)) {
           dispatch(userActions.setValue("account", account || null));
-          localStorage.setItem(STORAGE_IS_LOGGED_IN, 1);
+          localStorage.setItem(F3M_MARKET_STORAGE_IS_LOGGED_IN, 1);
         }
       });
 
       if (
         ethereum.selectedAddress &&
-        localStorage.getItem(STORAGE_IS_LOGGED_IN)
+        localStorage.getItem(F3M_MARKET_STORAGE_IS_LOGGED_IN)
       ) {
         dispatch(userActions.setValue("account", ethereum.selectedAddress));
       }
@@ -220,7 +220,7 @@ class GlobalActions extends BaseActions {
 
   setAllDesigners(values) {
     return (dispatch) => {
-      dispatch(this.setValue('allDesigners', values));
+      dispatch(this.setValue("allDesigners", values));
     };
   }
 }

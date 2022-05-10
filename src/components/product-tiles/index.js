@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import LazyLoad from "react-lazyload";
 import { getRarityId } from "@utils/helpers";
 import styles from "./ProductTiles.module.scss";
 
@@ -37,7 +38,8 @@ function useWindowDimensions() {
 
 const ProductTiles = ({ products }) => {
   const screenWidth = useWindowDimensions().width;
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = screenWidth > 707;
+  const refArray = useRef(new Array());
   const [shuffledArray, setShuffledArray] = useState([]);
   // let shuffledArray = []
   const placeholderImg = "/product-img-placeholder.svg";
@@ -45,16 +47,16 @@ const ProductTiles = ({ products }) => {
   useEffect(() => {
     const shuffled = shuffleArray(products || []);
     setShuffledArray(shuffled);
+    console.log("this is after loading");
+    if (refArray.current) {
+      refArray.current.map((item) => {
+        item?.load();
+        item?.addEventListener("load", () => {
+          item?.pause();
+        });
+      });
+    }
   }, []);
-
-  useEffect(() => {
-    screenWidth > 707 ? setIsMobile(false) : setIsMobile(true);
-  }, [screenWidth]);
-
-  // console.log("products: ", products);
-  // console.log("isMobile: ", isMobile);
-
-  console.log(shuffledArray);
 
   return (
     <div className={styles.wrapper}>
@@ -71,15 +73,40 @@ const ProductTiles = ({ products }) => {
             {product?.garment && (
               <div className={styles.mediaWrapper}>
                 {product?.garment?.image ? (
-                  <img
+                  <Image
                     alt={product.name || "Product Image"}
                     className={styles.tileImage}
                     src={product.garment.image || placeholderImg}
+                    width={
+                      document.body.clientWidth > 576
+                        ? document.body.clientWidth / 20
+                        : document.body.clientWidth / 10
+                    }
+                    height={
+                      document.body.clientWidth > 576
+                        ? document.body.clientWidth / 20
+                        : document.body.clientWidth / 10
+                    }
                   />
                 ) : (
-                  <video autoPlay muted loop className={styles.tileVideo}>
-                    <source src={product.garment.animation} />
-                  </video>
+                  <LazyLoad className={styles.lazyVideo} key={product.id}>
+                    <video
+                      ref={(element) => refArray.current.push(element)}
+                      autoPlay={document.body.clientWidth <= 576}
+                      loop={document.body.clientWidth <= 576}
+                      muted
+                      preload={"auto"}
+                      // controls={document.body.clientWidth <= 576}
+                      className={styles.tileVideo}
+                      // key={product.id}
+                      playsInline
+                    >
+                      <source
+                        src={product.garment.animation}
+                        type="video/mp4"
+                      />
+                    </video>
+                  </LazyLoad>
                 )}
               </div>
             )}

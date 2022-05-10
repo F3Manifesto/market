@@ -12,6 +12,7 @@ import {
   LOOK_FASHION_LOOT,
   PODE,
   GDN_MEMBERSHIP_NFT,
+  DIGITALAX_F3M_NFT,
 } from "@constants/nft_categories";
 
 const FashionItem = (props) => {
@@ -75,7 +76,9 @@ const FashionItem = (props) => {
         ) : (
           <img src={imageUrl} className={styles.photoItem} />
         ))}
-      {(category == DIGITAL_CHANGING_ROOM || category == DRIP_IDL) && (
+      {(category == DIGITAL_CHANGING_ROOM ||
+        category == DRIP_IDL ||
+        category === DIGITALAX_F3M_NFT) && (
         <NewButton
           className={[styles.viewFashion].join(" ")}
           onClick={onClickViewFashion}

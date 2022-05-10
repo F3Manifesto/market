@@ -64,11 +64,12 @@ import {
   GET_DIGITALAX_COLLECTION_GROUPS_BY_GARMENT,
   GET_ALL_TRADES_BY_TOKEN_AND_TOKENID,
   PAYABLE_TOKEN_REQUEST,
+  DIGITALAX_F3M_NFT_BY_OWNER,
+  DIGITALAX_F3M_COLLECTIONS_BY_GARMENT_ID,
 } from "./gql.apiService";
 import config from "../../utils/config";
 
 const apiRequest = (chainId, gql, params, type = 1) => {
-  console.log({ type });
   return request(
     type === 0 ? config.API_URLS["matic"] : config.DIGITALAX_API_URLS["matic"],
     gql,
@@ -266,6 +267,16 @@ export const getCollectionV2ByGarmentId = async (chainId, garmentID) =>
     garmentIDs: [garmentID],
   });
 
+export const getF3MCollectionByGarmentId = async (chainId, id) =>
+  apiRequest(
+    chainId,
+    DIGITALAX_F3M_COLLECTIONS_BY_GARMENT_ID,
+    {
+      garmentIDs: [id],
+    },
+    0
+  );
+
 export const getPodeNFTV2sByOwner = async (
   chainId,
   owner,
@@ -327,6 +338,17 @@ export const getDigitalaxLookGoldenTicketsByOwner = async (
     first,
     lastID,
   });
+
+export const getDigitalaxF3MNftsByOwner = async (chainId, owner) => {
+  return apiRequest(
+    chainId,
+    DIGITALAX_F3M_NFT_BY_OWNER,
+    {
+      id: owner,
+    },
+    0
+  );
+};
 
 export const getDigitalaxNFTStakersByGarments = async (
   chainId,

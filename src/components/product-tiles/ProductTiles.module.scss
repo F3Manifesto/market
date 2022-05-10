@@ -23,7 +23,7 @@
 
     .mediaWrapper {
       position: relative;
-      padding-top: 100%;
+      // padding-top: 100%;
     }
 
     .tileImage {
@@ -49,8 +49,19 @@
     }
     // height: 100px;
 
+    .lazyVideo {
+      width: 5vw;
+      height: 5vw;
+
+      @media (max-width: 576px) {
+        width: 10vw;
+        height: 10vw;
+      }
+    }
+
     @include lg-width {
-      width: 5%;
+      width: 5vw;
+      height: 5vw;
     }
   }
 

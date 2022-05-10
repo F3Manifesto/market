@@ -1,8 +1,12 @@
-import { STORAGE_USER, STORAGE_TOKEN } from '@constants/storage.constants';
+import {
+  F3M_MARKET_STORAGE_USER,
+  F3M_MARKET_STORAGE_TOKEN,
+} from "@constants/storage.constants";
 
-export const getAuthToken = () => localStorage.getItem('STORAGE_TOKEN');
+export const getAuthToken = () =>
+  localStorage.getItem(F3M_MARKET_STORAGE_TOKEN);
 export const getUser = () => {
-  let user = localStorage.getItem('STORAGE_USER');
+  let user = localStorage.getItem(F3M_MARKET_STORAGE_USER);
   if (!user) {
     return null;
   }
@@ -13,7 +17,7 @@ export const getUser = () => {
   return user;
 };
 export const getAccountPhoto = () => {
-  let user = localStorage.getItem('STORAGE_USER');
+  let user = localStorage.getItem("F3M_MARKET_STORAGE_USER");
   if (!user) {
     return null;
   }

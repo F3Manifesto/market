@@ -97,7 +97,9 @@ export const filterProducts = (prods, filter, sortBy) => {
         break;
       case "4":
         filteredProducts = filteredProducts.filter(
-          (prod) => prod.auction && parseInt(prod.endTime) < Date.now() / 1000
+          (prod) =>
+            (prod.auction && parseInt(prod.endTime) < Date.now() / 1000) ||
+            prod.hasSold
         );
         break;
       case "5":

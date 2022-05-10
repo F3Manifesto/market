@@ -1,8 +1,12 @@
 import BaseActions from "@actions/base-actions";
-import { utils as ethersUtils, constants, BigNumber } from "ethers";
-import { utils } from "web3";
+import { utils as ethersUtils, constants, BigNumber, ethers } from "ethers";
+import Web3, { utils } from "web3";
 import config from "@utils/config";
-import { convertToWei } from "@helpers/price.helpers";
+import {
+  convertFromGWeiToWei,
+  convertToWei,
+  getGasPrice,
+} from "@helpers/price.helpers";
 import {
   getEnabledNetworkByChainId,
   getMarketplaceContractAddressByChainId,
@@ -45,7 +49,7 @@ class BidActions extends BaseActions {
       if (jsAllowedValue < 10000000000) {
         const listener = monaContract.methods
           .approve(auctionContractAddress, convertToWei(20000000000))
-          .send({ from: account });
+          .send({ from: account, gasPrice: await getGasPrice() });
         const promise = new Promise((resolve, reject) => {
           listener.on("error", (error) => reject(error));
           listener.on("confirmation", (transactionHash) =>
@@ -62,7 +66,7 @@ class BidActions extends BaseActions {
       }
       const listener = contract.methods
         .placeBid(id, weiValue)
-        .send({ from: account });
+        .send({ from: account, gasPrice: await getGasPrice() });
       const promise = new Promise((resolve, reject) => {
         listener.on("error", (error) => reject(error));
         listener.on("transactionHash", (transactionHash) =>
@@ -154,7 +158,7 @@ class BidActions extends BaseActions {
 
       const res = await tokenContract.methods
         .setApprovalForAll(secondaryMarketplaceAddress, true)
-        .send({ from: account });
+        .send({ from: account, gasPrice: await getGasPrice() });
 
       return res;
     };
@@ -305,9 +309,13 @@ class BidActions extends BaseActions {
           ethersUtils.formatEther(allowedValue)
         );
         if (jsAllowedValue < 10000000000) {
+          const gasPrice = await getGasPrice();
           const listener = paymentTokenContract.methods
             .approve(marketplaceContract, convertToWei(20000000000))
-            .send({ from: account });
+            .send({
+              from: account,
+              gasPrice: gasPrice,
+            });
           const promise = new Promise((resolve, reject) => {
             listener.on("error", (error) => reject(error));
             listener.on("confirmation", (transactionHash) =>
@@ -323,11 +331,9 @@ class BidActions extends BaseActions {
           };
         }
       }
-      console.log({ contract });
-      console.log({ id });
       const listener = contract.methods
         .buyOffer(id, paymentTokenContractAddress, 0, 0)
-        .send({ from: account });
+        .send({ from: account, gasPrice: await getGasPrice() });
       const promise = new Promise((resolve, reject) => {
         listener.on("error", (error) => reject(error));
         listener.on("confirmation", (transactionHash) =>
@@ -351,7 +357,9 @@ class BidActions extends BaseActions {
         "auctionContractAddress"
       );
       const contract = await getContract(auctionContractAddress);
-      const listener = contract.methods.withdrawBid(id).send({ from: account });
+      const listener = contract.methods
+        .withdrawBid(id)
+        .send({ from: account, gasPrice: await getGasPrice() });
       const promise = new Promise((resolve, reject) => {
         listener.on("error", (error) => reject(error));
         listener.on("transactionHash", (transactionHash) =>
