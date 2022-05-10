@@ -83,8 +83,8 @@ const ProductTiles = ({ products }) => {
                   <LazyLoad className={styles.lazyVideo} key={product.id}>
                     <video
                       ref={(element) => refArray.current.push(element)}
-                      // autoPlay={isMobile}
-                      // loop={isMobile}
+                      autoPlay={isMobile && screenWidth !== 0}
+                      loop={isMobile && screenWidth !== 0}
                       muted
                       preload={"auto"}
                       // controls={document.body.clientWidth <= 576}
