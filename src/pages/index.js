@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Router } from "next/router";
 import Head from "next/head";
 import {
-  getAllNFTs,
   getCollectionGroups,
-  getDigitalaxMarketplaceV3Offers,
-  getNFTById,
-  getSecondaryOrderByContractTokenAndBuyorsell,
-  getSellingNfts,
+  getDigitalaxMarketplaceV3Offers
 } from "@services/api/apiService";
 import PixelLoader from "@components/pixel-loader";
 import styles from "./styles.module.scss";
@@ -19,9 +15,6 @@ import ProductInfoCard from "@components/product-info-card";
 import Filters from "@components/filters";
 import { filterOrders, filterProducts } from "@utils/helpers";
 import digitalaxApi from "@services/api/espa/api.service";
-import { getEnabledNetworkByChainId } from "@services/network.service";
-import config from "@utils/config";
-import SecondaryInfoCard from "@components/secondary-info-card";
 import ProductTiles from "@components/product-tiles";
 
 const LandingPage = () => {
