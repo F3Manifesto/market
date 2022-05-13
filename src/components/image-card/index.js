@@ -169,7 +169,7 @@ const ImageCard = ({
                     autoPlay
                     muted={videoMuted}
                     loop
-                    playsinline
+                    playsInline
                     className={styles.video}
                     ref={videoTagRef}
                     preload={"auto"}

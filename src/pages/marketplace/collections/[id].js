@@ -109,7 +109,7 @@ const Collections = () => {
         if (index % 2 === 1) return <></>;
         return (
           <section className={styles.productsSection} key={collection.id}>
-            <video autoPlay muted loop className={styles.backVideo}>
+            <video autoPlay muted loop playsInline className={styles.backVideo}>
               <source src="./images/metaverse/all_skins.mp4" type="video/mp4" />
             </video>
             <Container>

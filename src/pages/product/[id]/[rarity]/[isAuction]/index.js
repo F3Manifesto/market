@@ -570,6 +570,7 @@ const Product = ({ pageTitle }) => {
                               muted
                               autoPlay
                               loop
+                              playsInline
                               key={item.id}
                               onClick={() => {
                                 setMainImage(item.url);
@@ -604,7 +605,7 @@ const Product = ({ pageTitle }) => {
                             {child.image_url ? (
                               <img src={reviseUrl(child.image_url)} />
                             ) : child.animation_url ? (
-                              <video muted autoPlay loop>
+                              <video muted autoPlay playsInline loop>
                                 <source src={reviseUrl(child.animation_url)} />
                               </video>
                             ) : null}

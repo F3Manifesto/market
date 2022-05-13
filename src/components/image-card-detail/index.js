@@ -174,6 +174,7 @@ const ImageCardDetail = ({
                     autoPlay
                     muted={videoMuted}
                     loop
+                    playsInline
                     className={styles.video}
                     ref={videoTagRef}
                     preload={"auto"}

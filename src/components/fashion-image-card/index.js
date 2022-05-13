@@ -9,7 +9,7 @@ const FashionImageCard = ({ videoUrl }) => {
         {videoUrl.includes('mp4') ? (
           <div className={styles.bodyWrapper}>
             <LazyLoad>
-              <video autoPlay muted loop className={styles.video}>
+              <video autoPlay muted loop playsInline className={styles.video}>
                 <source src={videoUrl} type="video/mp4" />
               </video>
             </LazyLoad>

@@ -42,7 +42,7 @@ const CollectionCard = ({ collection }) => {
           <Link href={`/marketplace/all/${collection.id}`}>
             <a className={styles.image}>
               {collection?.animation ? (
-                <video autoPlay muted loop>
+                <video autoPlay muted loop playsInline>
                   <source src={collection?.animation} type="video/mp4" />
                 </video>
               ) : (

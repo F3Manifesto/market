@@ -109,6 +109,7 @@ const MaterialLine = ({ className, clothesId, item: { tokenUri, id } }) => {
               <video
                 autoPlay
                 muted
+                playsInline
                 loop
                 className={styles.video}
                 onClick={() =>

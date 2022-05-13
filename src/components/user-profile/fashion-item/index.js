@@ -52,7 +52,7 @@ const FashionItem = (props) => {
         //     marginBottom: "1rem",
         //   }}
         // >
-        <video autoPlay muted loop className={styles.videoItem}>
+        <video autoPlay muted loop playsInline className={styles.videoItem}>
           <source src={animation} type="video/mp4" />
         </video>
       ) : // </LazyLoad>
@@ -70,7 +70,7 @@ const FashionItem = (props) => {
       )}
       {imageUrl &&
         (isVideo ? (
-          <video autoPlay muted loop className={styles.videoItem}>
+          <video autoPlay muted loop playsInline className={styles.videoItem}>
             <source src={imageUrl} type="video/mp4" />
           </video>
         ) : (

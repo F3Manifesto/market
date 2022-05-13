@@ -30,7 +30,7 @@ const PreviewImage = ({
         >
           <div className={styles.contentWrapper}>
             {isVideo ? 
-              <video autoPlay muted loop className={styles.itemLargeImg} >
+              <video autoPlay muted loop playsInline className={styles.itemLargeImg} >
                 <source src={tokenImage} type="video/mp4" />
               </video>
             : <img
