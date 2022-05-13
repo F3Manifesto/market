@@ -86,6 +86,15 @@ class MyDocument extends Document {
               font-weight: 700;
               font-style: normal;
             }
+
+                 @font-face {
+              font-family: "inter";
+              font-display: swap;
+              src: url("./fonts/inter-700.woff2") format("woff2"),
+                url("./fonts/inter-700.woff") format("woff");
+              font-weight: 700;
+              font-style: normal;
+            }
           
             @font-face {
               font-family: "inter";
