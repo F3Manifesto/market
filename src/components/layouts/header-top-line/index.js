@@ -60,12 +60,12 @@ const HeaderTopLine = ({ buttonText }) => {
 
         <div className={styles.menuBar}>
           <a
-            href="https://docs.f3manifesto.xyz/"
+            href="https://f3manifesto.xyz/"
             className={styles.link}
             target="_blank"
             rel="noreferrer"
           >
-            DOCUMENTATION
+            Home Port
           </a>
           <a
             href="https://web3cc0openlibrary.f3manifesto.xyz/"
