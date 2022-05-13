@@ -11,7 +11,10 @@ const LandingFooter = () => {
         
         <div className={styles.centerWrapper}>
           <div className={styles.description}>
-            Reach out across any of our social media channels to get more involved with the manifesto, cc0 web3 fashion & the open metaverse. ALL ENGINEERING AND ARCHITECTURE IS FORKED FROM THE DIGITALAX OPEN SOURCE PROTOCOL STACK.
+            Web3 FASHION CC0 BRAND. 
+          </div>
+          <div className={styles.description2}>
+            How to make it in web3, make bags & not lose your soul.
           </div>
 
           <div className={[styles.dFlex, styles.iconsLine].join(' ')}>
