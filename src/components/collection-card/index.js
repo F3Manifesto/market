@@ -20,6 +20,7 @@ const CollectionCard = ({ collection }) => {
     "The Navigator Chronicles",
     "My Pocket Empire",
     "Nim's Closet",
+    "Street Sovereign",
   ];
 
   return (
