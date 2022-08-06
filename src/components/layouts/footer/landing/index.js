@@ -18,13 +18,6 @@ const LandingFooter = () => {
           </div>
 
           <div className={[styles.dFlex, styles.iconsLine].join(' ')}>
-            <a href="https://www.tiktok.com/@f3manifesto" target="_blank" rel="noreferrer">
-              <img
-                src="/images/social/tiktok-icon.png"
-                alt="tiktok-icon"
-                className={styles.tiktokIcon}
-              />
-            </a>
             <a href="https://www.youtube.com/channel/UC5SOYiDrdooqNusoS5vrJAw" target="_blank" rel="noreferrer">
               <img
                 src="/images/social/youtube-icon.png"
